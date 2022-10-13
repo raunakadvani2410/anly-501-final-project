@@ -1,0 +1,42 @@
+---
+title: "HW"
+output: html_document
+date: "2022-09-13"
+---
+
+```{r}
+#install.packages("selectr")
+#install.packages("rvest")
+#install.packages("xml2")
+
+library("selectr")
+library("rvest")
+library("xml2")
+
+#install.packages("twitteR")
+#install.packages("ROAuth")
+#install.packages("rtweet")
+library(rtweet)
+library(twitteR)
+library(ROAuth)
+library(jsonlite)
+
+consumerKey="82dAf3aa1S608rup8nHmTB52Q"
+consumerSecret= "VYvW5oaXnXXFflvAQ26ZJiEcDcsBQ42RTaiUDPCFhudq5JoFAi"
+access_Token= "1558945148-MXr0n64kevhbfrWfe6xjUFK4dFZLYbLjSZzSpWL"
+access_Secret="lgvyOxk6PPMlPF7BEzYEBzz2zvLqYYvdmzWsVtJ09lAvp"
+
+
+requestURL='https://api.twitter.com/oauth/request_token'
+accessURL='https://api.twitter.com/oauth/access_token'
+authURL='https://api.twitter.com/oauth/authorize'
+
+setup_twitter_oauth(consumerKey,consumerSecret,access_Token,access_Secret)
+Search1<-twitteR::searchTwitter("#education",n=500, since="2020-03-01")
+(Search_DF2 <- twListToDF(Search1))
+```
+
+```{r}
+Search_DF2
+```
+
