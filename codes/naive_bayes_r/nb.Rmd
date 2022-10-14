@@ -1,0 +1,47 @@
+---
+title: "r-data-gathering-api"
+author: "Raunak Advani"
+date: "2022-10-01"
+output: html_document
+---
+
+```{r setup}
+library(fredr)
+api.key = '90c777432f754129f7ca266e2ea35aab'
+fredr_set_key(api.key)
+
+```
+
+
+```{r cars}
+fred_df <- as.data.frame(fredr(
+  series_id = "UNRATE",
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-01-01")
+))
+
+write.csv(fred_df, "data/raw-data/Fredapi_raw_unemployment.csv")
+
+```
+
+
+```{r }
+fred_df <- as.data.frame(fredr(
+  series_id = "FEDFUNDS",
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-01-01")
+))
+
+write.csv(fred_df, "data/raw-data/Fredapi_raw_fedfunds.csv")
+```
+
+```{r}
+fred_df <- as.data.frame(fredr(
+  series_id = "NYGDPPCAPKDUSA",
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-01-01")
+))
+
+write.csv(fred_df, "data/raw-data/Fredapi_gdp_raw.csv")
+```
+
