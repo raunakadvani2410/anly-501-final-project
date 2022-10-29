@@ -1,0 +1,64 @@
+---
+title: "r-data-gathering-api"
+author: "Raunak Advani"
+date: "2022-10-01"
+output: html_document
+---
+
+```{r setup}
+library(fredr)
+api.key = "90c777432f754129f7ca266e2ea35aab"
+fredr_set_key(api.key)
+
+```
+
+
+```{r cars}
+
+unemp_df <- as.data.frame(fredr(  # get data on unemployment rate
+  series_id = "UNRATE",
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-10-01"),
+  frequency = "q"
+))
+write.csv(unemp_df, "../../data/raw-data/Fredapi_raw_unemployment.csv")
+
+```
+```{r}
+unemp_df
+```
+
+
+```{r }
+fed_funds_df <- as.data.frame(fredr(
+  series_id = "FEDFUNDS", # get data on interest rates
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-10-01"),
+  frequency = "q"
+))
+
+write.csv(fed_funds_df, "../../data/raw-data/Fredapi_raw_fedfunds.csv")
+```
+```{r}
+fed_funds_df
+```
+
+```{r}
+gdp_df <- as.data.frame(fredr(
+  series_id = "GDP", # get data on gross gdp
+  observation_start = as.Date("1990-01-01"),
+  observation_end = as.Date("2022-10-01")
+))
+
+new_gdp <- data.frame(date = c("2022-07-01"), # 2022 Q2 GDP hasn't been announced, so predict using expected growth rate
+                      series_id = c("GDP"),
+                      value = c("26965.372"),
+                      realtime_start = c("2022-10-14"),
+                      realtime_end = c("2022-10-14"))
+
+gdp_df <- rbind(gdp_df, new_gdp) # merge with new dataframe
+write.csv(gdp_df, "../../data/raw-data/Fredapi_raw_gdp.csv")
+```
+
+
+
