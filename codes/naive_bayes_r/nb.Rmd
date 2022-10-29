@@ -21,9 +21,11 @@ unemp_df <- as.data.frame(fredr(  # get data on unemployment rate
   observation_end = as.Date("2022-10-01"),
   frequency = "q"
 ))
-getwd()
 write.csv(unemp_df, "../../data/raw-data/Fredapi_raw_unemployment.csv")
 
+```
+```{r}
+unemp_df
 ```
 
 
@@ -35,7 +37,10 @@ fed_funds_df <- as.data.frame(fredr(
   frequency = "q"
 ))
 
-write.csv(fred_df, "../../data/raw-data/Fredapi_raw_fedfunds.csv")
+write.csv(fed_funds_df, "../../data/raw-data/Fredapi_raw_fedfunds.csv")
+```
+```{r}
+fed_funds_df
 ```
 
 ```{r}
@@ -57,6 +62,11 @@ write.csv(gdp_df, "../../data/raw-data/Fredapi_raw_gdp.csv")
 
 ```{r}
 
+gdp_df = subset(gdp_df, select = -c(series_id, realtime_start, realtime_end))
 
+
+```
+```{r}
+gdp_df
 ```
 

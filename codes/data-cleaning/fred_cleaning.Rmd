@@ -1,0 +1,74 @@
+---
+title: "fredapi_cleaning"
+author: "Raunak Advani"
+date: "2022-10-29"
+output: html_document
+---
+
+```{r}
+library("dplyr")
+getwd()
+```
+```{r}
+gdp_df <- read.csv("../../data/raw-data/Fredapi_raw_gdp.csv")
+gdp_df
+```
+```{r}
+gdp_df = subset(gdp_df, select = -c(X, series_id, realtime_start, realtime_end))
+gdp_df
+```
+```{r}
+colnames(gdp_df)[2] = "gdp_value"
+gdp_df
+```
+```{r}
+unemployment_df <- read.csv("../../data/raw-data/Fredapi_raw_unemployment.csv")
+unemployment_df
+```
+```{r}
+unemployment_df = subset(unemployment_df, select = -c(X, series_id, realtime_start, realtime_end))
+```
+
+```{r}
+colnames(unemployment_df)[2] = "unemployment_value"
+unemployment_df
+```
+```{r}
+fed_funds_df <- read.csv("../../data/raw-data/Fredapi_raw_fedfunds.csv")
+fed_funds_df
+```
+
+```{r}
+fed_funds_df = subset(fed_funds_df, select = -c(X, series_id, realtime_start, realtime_end))
+colnames(fed_funds_df)[2] = "fed_funds_value"
+fed_funds_df
+```
+```{r}
+df_merge <- merge(gdp_df, unemployment_df, by = "date", all.x = TRUE)
+
+```
+```{r}
+clean_df <- merge(df_merge, fed_funds_df, by = "date", all.x = TRUE)
+clean_df
+```
+```{r}
+df_recession <- data.frame(recession = c(0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0))
+
+df_recession
+```
+```{r}
+df_recession2 <- cbind(df_recession, new_col = clean_df['date'])
+df_recession2
+```
+```{r}
+clean_df
+```
+
+```{r}
+economic_df <- merge(clean_df, df_recession2, by = "date", all.x = TRUE)
+economic_df
+```
+```{r}
+write.csv(economic_df, "../../data/clean-data/Fredapi_clean.csv")
+```
+
