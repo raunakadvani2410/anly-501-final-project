@@ -1,0 +1,457 @@
+,Content_Lemmatized_Sentiment_Analysis,sentiment_rating,label
+0,riyadh oct reuters global recession avoided government fiscal policy consistent monetary policy tightening likely would country falling recession n char,-0.8225,Negative
+1,melbourne sept reuters oil price dipped early trade friday extending week loss concern tight supply outweighed escalating fear sharp interest rate hike slam char,-0.6249,Negative
+2,posted bank england raised key interest rate thursday september said would continue respond forcefully necessary inflation despite eco char,0.4588,Positive
+3,washington sept reuters downside risk continue dominate global economic outlook country expected slip recession early say wil char,-0.7506,Negative
+4,london sept reuters sterling surrendered gain dollar euro thursday bank england raised key interest rate vowed respond forcefully char,0.7506,Positive
+5,berlin oct reuters german government expects europe largest economy slide recession next year energy crisis rising price supply bottleneck take toll econ char,-0.7003,Negative
+6,london sept reuters rest world worry recession china steadily increasing import physical copper country net call refined copper rest char,-0.6908,Negative
+7,sept reuters u stock index future slipped friday extending fall overnight logistics industry bellwether fedex withdrew financial forecast recession warning char,-0.6369,Negative
+8,zurich sept reuters swiss national bank think swiss economy slide recession cannot rule prospect snb chairman thomas jordan said newspaper intervi char,-0.5702,Negative
+9,sept reuters abu dhabis stock market fell early trade monday leading decline gulf investor concern prospect global recession mscis broadest index asiap char,-0.1531,Negative
+10,london sept reuters world central bank umbrella body bank international settlement bi urged major economy forge ahead forceful interest rate hike despite th char,0.4588,Positive
+11,sept reuters stock market gulf extended loss thursday federal reserve sharply hiked u interest rate projected raising faster investor char,0.1779,Positive
+12,london sept reuters downturn british business steepened month battled soaring cost faltering demand according survey friday hammered home rising r char,-0.4019,Negative
+13,sydney sept reuters asian share market slid wednesday surging borrowing cost fed fear global recession spooking investor arm safehaven dollar driving char,-0.5859,Negative
+14,posted european share slid friday september recession warning two major global financial institution bet large interest rate hike u federal reserve next wee char,0.0,Positive
+15,london oct reuters portfolio investor continued flee oil market last week amid multiplying sign imminent recession would cut petroleum consumption hedge fund ot char,-0.5994,Negative
+16,tokyo oct reuters asian stock declined friday extending global equity slide third day investor fretted recession risk amid sign aggressive central bank polic char,-0.6705,Negative
+17,sept reuters european share fell friday recession warning bet large interest rate hike u federal reserve next week knocked sentiment continentwide st char,0.0,Positive
+18,paris sept reuters french finance minister bruno le maire said wednesday economy facing recession government lowered economic outlook le maire al char,-0.5106,Negative
+19,sept reuters billionaire investor stanley druckenmiller said belief federal reserve monetary policy tightening may push u biggerthanexpected recession next year spe char,-0.4215,Negative
+20,sept reuters saudi arabia stock market tumbled sunday leading decline across middle east response friday fall energy price fear aggressive interest rate hike char,0.0772,Positive
+21,sept reuters european stock index future fell wednesday line selloff asian market relentless surge global bond yield intensifying energy crisis regi char,-0.4215,Negative
+22,sept reuters u stock index future fell monday kicking another week softer footing investor worried federal reserve aggressive push curb inflation may tip char,-0.4215,Negative
+23,berlin sept reuters germany four leading economic institute slashed forecast year next expect europe largest economy slip recession char,-0.5719,Negative
+24,posted new data wednesday showed uk brink recession meanwhile bank england moved quash speculation would extend emergency bond buying intended calm rout debt char,-0.5994,Negative
+25,oct reuters canada main stock index slid tuesday tracking fall global market worry global recession unnerved investor returning long weekend char,-0.6908,Negative
+26,bengaluru sept reuters indian share lower early trade friday dragged loss technology automobile stock amid broader weak sentiment concern global recessi char,-0.6597,Negative
+27,brussels oct reuters euro zone retail sale fell august data showed thursday pointing weakness consumer demand underlining expectation approaching recession eu char,-0.7269,Negative
+28,helsinki sept reuters finland finance ministry monday cut economic growth forecast said country risk recession ministry predicts gross domestic char,-0.7579,Negative
+29,london sept reuters portfolio investor anticipate imminent recession hit consumption middle distillate diesel especially hard based recent position change fu char,-0.8479,Negative
+30,washington sept reuters gauge future u economic activity declined sixth straight month august potentially signaling recession amid large interest rate increase f char,0.5267,Positive
+31,sept reuters central bank hike interest rate pace seen decade control inflation alarm among bond investor looming recession risk spreading fast week char,-0.5859,Negative
+32,geneva oct reuters un agency warned monday risk monetary policyinduced global recession would especially serious consequence developing country excessiv char,-0.7645,Negative
+33,brussels oct reuters euro zone industrial production soared august far beyond expectation manufacturer boosted investment despite fear upcoming recession official estimate sh char,0.755,Positive
+34,bengaluru sept reuters indian share ended around twomonth low wednesday bank energy metal company posting loss fear global recession dented risk sentiment th char,-0.802,Negative
+35,bengaluru sept reuters indian share expected open lower wednesday mirroring asian peer risk aversion remained unabated worry global recession india nse stock char,-0.8658,Negative
+36,bengaluru sept reuters indian share fell wednesday dragged bank metal company risk sentiment weakened worry global recession nse nifty index nsei fe char,-0.6597,Negative
+37,federal reserve may hike interest rate expects conquer inflation cost could painful spike unemployment larry summer warned unlikely char,-0.5994,Negative
+38,alreadybattered stock market face pressure recession playbook laid billionaire investor paul tudor jones playbook recession last day f char,-0.7783,Negative
+39,investor look avoid stock recession risk rising according blackrock trillion asset manager warned federal reserve central bank undere char,-0.6908,Negative
+40,elon musk turnaround billion buyout twitter taking place time reduced investor appetite riskier debt leaving major bank lined finance deal potentially facing char,-0.5994,Negative
+41,president joe biden isnt worried recession even alarm bell sound interview cnns jake tapper tapper asked biden american people prepare reces char,0.2071,Positive
+42,paris sept reuters french economy slow sharply next year face europe energy crisis risk limited temporary recession worstcase scenario cen char,-0.8316,Negative
+43,sydney sept reuters new zealand economy rebounded sharply last quarter lifting coronavirus restriction return tourist helped dodge recession though may last char,-0.5994,Negative
+44,hong kong sept reuters california state teacher retirement system calstrs looking appointing chinafocused equity manager first time ever demand asset diversifi char,0.25,Positive
+45,hong kong sept reuters asian market weaker friday investor braced u rate hike next week amid growing concern global recession following warning world ban char,-0.875,Negative
+46,london sept reuters opec producing target record million barrel per day global demand highlighting underlying tight supply oil market e char,-0.128,Negative
+47,london sept reuters bank england raised key interest rate thursday said would continue respond forcefully necessary inflation despite char,0.4588,Positive
+48,berlin oct reuters german government expects europe largest economy slide recession next year contracting energy crisis rising price supply bottleneck take char,-0.7003,Negative
+49,oct reuters global bond fund saw biggest outflow two decade first three quarter year hefty interest rate increase central bank tame inflation sparked fear char,0.2732,Positive
+50,singapore sept reuters oil price climbed early asian trade monday weaker dollar supply concern ahead european union embargo russian oil december offset fear char,-0.7269,Negative
+51,tokyo sept reuters oil price slid wednesday extending previous day loss investor braced another aggressive interest rate hike u federal reserve fea char,0.0258,Positive
+52,bengaluru sept reuters indian share ended lower seventh straight session thursday dragged tech stock ahead central bank policy outcome friday amid lingering fear char,-0.3612,Negative
+53,london sept reuters rising interest rate rapidly appreciating currency exporting u inflation problem threaten send rest global economy recession ot char,-0.296,Negative
+54,melbourne sept reuters oil price rose modestly early trade monday sliding eightmonth low last week weighed surging u dollar fear sharp interest rate hike char,-0.3182,Negative
+55,sept reuters brazilian economy minister paulo guedes said monday country need fear recession abroad stronger dollar arguing latin america largest economy char,-0.7506,Negative
+56,sept reuters wall street future fell monday ratesensitive technology growth stock leading decline investor worried another massive interest rate hike feder char,0.5267,Positive
+57,london sept reuters downturn business activity across euro zone deepened september according survey showed economy likely entering recession consumer rei char,-0.4215,Negative
+58,berlin sept reuters german economy heading recession ifo institute said monday reported drop business morale seen since early stage covid pan char,-0.5994,Negative
+59,london oct reuters british consumer spending grew last month rate lagged behind inflation long way according survey tuesday underlined risk recession char,-0.7269,Negative
+60,bogota oct reuters consumer choose drinking coffee home cafe restaurant due rising inflation risk recession coming month executive director inter char,-0.5994,Negative
+61,oct reuters six biggest u bank expected set aside nearly billion third quarter cover future loan loss wall street analyst said lender brace potentia char,-0.3182,Negative
+62,singapore oct reuters oil price fell third straight session wednesday investor fretted hit fuel demand growing risk global recession tightening covid char,-0.4215,Negative
+63,berlin oct reuters germany economy fall recession shrinking compared growth previously forecast thanks economic war russia president vladimir pu char,-0.5106,Negative
+64,singapore sept reuters singapore temasek holding temul said market valuation yet priced global economic recession said state investor waiting fur char,-0.4215,Negative
+65,washington sept reuters world may edging toward global recession central bank across world simultaneously hike interest rate combat persistent inflation world bank char,-0.296,Negative
+66,frankfurt sept reuters euro zone economic slowdown possibly recession enough control inflation european central bank keep raising interest ra char,0.0516,Positive
+67,sept reuters federal reserve need bring unacceptably high inflation cause jobless rate rise recession inevitable boston fed president susan collins said char,-0.4215,Negative
+68,sept reuters major stock market gulf rose early trade wednesday course extend gain previous session shrugging fear global recession central ban char,-0.6705,Negative
+69,washington sept reuters sale new u singlefamily home unexpectedly increased august rebound likely temporary year fixed mortgage rate soaring level la char,0.2732,Positive
+70,sept reuters u energy firm week added oil natural gas rig third week row growth third quarter slowed due recession fear nagging supply shortage char,-0.6124,Negative
+71,washington oct reuters international monetary fund next week downgrade forecast global growth managing director kristalina georgieva said thursday citing ri char,0.3818,Positive
+72,berlin oct reuters data friday showed inflation tightening stranglehold german economy surge import price fall industrial output retail sale adding sign char,0.0,Positive
+73,washington oct reuters dropping job vacancy dip rental cost sign growing consumer caution may bolster federal reserve hope still slow u economy infl char,0.5574,Positive
+74,washington oct reuters world bank president david malpass international monetary fund managing director kristalina georgieva warned monday growing risk global recession sai char,-0.6486,Negative
+75,london oct reuters portfolio investor encouraged return oil market early last week prospect production cut opec ally offset bearishness ind char,0.3818,Positive
+76,sydney oct reuters australian economy likely avoid recession despite world economy dangerous place right treasurer jim chalmers said tuesday ahead char,-0.2373,Negative
+77,jakarta oct reuters indonesian president joko widodo said order administration run stress test determine whether southeast asia largest economy could withstand significa char,-0.4215,Negative
+78,londonparis sept reuters europe felt chill soaring energy price monday france saying could foot extra cost consumer britain face rising ri char,0.2732,Positive
+79,barcelona sept reuters european customer reluctant place order next year due worry recession spurring fall demand head aluminium bahrain alba albhb char,-0.802,Negative
+80,sept reuters month ago investor worried federal reserve fighting inflation aggressively enough several jumbo rate hike later fear fed plunge econom char,-0.8481,Negative
+81,sept reuters global economy could avert recession data point potential soft landing jp morgan analyst said adding federal reserve might overreacted w char,-0.6597,Negative
+82,bengaluru sept reuters indian share opened higher thursday six consecutive session loss boosted gain metal auto company investor eyeing support cent char,0.8176,Positive
+83,oct reuters u stock index future fell wednesday ahead key economic data rising treasury yield spurred selling megacap growth stock recession fear aggressive centrum char,-0.4939,Negative
+84,sydney sept reuters asian share friday headed worst month since onset covid pandemic jitter currency bond market persisted hawkish talk fro char,-0.4404,Negative
+85,frankfurt sept reuters commerzbanks cbkgde top executive told employee friday next three month hardest year bank recession germany wa char,-0.25,Negative
+86,posted international monetary fund next week downgrade forecast global growth managing director kristalina georgieva said thursday citing rising risk recessio char,0.128,Positive
+87,sept reuters oil production cut organization petroleum exporting country ally vital break negative momentum price amid recession fear stronger dol char,-0.7906,Negative
+88,sept reuters europe stoxx index rose tuesday led automaker material stock threeday selloff triggered fear global recession italian payment group n char,-0.7184,Negative
+89,singapore oct reuters singapore economy expected expanded slower pace third quarter underlining central bank challenge balance urgency tackling char,0.0772,Positive
+90,oct reuters u president joe biden said interview released tuesday think would recession happened would slight dont char,-0.4215,Negative
+91,billionaire real estate investor barry sternlicht think fed need slow interest rate hike trajectory economy show sign pressing hard brake fed keep thi char,0.3818,Positive
+92,yield twoyear treasury bond pushed past year yield mark deepest inversion two note year thursday fresh inflation data bet rate hike char,0.4767,Positive
+93,federal reserve risk raising rate high central banker likely ignore falling inflation data see slowdown labor market according bank strategist char,-0.6369,Negative
+94,billionaire investor stanley druckenmiller anticipates world largest economy contract next year back federal reserve effort clamp high inflation central char,0.0,Positive
+95,advanced economy need change course monetary policy central bank tightening could sparking global recession according united nation trade group excessive monetary tig char,0.25,Positive
+96,ceo worldwide bracing contraction economic activity expect take related hit profitability confidence growth longerterm horizon improving accordi char,0.8689,Positive
+97,nouriel roubini sounding alarm inflationdriven recession hit u economy big way according interview bloomberg going short shal char,-0.6369,Negative
+98,recession horizon wouldnt severe crash long federal reserve avoid policy mistake u take necessary step avoid steep downturn accor char,-0.6319,Negative
+99,federal reserve look le capable sticking soft landing global economy flashing warning could enter earnings recession within next month according analyst f char,-0.3818,Negative
+100,washington sept reuters u economic activity slowed august productionrelated measure slipped employment indicator rose moderately data federal reserve bank chicago char,0.0,Positive
+101,london sept reuters u economic data remains strong range financial indicator point sharp slowdown next year would dampen oil consumption lead lower pric char,0.2732,Positive
+102,brasilia sept reuters economic activity brazil rose much higher expected july central bank index showed thursday reinforcing forecast robust expansion year char,0.34,Positive
+103,oct reuters u stock index future fell tuesday technology share leading selloff worry impact aggressive rate hike escalating russiaukraine war china r char,-0.7351,Negative
+104,berlin sept reuters downturn german business activity deepened september preliminary survey showed friday higher energy cost hit europe largest economy company sa char,0.2732,Positive
+105,paris oct reuters france economy likely grew third quarter compared previous three month country central bank said monthly economic outlook monday char,0.0,Positive
+106,beijing sept reuters china speed fund injection start project construction soon possible state planner national development reform commission ndrc said news char,0.0,Positive
+107,paris sept reuters global economic growth slowing forecast month ago wake russia invasion ukraine energy inflation crisis risk snowballing char,-0.3612,Negative
+108,launceston australia oct reuters amid volatility commodity market iron ore relatively stable past two month despite cloudy economic outlook top importer ch char,0.4588,Positive
+109,happy friday reader im phil rosen today september mean day market watcher ive spoken week arent upbeat going homestre char,0.5719,Positive
+110,moscow sept reuters russia ratecutting cycle reuters poll suggested friday analyst expecting central bank keep key rate unchanged char,0.0,Positive
+111,end first day goldman sachs communacopia technology conference met one oldest best source bar palace hotel san francisco shitty char,0.1531,Positive
+112,economy pretty well right thats big problem despite soaring interest rate skyhigh inflation outlook thats worsening week u economy keep adding jo char,-0.4367,Negative
+113,sept reuters british recruiting firm sthree plc stemsl forecast higherthanexpected annual profit tuesday helped continued demand hiring science technology related char,0.34,Positive
+114,data show southern indian state outperform rest country health education economic opportunity consequence phenomenon nilakantan r data scien char,0.4215,Positive
+115,wharton professor jeremy siegel disturbed apparent lack diversity thought federal reserve could lead big market problem road siegel shy v char,-0.8225,Negative
+116,federal reserve look le capable sticking soft landing global economy flashing warning could enter earnings recession within next month according analyst f char,-0.3818,Negative
+117,fast federal reserve raised interest rate could exact opposite cut rate according jpmorgan thats deep economic recession materializes char,-0.2263,Negative
+118,london oct reuters british business last month suffered sharpest contraction activity since early last year although downturn little le severe first estimated sur char,-0.6728,Negative
+119,oct reuters jpmorgan chase amp co jpmn chief executive jamie dimon said monday united state global economy could tip recession middle next year cnbc char,0.0,Positive
+120,sept reuters global growth heading increasingly synchronous downturn economist barclays said thursday citing deepening energy crisis europe continued lockdown ch char,-0.1027,Negative
+121,oct reuters investor pulled billion hedge fund second quarter spooked inflation geopolitical tension war ukraine according report data prov char,-0.7351,Negative
+122,sign debt crisis already started taking shape hard landing economy end year baseline scenario according top economist nouriel roub char,-0.7351,Negative
+123,istanbul sept reuters turkey central bank delivered another surprise interest rate cut thursday point sending lira alltime low even inflation rose char,0.2263,Positive
+124,data suggests global economy already moderate slowdown odds severe recession climbing present downside risk equity year ahead according ned char,-0.8176,Negative
+125,turkey lira fell record low u dollar thursday country central bank cut interest rate despite soaring inflation lira hit record low versus doll char,-0.3182,Negative
+126,mumbai sept reuters indian bank likely see basis point fall gross nonperforming asset npa fiscal year march improve end march char,0.3182,Positive
+127,london oct reuters british company downbeat outlook profit since depth covid pandemic late despite widespread plan raise price char,0.4404,Positive
+128,tokyo oct reuters oil jumped monday opec considers cut output week asia share mixed holiday asiapacific region likely result thin trading u char,0.4215,Positive
+129,london oct reuters manufacturing activity across euro zone declined last month growing cost living crisis kept consumer wary soaring energy bill limited production char,-0.4939,Negative
+130,sept reuters look day ahead asian market jamie mcgeever another day another surge u bond yield another selloff global market top asian market char,0.2023,Positive
+131,stanley druckenmiller ray dalio there growing chorus wall street think stock market embark lost decade return virtually flat similar th char,-0.1531,Negative
+132,u economy set suffer painful housingmarket downturn material drop export likely mean federal reserve already done enough conquer inflation paul krugman char,-0.8176,Negative
+133,sept reuters central bank hike interest rate pace seen decade control inflation alarm among bond investor looming recession risk spreading fast week char,-0.5859,Negative
+134,orlando fla sept reuters whiplash wall street following latest u inflation figure warning investor get used plenty char,-0.34,Negative
+135,oct reuters international monetary fund warned tuesday disorderly repricing market saying global financial stability risk increased raising potential contagion char,-0.6249,Negative
+136,likely u inflation start cool soon imbalance labor market still need fixed federal reserve succeed goal according top goldman sachs strate char,0.743,Positive
+137,bengaluru sept reuters rising interest rate present significant barrier world transition net zero emission despite high level investment green energy neede char,0.6597,Positive
+138,september clock ticking eight harvest away european union aim made big inroad cutting greenhouse gas emission agriculture transforming toda char,-0.128,Negative
+139,depending ask us battle inflation either going swimmingly dragging economy recession policymakers federal reserve made clear recent week char,-0.4215,Negative
+140,october topic environmental crime typically conjures image illegal dumping pollutant taking endangered specie department justice doj char,-0.7184,Negative
+141,year u treasury yield surged highest level decade monday one day ahead federal reserve fomc meeting year yield hit high rising much char,0.2023,Positive
+142,jpmorgans marko kolanovic steadfast bull throughout stock market decline year big risk forming cant ignore friday note admi char,0.2523,Positive
+143,billionaire investor jeff gundlach belief time investor become bearish u stock given risk deflation next year increasing doubleline capital ceo whose nickname char,-0.2732,Negative
+144,welcome back reader im phil rosen may read recent comparison europe energy crisis lehman brother collapse two expert told weekend analogy char,-0.4939,Negative
+145,new york oct reuters goldman sachs boosted thirdquarter gdp growth estimate full percentage point wednesday series economic indicator exceeded expe char,0.6249,Positive
+146,sept reuters u highyield corporate debt market may underpricing risk recession even treasury macroeconomic indicator reflect rising growth fear may char,-0.7351,Negative
+147,mumbai sept reuters pace interest rate increase calibrated ensure economic recovery india stall central bank try bring inflation char,0.7269,Positive
+148,berlin oct reuters germany service sector shrank september slightly initially expected inflation growing uncertainty hit demand survey showed wednesday adding char,-0.296,Negative
+149,tokyo oct reuters japan manufacturing activity grew slowest pace since start last year september slide output new order intensified due weakening demand char,-0.4215,Negative
+150,shanghai sept reuters china kept benchmark lending rate unchanged monthly fixing tuesday expected authority appeared hold immediate monetary easing following rap char,0.3182,Positive
+151,new yorklondon sept reuters scale speed selloff british asset jolted world market raising concern contagion chaos major developed economy add unea char,-0.6369,Negative
+152,beijing sept reuters china exporter last reliable pillar world secondlargest economy struggled pandemic weak consumption property crisis warning char,-0.8957,Negative
+153,frankfurt sept reuters euro zone inflation zoomed past forecast hit september new record high reinforce expectation another jumbo interest rate hike next month char,0.4588,Positive
+154,bengaluru sept reuters india retail inflation accelerated yearonyear august driven surge food price adding pressure central bank hike interest rate char,0.2023,Positive
+155,londontokyo sept reuters japan intervened foreign exchange market thursday first time since shore battered yen wake central bank decision char,0.0,Positive
+156,london sept reuters britain deputy finance minister saturday played historic collapse pound government bond response country new economic growth plan whic char,0.2023,Positive
+157,mumbai sept reuters indian rupee expected open higher u currency bank england decision buy longdated british bond prompted pullback treasury char,0.2023,Positive
+158,hong kong oct reuters china finance ministry said thursday issue additional billion yuan million worth yuandenominated sovereign bond hong kong oc char,0.2263,Positive
+159,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+160,twoyear treasury yield touched highest level year friday aggressive move federal reserve send bond yield soaring twoyear treasury highly sensitive char,0.25,Positive
+161,china steadily trimmed holding u government debt year moved bond offshore tax haven could protected future sanction according report char,0.1027,Positive
+162,madrid oct reuters spain plan issue net billion euro billion worth bond billion euro le plan issue according budget draft release char,0.2263,Positive
+163,u stock finished lower thursday sampp sliding twomonth low session treasury yield continued climb following federal reserve latest interest rate increa char,0.128,Positive
+164,new york sept reuters expectation aggressively federal reserve raise rate fight inflation hit fresh high week exacerbating pressure stock bon char,-0.5859,Negative
+165,new york sept reuters week heavy selling rocked u stock bond many investor bracing pain ahead wall street bank adjusting forecast account char,-0.5106,Negative
+166,u stock finished lower tuesday investor anxiously await interest rate guidance federal reserve policy meeting stock pressure anticipated basispoint rate hik char,-0.2263,Negative
+167,new york sept reuters china increased holding treasury july first time eight month japan reduced u government debt load data u treasury dep char,0.296,Positive
+168,u stock tumbled thursday major index pace give much prior session gain likely notch worstperforming month since june bond yield headed back u char,0.5267,Positive
+169,london sept reuters price falling like stone central bank tightening go overdrive buying bond may appear confused perhaps confusion good enough reason char,0.0772,Positive
+170,new york sept reuters week heavy selling brought u stock bond fresh bear market low many investor bracing pain ahead across wall street bank scra char,-0.4767,Negative
+171,new york sept reuters expectation hawkish federal reserve pushing investor revise much bond yield rise potentially unwelcome development alread char,-0.4019,Negative
+172,happy friday reader im phil rosen today september mean day market watcher ive spoken week arent upbeat going homestre char,0.5719,Positive
+173,investor placed bid billion russian bond monday creditdefault swap auction according wall street journal u treasury allows trading one week allow buyer char,0.4019,Positive
+174,sept reuters foreigner net purchaser emerging asia exchina bond second successive month august although buying measured concern soaring inflation exp char,0.2732,Positive
+175,u stock fell wednesday following sharp gain previous two session fourthquarter trading got underway investor assessing privatesector hiring data came expectation char,0.5267,Positive
+176,u stock soared monday kicking new quarter near gain three major market index dow jones surged point gain came amid slide u dolla char,0.7783,Positive
+177,sept reuters u company best credit rating looking shorterterm debt solution bridge better funding environment year two slowing new bond issuance char,0.8591,Positive
+178,new york oct reuters government bond price around world moving tandem reducing investor ability diversify portfolio raising concern blindsided market g char,0.3182,Positive
+179,oct reuters global bond fund saw biggest outflow two decade first three quarter year hefty interest rate increase central bank tame inflation sparked fear char,0.2732,Positive
+180,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+181,u stock ended monday lower amid turmoil stemming reaction uk new budget plan includes steepest tax cut decade led fear worsening inflation char,-0.9001,Negative
+182,hong kong sept reuters asian market attempted stabilise tuesday wild day stumbling stock crumbling bond plunging pound soaring dollar dollar easing char,0.25,Positive
+183,spike higher treasury yield holding sway stock foreign exchange said economist mohamed elerian see move rooted investor fearing federal reserve go f char,-0.4404,Negative
+184,washington sept reuters u security exchange commission sec scheduled wednesday propose draft rule boost resilience trillion treasury market wor char,0.7096,Positive
+185,hong kong oct reuters asian stockmarkets fell dollar rose tuesday investor worried rising interest rate escalation ukraine war treasury yield lea char,-0.3182,Negative
+186,mumbai sept reuters indian rupee tipped extend decline new record low friday back treasury yield climbing fresh multiyear high dollar demand im char,0.296,Positive
+187,singapore sept reuters pound languished near record low wednesday lingering concern britain radical tax cut spur growth dollar edged treasury yield char,0.0516,Positive
+188,london oct reuters mechanic year interest rate shock investment industry could yet double demand longterm bond roundabout somewhat counterintuitive wa char,-0.0258,Negative
+189,bond market volatility hit level seen great financial crisis volatility starting bleed stock market according ned davis research tuesday note char,0.0,Positive
+190,london sept reuters bank england said wednesday would start temporary programme bond purchase stabilise market postpone planned start gilt sale progr char,-0.2263,Negative
+191,new york sept reuters benchmark year u treasury yield jumped highest level since monday investor adjusted likelihood federal reserve hike rat char,0.2023,Positive
+192,new york sept reuters alreadymurky outlook u stock bond growing darker sizzling inflation ratchet expectation aggressively federal reserve need char,-0.1531,Negative
+193,new york sept reuters tough year market leading investor seek refuge cash capitalize higher interest rate await chance buy stock bond cheape char,0.5994,Positive
+194,new york sept reuters federal reserve deadset fighting inflation leaving little hope year rocky market end anytime soon policymakers signal rate rise faster char,0.0276,Positive
+195,london sept reuters new british finance minister kwasi kwarteng detail close billion pound billion tax cut energy subsidy planning reform friday part char,0.0,Positive
+196,london sept reuters britain bond market suffered biggest daily fall decade friday expected slump investor choked prospect hundred billion char,-0.6249,Negative
+197,london sept reuters perhaps remarkably world major economy still hold least part rainyday saving sterling british government bond raising question ab char,0.0,Positive
+198,london oct reuters bank england said tuesday would buy indexlinked government debt part emergency programme try quell turmoil debt market following char,-0.8442,Negative
+199,bucharest oct reuters romania reduce foreign debt issuance target next year tap eu fund low interest rate loan lower budget deficit reduce overall n char,-0.6705,Negative
+200,yield twoyear treasury bond pushed past year yield mark deepest inversion two note year thursday fresh inflation data bet rate hike char,0.4767,Positive
+201,u stock opened higher tuesday building monday strong rally investor hope end monetary tightening may sight dow jones industrial average opened nearly poin char,0.7351,Positive
+202,federal reserve lost credibility leaving u risk considerable economic pain according mohamed elerian economist warned wednesday fed failure char,-0.9022,Negative
+203,u stock fell tuesday investor eyed beginning latest central bank policy meeting could spur market fallout meeting concludes wednesday wall street anticipa char,0.0,Positive
+204,london oct reuters british government expected reverse proposed scrapping highest rate income tax sparked backlash governing conservative party b char,0.4019,Positive
+205,japanese prime minister fumio kishida interview financial time published tuesday said support bank japan loose monetary policy stance despite yen sliding twodec char,0.1027,Positive
+206,michael saylor cofounder microstrategy said bitcoin offer nonsovereign store value policymakers bank england scramble stabilize financial market bondbuying char,0.34,Positive
+207,u stock edged higher monday slight move upward wall street major index starting week fill earnings report corporate america monthly look char,0.0,Positive
+208,investor need brace unsettling volatility sampp could head back june low top economist mohamed elerian said warning upcoming turbulence stock th char,-0.4019,Negative
+209,sept reuters russian rouble surged new multiweek high friday stock fell volatile trade moscow mobilises extra troop conflict ukraine despite char,-0.3182,Negative
+210,siena italy sept reuters shareholder monte dei paschi di siena mp bmpsmi meeting thursday approve selling new share billion euro billion char,0.296,Positive
+211,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+212,unraveling bond market continue batter stock coming month according friday note bank america bond experiencing worst decline since int char,-0.6249,Negative
+213,u stock mixed thursday morning struggling recover wednesday session snapped two day strong gain major index investor mulling latest weekly jobless cla char,0.5994,Positive
+214,sydney sept reuters asian share tumbled dollar held firm u yield curve deeply inverted wednesday whitehot u inflation report dashed hope peak infla char,0.6249,Positive
+215,london sept reuters rockbottom investor confidence britain recover uturn economic plan announced last week finance minister kwasi kwarteng u economist larr char,0.5106,Positive
+216,sept reuters u bond fund witnessed massive outflow week sept investor girded rate hike federal reserve control stubborn inflation read char,-0.4019,Negative
+217,look day ahead u global market mike dolan hurricane ian raged set sight cuba florida global financial storm bond currency market calmed modera char,-0.1027,Negative
+218,look day ahead u global market mike dolan final quarter unremittingly dire year world market hoves view stock bond cratered new lo char,-0.4588,Negative
+219,u stock closed sharply higher tuesday extending early gain capping best twoday upward swing wall street since trader increased bet dovish pivot federal reser char,0.8658,Positive
+220,u stock dropped monday ahead federal reserve twoday meeting begin tuesday dip continuation friday selloff index capped worst fiveday stretch char,-0.6249,Negative
+221,u stock erased premarket gain tumbled friday following strongerthanexpected september job report u economy added job september ahead consensus expectation char,0.5267,Positive
+222,bank england said trillion uk pension fund investment couldve lost didnt intervene emergency bond purchasing program last week wake turmoil stemming fr char,-0.3851,Negative
+223,south korea government take step boost supply u dollar local currency market won dismal performance year drive uncertainty country economy g char,0.0,Positive
+224,last decade big argument buying stock fact interest rate rock bottom leaving alternative investor alternative tina char,0.128,Positive
+225,new york sept reuters vanguard world secondlargest asset manager belief u treasury near end painful decline even price tumble fresh multiyear low senio char,0.1531,Positive
+226,istanbul sept reuters turkish bank curtailing corporate lending government latest raft regulation raised cost forced many cut balance sheet risk char,-0.7351,Negative
+227,new yorklondon sept reuters global investor preparing market mayhem monumental week whipsawed asset price around world central bank government rampe char,0.3612,Positive
+228,londonnew york oct reuters call bank england saying british pension fund struggling meet margin call began monday wednesday getting urgent char,-0.25,Negative
+229,look day ahead u global market mike dolan reining inflation expectation u federal reserve main task count latest survey tactical victor char,0.0,Positive
+230,romemilan oct reuters italy favour keeping anima holding animmi domestic hand could raise stake country biggest independent asset manager hold nationa char,0.8225,Positive
+231,tokyo sept reuters stock asia sank bond yield elevated wednesday investor braced another aggressive interest rate hike u federal reserve later day char,0.34,Positive
+232,u dollar sank twoweek low japanese yen thursday japan dumped dollar defend battered currency yen gain unlikely last long federal reserve char,-0.1027,Negative
+233,u stock surged monday uk government walked back part controversial tax cut plan sparked steep decline british pound last month uk finance minister kwasi kwarteng char,-0.4404,Negative
+234,u stock closed mixed tuesday sampp hitting new low intraday broad index dow jones industrial average fell sixth day row trading sess char,-0.2732,Negative
+235,u stock plunged friday strongerthanexpected september job report solidified another outsized interest rate hike federal reserve november u economy added char,0.4588,Positive
+236,u stock closed sharply lower whiplashed trading session wednesday federal reserve chairman jerome powell hiked interest rate basis point signaled increase char,0.4767,Positive
+237,good morning team im phil rosen longawaited ethereum merge event expert say ramp energy efficiency blockchain finalized cofounder vitalik buterin char,0.7579,Positive
+238,orlando fla oct reuters apparent rundown global foreign exchange reserve year mirage related u dollar strength real thing may yet materialize pack char,0.4939,Positive
+239,sept reuters u bond fund witnessed huge outflow week sept caution pace length u interest rate increase crept ahead federal reserve policy char,0.765,Positive
+240,moscow sept reuters rouble recovered two month low russian stock pared loss wednesday earlier plunge triggered president vladimir putin move order russia char,-0.5267,Negative
+241,oct reuters look day ahead asian market jamie mcgeever u inflation debate intensifies signal getting murkier investor make market skit char,0.0,Positive
+242,buenos aire oct reuters brazil real set bumpy ride ahead country election runoff later month political tension simmer following surprisingly good performance b char,0.4215,Positive
+243,ukrainian national flag installed monument ukrainian poet tara shevchenko seen russia attack ukraine continues town balakliia recently liberated ukrainian arme char,-0.4767,Negative
+244,sept reuters look day ahead asian market jamie mcgeever interest rate decision fed people bank china bank japan week ahead doesnt get much big char,0.4588,Positive
+245,london reuters sri lanka expects international monetary fund board approve billion loan yearend official country central bank told investor virtual present char,0.0,Positive
+246,sept reuters look day ahead asian market jamie mcgeever savage selling decimated world market recently abated somewhat tuesday relentless rise u char,-0.4728,Negative
+247,houston oct reuters u judge could rule early friday final auction schedule could force breakup venezuelaowned citgo petroleum seventhlargest u oil refiner char,0.0,Positive
+248,mumbai oct reuters indian rupee tipped open flat dollar wednesday loss asian currency pullback oil price rupee likely open char,-0.3182,Negative
+249,london oct reuters breakingviews global financial crisis supposed taught world danger excessive debt borrowing shot since debt gove char,-0.91,Negative
+250,u stock market suffered worst oneday decline since june tuesday stubborn inflation crushed investor hope early end federal reserve campaign interestrate hi char,-0.872,Negative
+251,bond vigilante wreaked havoc uk recent week already damage u could target heavily indebted country like italy according yardeni research president ed yard char,-0.6808,Negative
+252,uk pension trade group tuesday called bank england continue emergency bondbuying operation manage volatility debt market set last month fear financia char,-0.8074,Negative
+253,new york oct reuters federal reserve net income turned negative september minute recent policy meeting showed although largely technical development previously char,-0.5719,Negative
+254,new york sept reuters year wild market swing third quarter time event took truly extraordinary turn federal reserve ratcheted monetary poli char,0.4404,Positive
+255,sampp fell twomonth low friday losing week u stock profit warning fedex underscoring worry economic weakness investor prepared another int char,-0.7906,Negative
+256,sept reuters look day ahead asian market jamie mcgeever interest rate decision fed people bank china bank japan week ahead doesnt get much big char,0.4588,Positive
+257,inflation turkey climbed yearhigh transport food housing sector seen biggest rise price independent expert inflation research group estimate char,0.0,Positive
+258,cairo sept reuters central bank egypt cbe bucking analyst expectation left overnight interest rate unchanged thursday saying believed inflation control char,0.4588,Positive
+259,posted u mortgage rate soared highest level since right financial crisis federal reserve follows aggressive path tame inflation video char,-0.6908,Negative
+260,bogota sept reuters colombia central bank board raised benchmark interest rate basis point thursday inflation pressure robust domestic consumption endure char,0.4939,Positive
+261,sydney sept reuters australia top central banker friday said interest rate closer normalisation successive run outsized hike although warned rate still low char,0.4019,Positive
+262,new york sept reuters twoyear treasury yield hit wednesday first time since federal reserve expected hike interest rate another basis point char,0.5859,Positive
+263,london sept reuters rising interest rate rapidly appreciating currency exporting u inflation problem threaten send rest global economy recession ot char,-0.296,Negative
+264,sydney sept reuters australia central bank set raising interest rate battle contain redhot inflation see case slowing pace hike rate approach char,0.1027,Positive
+265,mumbai sept reuters reserve bank india could raise interest rate basis point upcoming policy review thanks stubbornly high inflation pace major glob char,0.5423,Positive
+266,warsaw oct reuters interest rate expected rise poland line expected ongoing increase inflation polish rate setter ludwik kotecki said friday following char,0.6369,Positive
+267,posted bank england raised key interest rate thursday september said would continue respond forcefully necessary inflation despite eco char,0.4588,Positive
+268,frankfurt sept reuters euro zone facing economic downturn inflation still far high interest rate need keep going european central bank board member isabel sch char,0.4588,Positive
+269,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+270,madrid sept reuters exact interest rate european central bank depend upcoming macroeconomic data ecb vicepresident luis de guindos said monday monetary char,0.4588,Positive
+271,sao paulo sept reuters investment bank brazil focusing debt issuance third quarter area kept strong activity even higher interest rate felipe thut dir char,0.5859,Positive
+272,washington oct reuters u private employer stepped hiring september suggesting demand worker remains strong despite rising interest rate tighter financial condition priv char,0.0823,Positive
+273,tokyo sept reuters yen may near year low japan central bank even close trying support higher interest rate message three source fam char,0.5574,Positive
+274,washington sept reuters u business inventory increased july pace slowed considerably prior month likely cooling demand amid higher interest rate force compani char,0.5574,Positive
+275,sept reuters central bank hike interest rate pace seen decade control inflation alarm among bond investor looming recession risk spreading fast week char,-0.5859,Negative
+276,jerusalem oct reuters israel aggressive interest rate hiking cycle aimed lowering inflation well advanced stage bank israel governor amir yaron said price pressure char,0.3182,Positive
+277,sept reuters saudi central bank said wednesday increased key interest rate basis point moving tandem u federal reserve hike saudi riyal pegged char,0.6249,Positive
+278,oct reuters average interest rate popular u home loan rose highest level since housing sector continued bear brunt tightening financial conditio char,0.7003,Positive
+279,sept reuters morgan stanley msn seen moderation loan growth lower mortgage demand due rising interest rate copresident andrew saperstein said conference tuesday char,0.4404,Positive
+280,sept reuters average interest rate popular u home loan rose first time since double level one year ago mortgage banker char,0.7003,Positive
+281,sept reuters average interest rate popular u home loan climbed highest level since october mortgage banker association mba data showed wednesday rising char,0.7003,Positive
+282,sept reuters u federal reserve need raise interest rate least another percentage point year chicago fed president charles evans said tuesday aggressive char,0.34,Positive
+283,brasilia sept reuters brazil central bank wednesday decided keep interest rate unchanged pausing aggressive monetary tightening cycle even policymakers united state char,0.6369,Positive
+284,dubai sept reuters qatar central bank said wednesday raise interest rate basis point thursday moving parallel u federal reserve third straight char,0.5994,Positive
+285,bengaluru sept reuters rising interest rate present significant barrier world transition net zero emission despite high level investment green energy neede char,0.6597,Positive
+286,cairo sept reuters egypt central bank raise overnight deposit rate basis point bps thursday try dampen resurgent inflation reuters poll forecast char,0.0,Positive
+287,washingtonjohannesburg oct reuters angola keep cutting interest rate long inflation kept low central bank governor jose de lima massano said wednesday forecasting char,0.1027,Positive
+288,sept reuters oil price edged lower early asian trade thursday u federal reserve raised interest rate significantly curb inflation fear global economy ca char,-0.34,Negative
+289,sydney sept reuters australian looking buy new home could actually benefit rising interest rate lower price housing enough ultimately result lower mortgage pa char,0.3818,Positive
+290,manila sept reuters philippine central bank hiked benchmark interest rate half percentage point thursday said ready take action raised inflat char,0.6705,Positive
+291,elon musk turnaround billion buyout twitter taking place time reduced investor appetite riskier debt leaving major bank lined finance deal potentially facing char,-0.5994,Negative
+292,past federal reserve mistake created threat financial stability mohamed elerian warned economist criticized fed raising interest rate aggressively june char,-0.7717,Negative
+293,president joe biden may enacted broad studentloan forgiveness democrat arent stopping thursday chair house education committee bobby scott subcommittee chair freder char,0.3703,Positive
+294,federal reserve could hike interest rate high according mark mobius famed investor told bloomberg tv wednesday inflation remained persistently high fed char,0.4588,Positive
+295,federal reserve could hike interest rate high according mark mobius famed investor told bloomberg tv wednesday inflation remained persistently high fed char,0.4588,Positive
+296,berlin oct reuters deutsche bank dbkgnde head private banking lars stoy expects deposit interest rate increase european central bank turned raising rate th char,0.6486,Positive
+297,new york sept reuters federal reserve vice chair lael brainard said friday u central bank need maintain higher interest rate time part effort lower hi char,0.2023,Positive
+298,sept reuters bank japan maintained ultralow interest rate dovish policy guidance thursday reassuring market continue swim global tide central ban char,0.2732,Positive
+299,tokyo sept reuters japan intervened currency market thursday first time since shore battered yen wake central bank decision maintain ultra char,0.0,Positive
+300,ankara oct reuters turkish president tayyip erdogan vowed saturday central bank would continue cut policy interest rate every month long stayed power char,0.2263,Positive
+301,sept reuters billionaire ray dalio founder one world biggest hedge fund predicted sharp plunge stock market u federal reserve raise interest rate aggressiv char,0.4588,Positive
+302,paris oct reuters european central bank raise interest rate much needed bring core inflation although pace could possibly slow end year ecb policy char,0.4588,Positive
+303,colombo oct reuters sri lankas central bank likely maintain interest rate thursday effort get grip inflation remained stubbornly high despite sharp contrac char,0.1531,Positive
+304,new york sept reuters bank america corp bacn expects big bump income earns rising interest rate chief executive officer told investor conference monday char,0.4588,Positive
+305,frankfurt sept reuters host central bank across world raised interest rate thursday following u federal reserve global fight inflation se char,0.1027,Positive
+306,london sept reuters europe decadelong experiment negative interest rate ended thursday swiss national bank return positive territory showed one thing c char,0.4404,Positive
+307,london sept reuters bank england raised key interest rate thursday said would continue respond forcefully necessary inflation despite char,0.4588,Positive
+308,dubai sept reuters gulf central bank raised key interest rate wednesday u federal reserve delivered third consecutive threequarter percentage point hike bre char,0.4588,Positive
+309,toronto sept reuters canadian dollar slumped twoyear low u counterpart wednesday paring decline investor weighed federal reserve plan con char,-0.2732,Negative
+310,bengaluru sept reuters federal reserve hike key interest rate much higher peak predicted two week ago risk skewed towards even higher terminal rate ac char,0.2263,Positive
+311,london oct reuters bank england still likely need make major change interest rate next month despite economic uncertainty market volatility boe chief economist huw char,0.6169,Positive
+312,symphony light consisting bar line circle blue yellow colour european union illuminates south facade european central bank ecb headquarters frankf char,0.0,Positive
+313,mumbai sept reuters reserve bank india may raise interest rate another basis point month data showed inflation rose central bank tolerance limit char,0.6369,Positive
+314,bengaluru sept reuters bank indonesia follow surprise august interest rate rise another basis point hike meeting thursday still moving slowly p char,0.6249,Positive
+315,oslo sept reuters norway central bank expected raise benchmark interest rate week signal continued rise cost borrowing fourth quarter combat char,0.1531,Positive
+316,sept reuters european central bank may need raise interest rate another basis point next month inflation remains unacceptably high slovak central bank chief peter kazimir char,0.4588,Positive
+317,london sept reuters euro zone bank set pain economy slows higher interest rate land company hot water european central bank vicepresident luis de gui char,-0.0772,Negative
+318,bengaluru sept reuters reserve bank india set raise interest rate next week slim majority economist reuters poll expecting halfpoint hike char,0.4588,Positive
+319,sydney oct reuters new zealand central bank wednesday lifted interest rate sevenyear high promised pain come struggle cool redhot inflation overstretc char,0.296,Positive
+320,seoul oct reuters south korea central bank raised interest rate half percentage point second time since july wednesday surging dollar driven aggressive u monetary char,0.34,Positive
+321,bogota oct reuters increase colombia benchmark interest rate may necessary coming month central bank try bring inflation line target accord char,0.6486,Positive
+322,london sept reuters investor interest rate future switched bet friday narrowly favour halfpoint interest rate rise bank england next week earlier char,0.836,Positive
+323,nicosia sept reuters european central bank expedited exit ultra easy monetary policy bring inflation back target remains open high interest rate go ec char,0.7096,Positive
+324,london sept reuters britain central bank need make big intermeeting interest rate hike early next week calm market restore credibility deutsche bank analyst said char,0.7579,Positive
+325,beijingshanghai sept reuters string small midsized chinese bank following larger peer cutting deposit interest rate first broadbased move since ea char,0.3612,Positive
+326,sept reuters singapore unveiled package measure property market including tightening maximum loan quantum limit housing loan response rise interest rate char,0.4588,Positive
+327,bengaluru sept reuters australia central bank hike interest rate another halfpoint tuesday increase borrowing cost previously thought aggressive char,0.5719,Positive
+328,istanbul sept reuters turkish president tayyip erdogan said thursday advised central bank lower policy rate meeting october adding interest rate need char,0.2023,Positive
+329,lisbon sept reuters european central bank take small step possible raising interest rate destabilise economy ecb policymaker mario centeno said char,0.4588,Positive
+330,jakarta sept reuters indonesia central bank increased interest rate expected thursday sought rein inflation government raised subsidised fuel price e char,0.6249,Positive
+331,tokyo sept reuters bank japan expected keep interest rate ultralow thursday reassure market continue swim global tide central bank tighten char,0.6597,Positive
+332,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+333,sept reuters three major u bank said wednesday hike prime lending rate basis point bringing rate highest since global financial crisis char,-0.6249,Negative
+334,orlando fla sept reuters hedge fund slashed record wager rising u interest rate quarter remains seen whether mark turning point hawkis char,0.2732,Positive
+335,new delhi sept reuters india retail inflation accelerated yearonyear august driven surge food price adding pressure central bank hike interest rate char,0.2023,Positive
+336,milan sept reuters italy rightwing bloc look set win majority house parliament next sunday election time soaring energy price rising interest rate c char,0.836,Positive
+337,stockholm sept reuters sweden central bank hiked interest rate full percentage point tuesday surprise move warned come sought get grip char,0.4588,Positive
+338,london sept reuters economist julian jessop wednesday warned britain economy could end doom loop falling currency rising interest rate stressed believ char,-0.5859,Negative
+339,frankfurt sept reuters european central bank must keep raising interest rate tame inflation even side effect tighter policy weaker growth ecb president christine l char,0.4019,Positive
+340,toronto sept reuters higher borrowing cost slow canada outsized housing market investor betting bank canada raise interest rate lower endpoint federal char,0.2023,Positive
+341,warsaw sept reuters poland complete reform benchmark interest rate loan based end financial regulator knf said tuesday warsaw interbank char,0.4215,Positive
+342,zurich oct reuters swiss national bank prepared raise interest rate tackle inflation recent basispoint hike snb governing board member andrea maechler said char,0.5994,Positive
+343,bengaluru sept reuters indian share fell thursday line asian peer rupee hit record low u federal reserve raised interest rate indicated hike char,0.4767,Positive
+344,szeged hungary sept reuters hungary central bank could consider ending oneyearlong cycle interest rate rise next tuesday meeting rate increase char,0.6486,Positive
+345,luxembourg sept reuters euro zone inflation yet peak price growth could even accelerate coming month european central bank board member isabel schnabel said thursday de char,0.3818,Positive
+346,lucerne switzerland sept reuters european central bank need keep raising interest rate also stop bond purchase fulfilled purpose bundesbank preside char,0.5574,Positive
+347,hong kong sept reuters hong kongs de facto central bank relaxed mortgage stress test requirement property buyer said friday response rising interest rate soft char,0.5267,Positive
+348,tokyo sept reuters u dollar pushed fresh twodecade high versus major peer thursday propelled federal reserve hawkish outlook interest rate russian presiden char,0.6486,Positive
+349,sydney oct reuters dollar started week firmly monday strong u labour market reinforcing bet higher interest rate trader braced data expected show stubbor char,0.743,Positive
+350,bengaluru oct reuters indian share fell early trading tuesday dragged automobile energy stock riskaverse sentiment globally impact high interest rate ec char,0.7269,Positive
+351,washington oct reuters international monetary fund tuesday cut global growth forecast amid colliding pressure war ukraine high energy food price inflat char,-0.6124,Negative
+352,oct reuters stock market gulf ended lower tuesday sentiment weighed unease rapidly rising interest rate escalation ukraine war falling oil p char,-0.7506,Negative
+353,greenwich conn oct reuters ray dalio billionaire investor built bridgewater associate one world biggest hedge fund said perfect storm forming spre char,0.5719,Positive
+354,sydney sept reuters new zealand economy rebounded sharply last quarter lifting coronavirus restriction return tourist helped dodge recession though may last char,-0.5994,Negative
+355,sept reuters uk share fell wednesday data showing surprise fall british consumer price august little ease bet bank england hiking interest rate ba char,0.818,Positive
+356,look day ahead european global market anshuman daga pain gain seems message fed gave sobering projection set ground policy r char,-0.1779,Negative
+357,cleveland sept reuters fed official point begin balancing concern growth inflation goal inflation clearly heading back towards tar char,0.6486,Positive
+358,sept reuters u stock index future steadied thursday sharp selloff wall street previous session worry economic downturn following federal reserve pr char,-0.4404,Negative
+359,look day ahead european global market anshuman daga there stopping federal reserve u employer hired slightly worker last month market expected char,-0.1531,Negative
+360,posted basispoint hike u interest rate came pledge central bank chair jay powell hed conquer inflation even cause economic hardship fed forecast char,0.1779,Positive
+361,sept reuters inflation unacceptably high federal reserve lift rate higher keep policy restrictive time cleveland fed president loretta mester said monday char,0.0,Positive
+362,chicago oct reuters u federal reserve may still able lower inflation without sharp rise unemployment even continues raising interest rate chicago fed president charl char,0.4949,Positive
+363,bengaluru sept reuters indian share treading water wednesday investor braced hefty rate hike u federal reserve clue hike nse nifty ind char,0.5994,Positive
+364,washington sept reuters much faith federal reserve official still prospect soft landing take aggressive action quash highest inflation year char,0.5267,Positive
+365,sept reuters federal reserve take account global factor like strength dollar set interest rate though ultimately make policy decision based domestic goal char,0.8271,Positive
+366,posted federal reserve delivered third straight interest rate increase threequarters percentage point wednesday signaled high likelihood least one move char,0.7351,Positive
+367,oct reuters u central bank would step market stopped functioning properly san francisco federal reserve president mary daly said wednesday adding current situation char,-0.2263,Negative
+368,oct reuters san francisco federal reserve bank president mary daly tuesday said u central bank tool knowledge bring high inflation use char,0.0,Positive
+369,singapore sept reuters dollar eased multiyear high friday strong rally earlier week though expectation federal reserve would need hike keep char,0.6705,Positive
+370,sept reuters gulf stock fell early trade wednesday investor braced another aggressive interest rate hike u federal reserve later day fed seen r char,0.34,Positive
+371,singapore sept reuters dollar hovered near twodecade peak basket currency wednesday yield u treasury leaped ahead interest rate decision char,0.5859,Positive
+372,sept reuters look day ahead market alun john investor finally starting turn attention wednesday interest rate announcement federal reserve char,0.4588,Positive
+373,oct reuters cleveland federal reserve bank president loretta mester thursday said belief u unemployment rate likely rise little bit fed raise rate char,-0.4404,Negative
+374,singapore sept reuters dollar stood near recent peak thursday market increased bet fed work aggressive tightening streak curb redhot inflation whil char,0.128,Positive
+375,sept reuters u stock index future fell tuesday investor positioned new economic projection another large interest rate hike federal reserve week q char,0.4588,Positive
+376,washington sept reuters u economic activity slowed august productionrelated measure slipped employment indicator rose moderately data federal reserve bank chicago char,0.0,Positive
+377,sept reuters minneapolis federal reserve bank president neel kashkari tuesday said u central banker united determination needed bring inflation f char,0.6705,Positive
+378,washington sept reuters federal reserve aggressive drive bring inflation target take year complete come cost notably higher unemployment slowe char,-0.5423,Negative
+379,singapore sept reuters goldman sachs barclays bunch investment bank raised estimate u policy rate thursday following federal reserve basis point rate ri char,0.0,Positive
+380,sept reuters uk benchmark ftse dipped wednesday investor assessed likelihood another aggressive interest rate hike u federal reserve later day blue char,0.34,Positive
+381,new york sept reuters twoyear treasury yield hit wednesday first time since federal reserve expected hike interest rate another basis point char,0.5859,Positive
+382,new york sept reuters breakingviews federal reserve named price killing inflation couple year slow growth million people work thats take char,-0.4215,Negative
+383,new york oct reuters u employer hired worker expected september unemployment rate dropped previous month pointing tight labor market wh char,-0.4404,Negative
+384,woodbridge va sept reuters promising sign inflation pressure begun ease though may take time seen data richmond fed president thomas barkin said frida char,0.4588,Positive
+385,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+386,federal reserve effort crush inflation risk sparking collapse asset price plunging u economy severe recession painful deflation mark spitznagel warned char,-0.9153,Negative
+387,ed yardeni sounded alarm federal reserve effort beat back inflation warning central bank aggression threatening choke u economy think fed rea char,-0.9169,Negative
+388,stock plunging yield soaring inflation remains sticky yet fundstrats tom lee remains resolute view stock market soar yearend friday note lee stuck char,0.0258,Positive
+389,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+390,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+391,u stock finished lower tuesday investor anxiously await interest rate guidance federal reserve policy meeting stock pressure anticipated basispoint rate hik char,-0.2263,Negative
+392,sept reuters federal reserve need bring unacceptably high inflation cause jobless rate rise recession inevitable boston fed president susan collins said char,-0.4215,Negative
+393,washington sept reuters lack clear progress inflation mean federal reserve need moderately restrictive interest rate reach level th char,0.7351,Positive
+394,sydney sept reuters asian share market slid wednesday surging borrowing cost fed fear global recession spooking investor arm safehaven dollar driving char,-0.5859,Negative
+395,reuters tumultuous year financial market entering home straight britain battling selfinflicted crisis market pouring u job data determine much im char,-0.6486,Negative
+396,chicago oct reuters chicago federal reserve bank president charles evans thursday said u central bank policy rate likely headed spring fed char,0.0,Positive
+397,ouagadougou oct reuters thousand mourner gathered burkina fasos capital saturday funeral soldier killed ambush last month triggered country second c char,-0.8625,Negative
+398,sept reuters euro zone government bond yield hit new multiyear high u federal reserve joined three european central bank raising rate thursday fed flag char,0.0,Positive
+399,dubai sept reuters gulf central bank raised key interest rate wednesday u federal reserve delivered third consecutive threequarter percentage point hike bre char,0.4588,Positive
+400,london sept reuters british pound little changed dollar tuesday hovering barely lowest level since ahead expected interest rate hike bank char,0.1761,Positive
+401,washington oct reuters u inflation remains stubbornly unacceptably high requiring continued interest rate increase sure begin falling fed governor lisa cook said f char,0.5574,Positive
+402,palmerston north new zealand oct reuters dozen calf wait research farm new zealand fed kowbucha punnily named probiotic study show reduces burp char,0.0,Positive
+403,orlando fla sept reuters hedge fund slashed record wager rising u interest rate quarter remains seen whether mark turning point hawkis char,0.2732,Positive
+404,sept reuters month ago investor worried federal reserve fighting inflation aggressively enough several jumbo rate hike later fear fed plunge econom char,-0.8481,Negative
+405,woodbridge va sept reuters festering inflation remains bigger threat economy risk federal reserve rate hike going far causing unnecessary damage effo char,-0.8271,Negative
+406,bond market volatility hit level seen great financial crisis volatility starting bleed stock market according ned davis research tuesday note char,0.0,Positive
+407,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+408,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+409,wharton professor jeremy siegel big issue federal reserve aggressive interest rate hike bid tame inflation worry central bank making biggest mistake char,-0.4404,Negative
+410,larry summer said doesnt believe fresh u inflation data due tuesday deter federal reserve staying aggressive interestrate hike former treasury secretary char,-0.193,Negative
+411,inflation overstated economic data federal reserve risk making policy mistake doesnt adjust view falling price wharton professor jeremy siegel said char,-0.4689,Negative
+412,federal reserve may deliver smaller rate hike investor anticipate november policymakers consider pullback thats sweeping u housing market according pantheon macr char,0.0,Positive
+413,fast federal reserve raised interest rate could exact opposite cut rate according jpmorgan thats deep economic recession materializes char,-0.2263,Negative
+414,home price across country finally showing sign cooling car furniture could next good news shopper worker looking join great char,0.8481,Positive
+415,u stock finished lower thursday sampp sliding twomonth low session treasury yield continued climb following federal reserve latest interest rate increa char,0.128,Positive
+416,two southwest airline employee looked passenger fish four month allowed flight airline said twitter thread thursday airline said passenge char,0.0,Positive
+417,federal student debt received good news last month president joe biden announced would canceling federal borrower borrower making le char,0.1027,Positive
+418,boosting immigration could part solution federal reserve problem try conquer stubborn inflation bill ackman argued twitter thread friday u central bank f char,-0.4939,Negative
+419,u stock fell wednesday following sharp gain previous two session fourthquarter trading got underway investor assessing privatesector hiring data came expectation char,0.5267,Positive
+420,wall street strategist jim paulsen said federal reserve tightening campaign may close finished inflation already peaked historically good time buy stock char,0.4404,Positive
+421,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+422,happy wednesday reader wednesday isnt many uturns row back week already wouldnt surprised day also changed direction whats recent rout char,0.465,Positive
+423,economy pretty well right thats big problem despite soaring interest rate skyhigh inflation outlook thats worsening week u economy keep adding jo char,-0.4367,Negative
+424,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+425,billionaire real estate investor barry sternlicht think fed need slow interest rate hike trajectory economy show sign pressing hard brake fed keep thi char,0.3818,Positive
+426,federal reserve risk raising rate high central banker likely ignore falling inflation data see slowdown labor market according bank strategist char,-0.6369,Negative
+427,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+428,world richest man concerned thing getting cheaper elon musk suggested wednesday tweet federal reserve give fight inflation instead pivot w char,0.2023,Positive
+429,u dollar grows stronger come expense currency around world dollar getting whole lot stronger back half federal reserv char,0.6369,Positive
+430,big short investor danny moses accused federal reserve inflating asset bubble year predicted era easy money offered advice navigating current char,0.4939,Positive
+431,federal reserve look le capable sticking soft landing global economy flashing warning could enter earnings recession within next month according analyst f char,-0.3818,Negative
+432,federal reserve expected raise key interest rate week unlikely hike basis point massive move would rattle investor already anxious august char,0.25,Positive
+433,federal reserve hike interest rate basis point even though would likely spark carnage stock top well fargo strategist said economist expect u centr char,0.7783,Positive
+434,eye federal reserve gear another likely basispoint rate hike meeting next week mortgage rate started increasing late august member federal op char,0.0,Positive
+435,august cpi data key implication fed next move today im breaking look sharing learned sector best brightest marketwatc char,0.9001,Positive
+436,federal reserve signaled stick hawkish monetary policy inflation tamed dominance u dollar also mean u central bank lot damage char,-0.34,Negative
+437,financial market may stop tolerating federal reserve tightening cycle rate hike work way economy note blackrock said thursday coming month key char,-0.296,Negative
+438,ray dalio repeatedly proclaiming cash trash recent year warmed u dollar view passable investment fact changed ive changed mind char,0.2732,Positive
+439,billionaire investor stanley druckenmiller anticipates world largest economy contract next year back federal reserve effort clamp high inflation central char,0.0,Positive
+440,federal reserve unlikely attack hot inflation massive rate hike basis point week policy meeting hike big would catch investor guard spark furthe char,-0.296,Negative
+441,investor thursday pricing percentage point additional interest rate hike federal reserve last meeting move coming policy maker delivered char,0.4588,Positive
+442,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+443,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+444,depending ask us battle inflation either going swimmingly dragging economy recession policymakers federal reserve made clear recent week char,-0.4215,Negative
+445,u stock closed mixed tuesday sampp hitting new low intraday broad index dow jones industrial average fell sixth day row trading sess char,-0.2732,Negative
+446,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
+447,surging dollar strength set last longer federal reserve pivot likely stay table analyst investment bank ubs said u currency appreciated r char,0.7579,Positive
+448,u stock plunged friday strongerthanexpected september job report solidified another outsized interest rate hike federal reserve november u economy added char,0.4588,Positive
+449,fed forced slow pace rate hike risk sending economy recession causing financial accident well according analyst charles schwab char,-0.836,Negative
+450,top economist mohamed elerian warned core inflation still rising u adding market edge federal reserve make another mistake speaking cbs face n char,-0.4019,Negative
+451,though briefly dipped early august average year fixed mortgage rate back highest since according freddie mac rate increased char,0.2732,Positive
+452,u treasury secretary janet yellen said hopeful federal reserve could achieve soft landing itll take skill luck fed going need great skill also good luc char,0.9337,Positive
+453,likely u inflation start cool soon imbalance labor market still need fixed federal reserve succeed goal according top goldman sachs strate char,0.743,Positive
+454,china yuan weakened lowest level since july thursday covid lockdown country slowing growth weigh economic outlook offshore currency rate dropped char,-0.3182,Negative
+455,insider expert choose best product service help make smart decision money here case receive commission partner however opinion char,0.8625,Positive
