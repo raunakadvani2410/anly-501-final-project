@@ -1,0 +1,620 @@
+---
+jupyter: python3
+format:
+  html:
+    code-fold: true
+---
+
+# Clustering from Record Data
+
+## Introduction
+For clustering, we shall drop the target variable (Y) of recession (0 or 1), which leaves us with our feature data (X) to cluster with. We will also need to filter out our feature data, to accurately be able to perform clustering using record data. 
+
+## Theory
+### K-Means Clustering
+
+### DBSCAN
+
+### Hierarchical (Agglomerative vs Divisive) Clustering
+
+Add stuff here
+
+
+## Methods
+
+### Data Selection
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.cluster.hierarchy as sch
+import sklearn.cluster as cluster
+sns.set_theme(style="whitegrid", palette='Set2')
+import warnings
+warnings.filterwarnings("ignore")
+import os
+```
+
+```{python}
+os.getcwd()
+```
+## Methods
+
+### Data Selection
+
+```{python}
+# import the necessary packages
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.cluster.hierarchy as sch
+import sklearn.cluster as cluster
+sns.set_theme(style="whitegrid", palette='Set2')
+import warnings
+warnings.filterwarnings("ignore")
+
+# read in cleaned REKT Database and drop labels and other variables, leaving only feature data (X)
+
+df = pd.read_csv("../../data/clean-data/Fredapi_clean.csv", index_col=[0])
+df_cluster = df.drop(['recession', 'date'], axis=1)
+df_cluster.head() # visualize first 5 rows
+```
+
+```{python}
+df_cluster.shape # get the number of rows and columns
+```
+
+```{python}
+print(df_cluster.info()) # get column information
+```
+
+### Feature selection and Pre-processing
+Add Stuff here
+
+### Separate the dataset into features and labels
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler 
+
+X = df_cluster
+y = df['recession']
+
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
+
+## Perform K-means Clustering
+
+```{python}
+# import relevent libraries for clustering
+from statistics import mode
+from sklearn.cluster import KMeans
+from scipy.spatial.distance import cdist
+from sklearn.metrics import accuracy_score
+```
+
+```{python}
+# for k means clustering we will use the elbow method to find the optimal number of clusters. 
+# we will use the inertia_ attribute to find the sum of squared distances of samples to their closest cluster center. 
+# we will use the range of 1 to 20 clusters and plot the inertia_ values for each cluster. 
+distortions = []
+inertias = []
+k = 16
+
+for k in range(1,k):
+    kmeansmodel = KMeans(n_clusters=k, init='k-means++', random_state=42)
+    kmeansmodel.fit(X)
+
+    distortions.append(sum(np.min(cdist(X, kmeansmodel.cluster_centers_, 'euclidean'), axis=1))/ X.shape[0])
+    inertias.append(kmeansmodel.inertia_)
+    evaluation=pd.DataFrame.from_records({"Cluster":np.arange(1,k+1), "Distortion":distortions, "Inertia":inertias})
+
+evaluation
+```
+
+```{python}
+# plot distortion and inertia for kmeans, you can either plot them seperately or use fig, ax = plt.subplots(1, 2) to plot them in the same figure. Suggest the optimal number of clusters based on the plot.
+evaluation.plot.line(x="Cluster", subplots=True)
+```
+
+```{python}
+# Plotting clusters for best k = 3 (as per elbow method above)
+
+bestK = KMeans(n_clusters=3, init='k-means++', random_state=42)
+labels4 = bestK.fit_predict(X)
+df['kmeans_labels'] = labels4
+
+fig, ax = plt.subplots(1,2, figsize=(10,5))
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="kmeans_labels", data=df, ax=ax[1]).set(title='K-Means Clustering Plot')
+```
+
+Add Stuff Here
+
+### Hyper-parameter Tuning
+
+```{python}
+# THIS WILL ITERATE OVER ONE HYPER-PARAMETER (GRID SEARCH) 
+# AND RETURN THE CLUSTER RESULT THAT OPTIMIZES THE SILHOUETTE SCORE
+import sklearn.cluster
+
+def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
+
+    # PARAM
+    i_print=False
+
+    #FORCE CONTIGUOUS
+    X=np.ascontiguousarray(X) 
+
+    # LOOP OVER HYPER-PARAM
+    params=[]; sil_scores=[]
+    sil_max=-10
+    for param in range(2,nmax+1):
+        if(algo=="kmeans"):
+            model = sklearn.cluster.KMeans(n_clusters=param).fit(X)
+            labels=model.predict(X)
+
+        try:
+            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))
+            params.append(param)
+        except:
+            continue 
+
+        if(i_print): print(param,sil_scores[-1])
+        
+        if(sil_scores[-1]>sil_max):
+             opt_param=param
+             sil_max=sil_scores[-1]
+             opt_labels=labels
+
+    print("OPTIMAL PARAMETER =",opt_param)
+
+    if(i_plot):
+        fig, ax = plt.subplots()
+        ax.plot(params, sil_scores, "-o")  
+        ax.set(xlabel='Hyper-parameter', ylabel='Silhouette Score')
+        plt.show()
+
+    return opt_labels
+
+k_means_opt_labels=maximize_silhouette(X,algo="kmeans",nmax=15, i_plot=True)
+```
+
+Add Stuff Here
+
+```{python}
+from sklearn.metrics import silhouette_samples, silhouette_score
+
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+
+X = X[["unemployment_value", "fed_funds_value"]] 
+
+range_n_clusters = [2, 3, 4, 5]
+
+for n_clusters in range_n_clusters:
+    # Create a subplot with 1 row and 2 columns
+    fig, (ax1, ax2) = plt.subplots(1, 2)
+    fig.set_size_inches(18, 7)
+
+    # The 1st subplot is the silhouette plot
+    # The silhouette coefficient can range from -1, 1 but in this example all
+    # lie within [-0.1, 1]
+    ax1.set_xlim([-0.1, 1])
+    # The (n_clusters+1)*10 is for inserting blank space between silhouette
+    # plots of individual clusters, to demarcate them clearly.
+    ax1.set_ylim([0, len(X) + (n_clusters + 1) * 10])
+
+    # Initialize the clusterer with n_clusters value and a random generator
+    # seed of 10 for reproducibility.
+    clusterer = KMeans(n_clusters=n_clusters, random_state=10)
+    cluster_labels = clusterer.fit_predict(X)
+
+    # The silhouette_score gives the average value for all the samples.
+    # This gives a perspective into the density and separation of the formed
+    # clusters
+    silhouette_avg = silhouette_score(X, cluster_labels)
+    print(
+        "For n_clusters =",
+        n_clusters,
+        "The average silhouette_score is :",
+        silhouette_avg,
+    )
+
+    # Compute the silhouette scores for each sample
+    sample_silhouette_values = silhouette_samples(X, cluster_labels)
+
+    y_lower = 10
+    for i in range(n_clusters):
+        # Aggregate the silhouette scores for samples belonging to
+        # cluster i, and sort them
+        ith_cluster_silhouette_values = sample_silhouette_values[cluster_labels == i]
+
+        ith_cluster_silhouette_values.sort()
+
+        size_cluster_i = ith_cluster_silhouette_values.shape[0]
+        y_upper = y_lower + size_cluster_i
+
+        color = cm.nipy_spectral(float(i) / n_clusters)
+        ax1.fill_betweenx(
+            np.arange(y_lower, y_upper),
+            0,
+            ith_cluster_silhouette_values,
+            facecolor=color,
+            edgecolor=color,
+            alpha=0.7,
+        )
+
+        # Label the silhouette plots with their cluster numbers at the middle
+        ax1.text(-0.05, y_lower + 0.5 * size_cluster_i, str(i))
+
+        # Compute the new y_lower for next plot
+        y_lower = y_upper + 10  # 10 for the 0 samples
+
+    ax1.set_title("The silhouette plot for the various clusters.")
+    ax1.set_xlabel("The silhouette coefficient values")
+    ax1.set_ylabel("Cluster label")
+
+    # The vertical line for average silhouette score of all the values
+    ax1.axvline(x=silhouette_avg, color="red", linestyle="--")
+
+    ax1.set_yticks([])  # Clear the yaxis labels / ticks
+    ax1.set_xticks([-0.1, 0, 0.2, 0.4, 0.6, 0.8, 1])
+
+    # 2nd Plot showing the actual clusters formed
+    colors = cm.nipy_spectral(cluster_labels.astype(float) / n_clusters)
+    ax2.scatter(
+        X['unemployment_value'], X['fed_funds_value'], marker=".", s=30, lw=0, alpha=0.7, c=colors, edgecolor="k"
+    )
+
+    # Labeling the clusters
+    centers = clusterer.cluster_centers_
+    # Draw white circles at cluster centers
+    ax2.scatter(
+        centers[:, 0],
+        centers[:, 1],
+        marker="o",
+        c="white",
+        alpha=1,
+        s=200,
+        edgecolor="k",
+    )
+
+    for i, c in enumerate(centers):
+        ax2.scatter(c[0], c[1], marker="$%d$" % i, alpha=1, s=50, edgecolor="k")
+
+    ax2.set_title("Visualization of the Clustered Continuous Features")
+    ax2.set_xlabel("unemployment_value")
+    ax2.set_ylabel("fed_funds_value")
+
+    plt.suptitle(
+        "Silhouette analysis for KMeans clustering on Continuous Features with n_clusters = %d"
+        % n_clusters,
+        fontsize=14,
+        fontweight="bold",
+    )
+
+plt.show()
+```
+
+Add Stuff Here
+
+### Final results for K-mean Clustering
+
+Add Stuff Here
+
+```{python}
+# Plotting clusters for best k = 3 (as per silhouette method)
+
+bestK = KMeans(n_clusters=3, init='k-means++', random_state=42)
+kmeans_labels_final = bestK.fit_predict(X)
+df['kmeans_final_labels'] = kmeans_labels_final
+
+fig, ax = plt.subplots(1,2,figsize=(10,5))
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="kmeans_final_labels", data=df, ax=ax[1]).set(title='Final K-Means Clustering Plot')
+```
+
+## Perform DBSCAN
+
+```{python}
+# perform DBSCAN clustering. use the eps and min_samples parameters to find the optimal number of clusters. plot the number of clusters vs the silhouette score. Suggest the optimal number of clusters based on the plot.
+from sklearn.cluster import DBSCAN
+
+X = df_cluster
+model = DBSCAN(eps=0.5, min_samples=5) 
+model.fit(X)
+y_pred = model.fit_predict(X)
+labels_DB = model.labels_
+#print(labels_DB)
+```
+
+
+```{python}
+df['DBSCAN_labels'] = labels_DB
+
+fig, ax = plt.subplots(1,2, figsize=(10,5))
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="DBSCAN_labels", data=df[df['DBSCAN_labels'] != -1] , ax=ax[1]).set(title='DBSCAN Clustering Plot') # removing label = -1 because it corresponds to noise
+
+```
+
+```{python}
+# Number of clusters in labels, ignoring noise if present.
+import sklearn.metrics as metrics
+from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score
+n_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)
+n_noise_ = list(labels_DB).count(-1)
+labels_true = y
+
+print("Estimated number of clusters: %d" % n_clusters_)
+print("Estimated number of noise points: %d" % n_noise_)
+print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))
+print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))
+print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))
+print("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))
+print(
+    "Adjusted Mutual Information: %0.3f"
+    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)
+)
+#print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB))
+```
+
+Add Stuff Here
+
+### Hyper-parameter tuning
+
+```{python}
+# Defining the list of hyperparameters to try
+eps_list=np.arange(start=0.01, stop=4, step=0.5)
+min_sample_list=np.arange(start=5, stop=10, step=1)
+ 
+# Creating empty data frame to store the silhouette scores for each trials
+silhouette_scores_data=pd.DataFrame()
+ 
+for eps_trial in eps_list:
+    for min_sample_trial in min_sample_list:
+        
+        # Generating DBSAN clusters
+        db = DBSCAN(eps=eps_trial, min_samples=min_sample_trial)
+        
+        if(len(np.unique(db.fit_predict(X)))>=2):
+            sil_score=silhouette_score(X, db.fit_predict(X))
+        else:
+            continue
+        trial_parameters="eps:" + str(eps_trial.round(1)) +", min_sample:" + str(min_sample_trial)
+        
+        silhouette_scores_data=silhouette_scores_data.append(pd.DataFrame(data=[[sil_score,trial_parameters]], columns=["score", "parameters"]))
+ 
+# Finding out the best hyperparameters with highest Score
+#silhouette_scores_data.sort_values(by='score', ascending=False).head(10)
+```
+
+```{python}
+#fig, ax = plt.subplots()
+#sns.lineplot(x="parameters", y="score", data=silhouette_scores_data[silhouette_scores_data["score"] > 0.45].reset_index())  
+#ax.set(xlabel='Hyper-parameter (Epsilon & Min_Samples)', ylabel='Silhouette Score')
+#plt.xticks(rotation='vertical')
+# Pad margins so that markers don't get clipped by the axes
+#plt.margins(0.2)
+# Tweak spacing to prevent clipping of tick-labels
+#plt.subplots_adjust(bottom=0.15)
+#plt.show()
+```
+
+Add Stuff Here
+
+### Final Results for DBSCAN
+
+```{python}
+model = DBSCAN(eps=3.5, min_samples=8) # best hyper-parameter values
+model.fit(X)
+y_pred = model.fit_predict(X)
+labels_DB = model.labels_
+
+df['DBSCAN_final_labels'] = labels_DB
+
+fig, ax = plt.subplots(1,2, figsize=(10,5))
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="DBSCAN_final_labels", data=df[df['DBSCAN_final_labels'] != -1], ax=ax[1]).set(title='Final DBSCAN Clustering Plot') # removing label = -1 because it corresponds to noise
+```
+
+```{python}
+# Number of clusters in labels, ignoring noise if present.
+""" import sklearn.metrics as metrics
+from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score
+n_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)
+n_noise_ = list(labels_DB).count(-1)
+labels_true = y
+
+print("Estimated number of clusters: %d" % n_clusters_)
+print("Estimated number of noise points: %d" % n_noise_)
+print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))
+print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))
+print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))
+print("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))
+print(
+    "Adjusted Mutual Information: %0.3f"
+    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)
+)
+print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB)) """
+```
+
+## Agglomerative Clustering (Hierarchical clustering)
+
+```{python}
+# Perform Agglomerative Clustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+from sklearn.cluster import AgglomerativeClustering
+
+model = AgglomerativeClustering(n_clusters=3, affinity='euclidean',linkage='ward').fit(X)
+labels = model.labels_
+```
+
+### Plot Clusters
+
+```{python}
+# create linkage for agglomerative clustering, and the dendrogram for the linkage. 
+
+Z = linkage(X, method='ward') # linkage computed using euclidean distance  
+dend = dendrogram(Z)
+plt.axhline(y=30000, color='r', linestyle='--', label='115')
+
+```
+
+Add Stuff Here
+
+### Hyper-parameter Tuning
+
+```{python}
+def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
+
+    # PARAM
+    i_print=False
+
+    #FORCE CONTIGUOUS
+    X=np.ascontiguousarray(X) 
+
+    # LOOP OVER HYPER-PARAM
+    params=[]; sil_scores=[]
+    sil_max=-10
+    for param in range(2,nmax+1):
+
+        if(algo=="ag"):
+            model = sklearn.cluster.AgglomerativeClustering(n_clusters=param, affinity="cosine", linkage='single').fit(X)
+            labels=model.labels_
+
+        try:
+            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))
+            params.append(param)
+        except:
+            continue 
+
+        if(i_print): print(param,sil_scores[-1])
+        
+        if(sil_scores[-1]>sil_max):
+             opt_param=param
+             sil_max=sil_scores[-1]
+             opt_labels=labels
+
+    print("OPTIMAL PARAMETER =",opt_param)
+
+    if(i_plot):
+        fig, ax = plt.subplots()
+        ax.plot(params, sil_scores, "-o")  
+        ax.set(xlabel='N_Clusters', ylabel='Silhouette Score')
+        plt.show()
+
+    return opt_labels
+```
+
+```{python}
+def plot(X,color_vector):
+    fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))
+    sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)
+    ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',
+    title='Unemployment Rate and Federal Funds Rate by Recession')
+    ax1.grid()
+    scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=color_vector, alpha=0.5) 
+    ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',
+    title='Agglomerative Clustering Plot')
+    legend2 = ax2.legend(*scatter2.legend_elements(),
+                    loc="lower right", title="Clusters")
+    ax2.add_artist(legend2)
+    ax2.grid()
+    plt.show()
+```
+
+### Single-linkage Agglomerative Clustering
+
+```{python}
+""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)
+plot(X,opt_labels) """
+```
+
+Add Stuff Here
+
+### Complete-linkage Agglomerative Clustering
+
+```{python}
+# THIS WILL ITERATE OVER ONE HYPER-PARAMETER (GRID SEARCH) 
+# AND RETURN THE CLUSTER RESULT THAT OPTIMIZES THE SILHOUETTE SCORE
+def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
+
+    # PARAM
+    i_print=False
+
+    #FORCE CONTIGUOUS
+    X=np.ascontiguousarray(X) 
+
+    # LOOP OVER HYPER-PARAM
+    params=[]; sil_scores=[]
+    sil_max=-10
+    for param in range(2,nmax+1):
+
+        if(algo=="ag"):
+            model = sklearn.cluster.AgglomerativeClustering(n_clusters=param, affinity="manhattan", linkage='complete').fit(X)
+            labels=model.labels_
+
+        try:
+            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))
+            params.append(param)
+        except:
+            continue 
+
+        if(i_print): print(param,sil_scores[-1])
+        
+        if(sil_scores[-1]>sil_max):
+             opt_param=param
+             sil_max=sil_scores[-1]
+             opt_labels=labels
+
+    print("OPTIMAL PARAMETER =",opt_param)
+
+    if(i_plot):
+        fig, ax = plt.subplots()
+        ax.plot(params, sil_scores, "-o")  
+        ax.set(xlabel='N_Clusters', ylabel='Silhouette Score')
+        plt.show()
+
+    return opt_labels
+```
+
+```{python}
+""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)
+plot(X,opt_labels) """
+```
+
+Add Stuff Here
+
+### Final Results for Agglomerative Clustering
+
+```{python}
+""" final_model = AgglomerativeClustering(n_clusters=2, linkage='single').fit(X)
+final_labels = final_model.labels_
+fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))
+sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)
+ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',
+title='Unemployment Rate and Federal Funds Rate by Recession')
+ax1.grid()
+scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=final_labels, alpha=0.5) 
+ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',
+title='Agglomerative Clustering Plot')
+legend2 = ax2.legend(*scatter2.legend_elements(),
+                loc="lower right", title="Clusters")
+ax2.add_artist(legend2)
+ax2.grid()
+plt.show() """
+```
+
+## Results
+
+Add Stuff Here
+
+## Conclusion
+
+Add Stuff Here
+
+## References
