@@ -154,8 +154,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>os.getcwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>'/Users/raunakadvani/anly-501-project-raunakadvani2410/codes/data-clustering'</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>'/Users/raunakadvani/anly-501-project-raunakadvani2410/501-project-website/pages'</code></pre>
 </div>
 </div>
 </section>
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>df_cluster <span class="op">=</span> df.drop([<span class="st">'recession'</span>, <span class="st">'date'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>df_cluster.head() <span class="co"># visualize first 5 rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="3">
 
 <div>
 
@@ -238,7 +238,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_cluster.shape <span class="co"># get the number of rows and columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="32">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(134, 3)</code></pre>
 </div>
 </div>
@@ -314,7 +314,7 @@ None</code></pre>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>evaluation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="8">
 
 <div>
 
@@ -429,7 +429,7 @@ None</code></pre>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot distortion and inertia for kmeans, you can either plot them seperately or use fig, ax = plt.subplots(1, 2) to plot them in the same figure. Suggest the optimal number of clusters based on the plot.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>evaluation.plot.line(x<span class="op">=</span><span class="st">"Cluster"</span>, subplots<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>array([&lt;AxesSubplot:xlabel='Cluster'&gt;, &lt;AxesSubplot:xlabel='Cluster'&gt;],
       dtype=object)</code></pre>
 </div>
@@ -450,7 +450,7 @@ None</code></pre>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"kmeans_labels"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'K-Means Clustering Plot'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="38">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>[Text(0.5, 1.0, 'K-Means Clustering Plot')]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -633,22 +633,26 @@ None</code></pre>
 <span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>For n_clusters = 2 The average silhouette_score is : 0.49665636380652095
-For n_clusters = 3 The average silhouette_score is : 0.5179409466636461
-For n_clusters = 4 The average silhouette_score is : 0.48485092517211287
-For n_clusters = 5 The average silhouette_score is : 0.48939039355689806</code></pre>
+<pre><code>For n_clusters = 2 The average silhouette_score is : 0.49665636380652095</code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<p><img src="dc_py_files/figure-html/cell-13-output-2.png" width="1378" height="650"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>For n_clusters = 3 The average silhouette_score is : 0.5179409466636461
+For n_clusters = 4 The average silhouette_score is : 0.48485092517211287</code></pre>
 </div>
-<div class="cell-output cell-output-display">
-<p><img src="dc_py_files/figure-html/cell-13-output-3.png" width="1378" height="650"></p>
+<div class="cell-output cell-output-stdout">
+<pre><code>For n_clusters = 5 The average silhouette_score is : 0.48939039355689806</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dc_py_files/figure-html/cell-13-output-4.png" width="1378" height="650"></p>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dc_py_files/figure-html/cell-13-output-5.png" width="1378" height="650"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="dc_py_files/figure-html/cell-13-output-6.png" width="1378" height="650"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="dc_py_files/figure-html/cell-13-output-7.png" width="1378" height="650"></p>
 </div>
 </div>
 <p>Add Stuff Here</p>
@@ -659,17 +663,17 @@ For n_clusters = 5 The average silhouette_score is : 0.48939039355689806</code><
 <div class="cell" data-execution_count="13">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting clusters for best k = 3 (as per silhouette method)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>bestK <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, init<span class="op">=</span><span class="st">'k-means++'</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>kmeans_labels_final <span class="op">=</span> bestK.fit_predict(X)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'kmeans_final_labels'</span>] <span class="op">=</span> kmeans_labels_final</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"kmeans_final_labels"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Final K-Means Clustering Plot'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting clusters for best k = 3 (as per silhouette method)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>bestK <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>, init<span class="op">=</span><span class="st">'k-means++'</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>kmeans_labels_final <span class="op">=</span> bestK.fit_predict(X)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'kmeans_final_labels'</span>] <span class="op">=</span> kmeans_labels_final</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>,figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"kmeans_final_labels"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Final K-Means Clustering Plot'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>[Text(0.5, 1.0, 'Final K-Means Clustering Plot')]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -683,27 +687,27 @@ For n_clusters = 5 The average silhouette_score is : 0.48939039355689806</code><
 <div class="cell" data-execution_count="14">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform DBSCAN clustering. use the eps and min_samples parameters to find the optimal number of clusters. plot the number of clusters vs the silhouette score. Suggest the optimal number of clusters based on the plot.</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_cluster</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.5</span>, min_samples<span class="op">=</span><span class="dv">5</span>) </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>model.fit(X)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.fit_predict(X)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>labels_DB <span class="op">=</span> model.labels_</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="co">#print(labels_DB)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform DBSCAN clustering. use the eps and min_samples parameters to find the optimal number of clusters. plot the number of clusters vs the silhouette score. Suggest the optimal number of clusters based on the plot.</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> DBSCAN</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_cluster</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">0.5</span>, min_samples<span class="op">=</span><span class="dv">5</span>) </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>model.fit(X)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.fit_predict(X)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>labels_DB <span class="op">=</span> model.labels_</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co">#print(labels_DB)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="15">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'DBSCAN_labels'</span>] <span class="op">=</span> labels_DB</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"DBSCAN_labels"</span>, data<span class="op">=</span>df[df[<span class="st">'DBSCAN_labels'</span>] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>] , ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'DBSCAN Clustering Plot'</span>) <span class="co"># removing label = -1 because it corresponds to noise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'DBSCAN_labels'</span>] <span class="op">=</span> labels_DB</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"DBSCAN_labels"</span>, data<span class="op">=</span>df[df[<span class="st">'DBSCAN_labels'</span>] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>] , ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'DBSCAN Clustering Plot'</span>) <span class="co"># removing label = -1 because it corresponds to noise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="43">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>[Text(0.5, 1.0, 'DBSCAN Clustering Plot')]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -713,24 +717,24 @@ For n_clusters = 5 The average silhouette_score is : 0.48939039355689806</code><
 <div class="cell" data-execution_count="16">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of clusters in labels, ignoring noise if present.</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.metrics <span class="im">as</span> metrics</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>n_clusters_ <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(labels_DB)) <span class="op">-</span> (<span class="dv">1</span> <span class="cf">if</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">in</span> labels_DB <span class="cf">else</span> <span class="dv">0</span>)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>n_noise_ <span class="op">=</span> <span class="bu">list</span>(labels_DB).count(<span class="op">-</span><span class="dv">1</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>labels_true <span class="op">=</span> y</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimated number of clusters: </span><span class="sc">%d</span><span class="st">"</span> <span class="op">%</span> n_clusters_)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimated number of noise points: </span><span class="sc">%d</span><span class="st">"</span> <span class="op">%</span> n_noise_)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Homogeneity: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.homogeneity_score(labels_true, labels_DB))</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Completeness: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.completeness_score(labels_true, labels_DB))</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"V-measure: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.v_measure_score(labels_true, labels_DB))</span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adjusted Rand Index: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.adjusted_rand_score(labels_true, labels_DB))</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Adjusted Mutual Information: </span><span class="sc">%0.3f</span><span class="st">"</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span> metrics.adjusted_mutual_info_score(labels_true, labels_DB)</span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of clusters in labels, ignoring noise if present.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn.metrics <span class="im">as</span> metrics</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>n_clusters_ <span class="op">=</span> <span class="bu">len</span>(<span class="bu">set</span>(labels_DB)) <span class="op">-</span> (<span class="dv">1</span> <span class="cf">if</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">in</span> labels_DB <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>n_noise_ <span class="op">=</span> <span class="bu">list</span>(labels_DB).count(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>labels_true <span class="op">=</span> y</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimated number of clusters: </span><span class="sc">%d</span><span class="st">"</span> <span class="op">%</span> n_clusters_)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimated number of noise points: </span><span class="sc">%d</span><span class="st">"</span> <span class="op">%</span> n_noise_)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Homogeneity: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.homogeneity_score(labels_true, labels_DB))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Completeness: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.completeness_score(labels_true, labels_DB))</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"V-measure: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.v_measure_score(labels_true, labels_DB))</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Adjusted Rand Index: </span><span class="sc">%0.3f</span><span class="st">"</span> <span class="op">%</span> metrics.adjusted_rand_score(labels_true, labels_DB))</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Adjusted Mutual Information: </span><span class="sc">%0.3f</span><span class="st">"</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">%</span> metrics.adjusted_mutual_info_score(labels_true, labels_DB)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="co">#print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Estimated number of clusters: 0
@@ -748,43 +752,43 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="17">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the list of hyperparameters to try</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>eps_list<span class="op">=</span>np.arange(start<span class="op">=</span><span class="fl">0.01</span>, stop<span class="op">=</span><span class="dv">4</span>, step<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>min_sample_list<span class="op">=</span>np.arange(start<span class="op">=</span><span class="dv">5</span>, stop<span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating empty data frame to store the silhouette scores for each trials</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>silhouette_scores_data<span class="op">=</span>pd.DataFrame()</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps_trial <span class="kw">in</span> eps_list:</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> min_sample_trial <span class="kw">in</span> min_sample_list:</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generating DBSAN clusters</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        db <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps_trial, min_samples<span class="op">=</span>min_sample_trial)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="bu">len</span>(np.unique(db.fit_predict(X)))<span class="op">&gt;=</span><span class="dv">2</span>):</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>            sil_score<span class="op">=</span>silhouette_score(X, db.fit_predict(X))</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>        trial_parameters<span class="op">=</span><span class="st">"eps:"</span> <span class="op">+</span> <span class="bu">str</span>(eps_trial.<span class="bu">round</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st">", min_sample:"</span> <span class="op">+</span> <span class="bu">str</span>(min_sample_trial)</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>        silhouette_scores_data<span class="op">=</span>silhouette_scores_data.append(pd.DataFrame(data<span class="op">=</span>[[sil_score,trial_parameters]], columns<span class="op">=</span>[<span class="st">"score"</span>, <span class="st">"parameters"</span>]))</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding out the best hyperparameters with highest Score</span></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co">#silhouette_scores_data.sort_values(by='score', ascending=False).head(10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Defining the list of hyperparameters to try</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>eps_list<span class="op">=</span>np.arange(start<span class="op">=</span><span class="fl">0.01</span>, stop<span class="op">=</span><span class="dv">4</span>, step<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>min_sample_list<span class="op">=</span>np.arange(start<span class="op">=</span><span class="dv">5</span>, stop<span class="op">=</span><span class="dv">10</span>, step<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating empty data frame to store the silhouette scores for each trials</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>silhouette_scores_data<span class="op">=</span>pd.DataFrame()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> eps_trial <span class="kw">in</span> eps_list:</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> min_sample_trial <span class="kw">in</span> min_sample_list:</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Generating DBSAN clusters</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>        db <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps_trial, min_samples<span class="op">=</span>min_sample_trial)</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(<span class="bu">len</span>(np.unique(db.fit_predict(X)))<span class="op">&gt;=</span><span class="dv">2</span>):</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>            sil_score<span class="op">=</span>silhouette_score(X, db.fit_predict(X))</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        trial_parameters<span class="op">=</span><span class="st">"eps:"</span> <span class="op">+</span> <span class="bu">str</span>(eps_trial.<span class="bu">round</span>(<span class="dv">1</span>)) <span class="op">+</span><span class="st">", min_sample:"</span> <span class="op">+</span> <span class="bu">str</span>(min_sample_trial)</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>        silhouette_scores_data<span class="op">=</span>silhouette_scores_data.append(pd.DataFrame(data<span class="op">=</span>[[sil_score,trial_parameters]], columns<span class="op">=</span>[<span class="st">"score"</span>, <span class="st">"parameters"</span>]))</span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding out the best hyperparameters with highest Score</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co">#silhouette_scores_data.sort_values(by='score', ascending=False).head(10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="18">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fig, ax = plt.subplots()</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.lineplot(x="parameters", y="score", data=silhouette_scores_data[silhouette_scores_data["score"] &gt; 0.45].reset_index())  </span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set(xlabel='Hyper-parameter (Epsilon &amp; Min_Samples)', ylabel='Silhouette Score')</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks(rotation='vertical')</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pad margins so that markers don't get clipped by the axes</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.margins(0.2)</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tweak spacing to prevent clipping of tick-labels</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.subplots_adjust(bottom=0.15)</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fig, ax = plt.subplots()</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sns.lineplot(x="parameters", y="score", data=silhouette_scores_data[silhouette_scores_data["score"] &gt; 0.45].reset_index())  </span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#ax.set(xlabel='Hyper-parameter (Epsilon &amp; Min_Samples)', ylabel='Silhouette Score')</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks(rotation='vertical')</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Pad margins so that markers don't get clipped by the axes</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.margins(0.2)</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tweak spacing to prevent clipping of tick-labels</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.subplots_adjust(bottom=0.15)</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Add Stuff Here</p>
@@ -794,18 +798,18 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="19">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">3.5</span>, min_samples<span class="op">=</span><span class="dv">8</span>) <span class="co"># best hyper-parameter values</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>model.fit(X)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.fit_predict(X)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>labels_DB <span class="op">=</span> model.labels_</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'DBSCAN_final_labels'</span>] <span class="op">=</span> labels_DB</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"DBSCAN_final_labels"</span>, data<span class="op">=</span>df[df[<span class="st">'DBSCAN_final_labels'</span>] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>], ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Final DBSCAN Clustering Plot'</span>) <span class="co"># removing label = -1 because it corresponds to noise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> DBSCAN(eps<span class="op">=</span><span class="fl">3.5</span>, min_samples<span class="op">=</span><span class="dv">8</span>) <span class="co"># best hyper-parameter values</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>model.fit(X)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> model.fit_predict(X)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>labels_DB <span class="op">=</span> model.labels_</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'DBSCAN_final_labels'</span>] <span class="op">=</span> labels_DB</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"recession"</span>, data<span class="op">=</span>df, ax<span class="op">=</span>ax[<span class="dv">0</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"unemployment_value"</span>, y<span class="op">=</span><span class="st">"fed_funds_value"</span>, hue<span class="op">=</span><span class="st">"DBSCAN_final_labels"</span>, data<span class="op">=</span>df[df[<span class="st">'DBSCAN_final_labels'</span>] <span class="op">!=</span> <span class="op">-</span><span class="dv">1</span>], ax<span class="op">=</span>ax[<span class="dv">1</span>]).<span class="bu">set</span>(title<span class="op">=</span><span class="st">'Final DBSCAN Clustering Plot'</span>) <span class="co"># removing label = -1 because it corresponds to noise</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="47">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>[Text(0.5, 1.0, 'Final DBSCAN Clustering Plot')]</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -815,26 +819,26 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="20">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of clusters in labels, ignoring noise if present.</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">""" import sklearn.metrics as metrics</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">n_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">n_noise_ = list(labels_DB).count(-1)</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co">labels_true = y</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="co">print("Estimated number of clusters: %d" % n_clusters_)</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co">print("Estimated number of noise points: %d" % n_noise_)</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co">print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="co">print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))</span></span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="co">print("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))</span></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="co">print(</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="co">    "Adjusted Mutual Information: %0.3f"</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="co">    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="co">)</span></span>
-<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="co">print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB)) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of clusters in labels, ignoring noise if present.</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">""" import sklearn.metrics as metrics</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">n_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">n_noise_ = list(labels_DB).count(-1)</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">labels_true = y</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="co">print("Estimated number of clusters: %d" % n_clusters_)</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co">print("Estimated number of noise points: %d" % n_noise_)</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co">print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co">print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="co">print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="co">print("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="co">print(</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="co">    "Adjusted Mutual Information: %0.3f"</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="co">    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="co">)</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="co">print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB)) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="48">
+<div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>' import sklearn.metrics as metrics\nfrom sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score\nn_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)\nn_noise_ = list(labels_DB).count(-1)\nlabels_true = y\n\nprint("Estimated number of clusters: %d" % n_clusters_)\nprint("Estimated number of noise points: %d" % n_noise_)\nprint("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))\nprint("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))\nprint("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))\nprint("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))\nprint(\n    "Adjusted Mutual Information: %0.3f"\n    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)\n)\nprint("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB)) '</code></pre>
 </div>
 </div>
@@ -845,12 +849,12 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="21">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Agglomerative Clustering</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> dendrogram, linkage</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> AgglomerativeClustering</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, affinity<span class="op">=</span><span class="st">'euclidean'</span>,linkage<span class="op">=</span><span class="st">'ward'</span>).fit(X)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> model.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Agglomerative Clustering</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.cluster.hierarchy <span class="im">import</span> dendrogram, linkage</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> AgglomerativeClustering</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span><span class="dv">3</span>, affinity<span class="op">=</span><span class="st">'euclidean'</span>,linkage<span class="op">=</span><span class="st">'ward'</span>).fit(X)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> model.labels_</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <section id="plot-clusters" class="level3">
@@ -858,14 +862,14 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="22">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create linkage for agglomerative clustering, and the dendrogram for the linkage. </span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> linkage(X, method<span class="op">=</span><span class="st">'ward'</span>) <span class="co"># linkage computed using euclidean distance  </span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>dend <span class="op">=</span> dendrogram(Z)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">30000</span>, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'115'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create linkage for agglomerative clustering, and the dendrogram for the linkage. </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> linkage(X, method<span class="op">=</span><span class="st">'ward'</span>) <span class="co"># linkage computed using euclidean distance  </span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>dend <span class="op">=</span> dendrogram(Z)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>plt.axhline(y<span class="op">=</span><span class="dv">30000</span>, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'115'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<pre><code>&lt;matplotlib.lines.Line2D at 0x7fde30f00700&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>&lt;matplotlib.lines.Line2D at 0x7f90babdb310&gt;</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <p><img src="dc_py_files/figure-html/cell-23-output-2.png" width="595" height="413"></p>
@@ -878,64 +882,64 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="23">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maximize_silhouette(X,algo<span class="op">=</span><span class="st">"birch"</span>,nmax<span class="op">=</span><span class="dv">20</span>,i_plot<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PARAM</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    i_print<span class="op">=</span><span class="va">False</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FORCE CONTIGUOUS</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    X<span class="op">=</span>np.ascontiguousarray(X) </span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LOOP OVER HYPER-PARAM</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>[]<span class="op">;</span> sil_scores<span class="op">=</span>[]</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    sil_max<span class="op">=-</span><span class="dv">10</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> param <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,nmax<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(algo<span class="op">==</span><span class="st">"ag"</span>):</span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> sklearn.cluster.AgglomerativeClustering(n_clusters<span class="op">=</span>param, affinity<span class="op">=</span><span class="st">"cosine"</span>, linkage<span class="op">=</span><span class="st">'single'</span>).fit(X)</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>            labels<span class="op">=</span>model.labels_</span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))</span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>            params.append(param)</span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span> </span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i_print): <span class="bu">print</span>(param,sil_scores[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(sil_scores[<span class="op">-</span><span class="dv">1</span>]<span class="op">&gt;</span>sil_max):</span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>             opt_param<span class="op">=</span>param</span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>             sil_max<span class="op">=</span>sil_scores[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>             opt_labels<span class="op">=</span>labels</span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"OPTIMAL PARAMETER ="</span>,opt_param)</span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i_plot):</span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>        ax.plot(params, sil_scores, <span class="st">"-o"</span>)  </span>
-<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>        ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'N_Clusters'</span>, ylabel<span class="op">=</span><span class="st">'Silhouette Score'</span>)</span>
-<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> opt_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maximize_silhouette(X,algo<span class="op">=</span><span class="st">"birch"</span>,nmax<span class="op">=</span><span class="dv">20</span>,i_plot<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PARAM</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    i_print<span class="op">=</span><span class="va">False</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FORCE CONTIGUOUS</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>    X<span class="op">=</span>np.ascontiguousarray(X) </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LOOP OVER HYPER-PARAM</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>[]<span class="op">;</span> sil_scores<span class="op">=</span>[]</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    sil_max<span class="op">=-</span><span class="dv">10</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> param <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,nmax<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(algo<span class="op">==</span><span class="st">"ag"</span>):</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> sklearn.cluster.AgglomerativeClustering(n_clusters<span class="op">=</span>param, affinity<span class="op">=</span><span class="st">"cosine"</span>, linkage<span class="op">=</span><span class="st">'single'</span>).fit(X)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>            labels<span class="op">=</span>model.labels_</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>            params.append(param)</span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span> </span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i_print): <span class="bu">print</span>(param,sil_scores[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(sil_scores[<span class="op">-</span><span class="dv">1</span>]<span class="op">&gt;</span>sil_max):</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>             opt_param<span class="op">=</span>param</span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>             sil_max<span class="op">=</span>sil_scores[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>             opt_labels<span class="op">=</span>labels</span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"OPTIMAL PARAMETER ="</span>,opt_param)</span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i_plot):</span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a>        ax.plot(params, sil_scores, <span class="st">"-o"</span>)  </span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>        ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'N_Clusters'</span>, ylabel<span class="op">=</span><span class="st">'Silhouette Score'</span>)</span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> opt_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="24">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot(X,color_vector):</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    fig, [ax1, ax2] <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    sns.scatterplot(df[<span class="st">"unemployment_value"</span>], df[<span class="st">"fed_funds_value"</span>], hue<span class="op">=</span>df[<span class="st">"recession"</span>], ax<span class="op">=</span>ax1)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    ax1.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'unemployment_value'</span>, ylabel<span class="op">=</span><span class="st">'fed_funds_value'</span>,</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    ax1.grid()</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    scatter2 <span class="op">=</span> ax2.scatter(X[<span class="st">'unemployment_value'</span>], X[<span class="st">'fed_funds_value'</span>],c<span class="op">=</span>color_vector, alpha<span class="op">=</span><span class="fl">0.5</span>) </span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    ax2.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'unemployment_value'</span>, ylabel<span class="op">=</span><span class="st">'fed_funds_value'</span>,</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Agglomerative Clustering Plot'</span>)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    legend2 <span class="op">=</span> ax2.legend(<span class="op">*</span>scatter2.legend_elements(),</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>                    loc<span class="op">=</span><span class="st">"lower right"</span>, title<span class="op">=</span><span class="st">"Clusters"</span>)</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    ax2.add_artist(legend2)</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    ax2.grid()</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot(X,color_vector):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    fig, [ax1, ax2] <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    sns.scatterplot(df[<span class="st">"unemployment_value"</span>], df[<span class="st">"fed_funds_value"</span>], hue<span class="op">=</span>df[<span class="st">"recession"</span>], ax<span class="op">=</span>ax1)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    ax1.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'unemployment_value'</span>, ylabel<span class="op">=</span><span class="st">'fed_funds_value'</span>,</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Unemployment Rate and Federal Funds Rate by Recession'</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>    ax1.grid()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>    scatter2 <span class="op">=</span> ax2.scatter(X[<span class="st">'unemployment_value'</span>], X[<span class="st">'fed_funds_value'</span>],c<span class="op">=</span>color_vector, alpha<span class="op">=</span><span class="fl">0.5</span>) </span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    ax2.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'unemployment_value'</span>, ylabel<span class="op">=</span><span class="st">'fed_funds_value'</span>,</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Agglomerative Clustering Plot'</span>)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    legend2 <span class="op">=</span> ax2.legend(<span class="op">*</span>scatter2.legend_elements(),</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>                    loc<span class="op">=</span><span class="st">"lower right"</span>, title<span class="op">=</span><span class="st">"Clusters"</span>)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    ax2.add_artist(legend2)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    ax2.grid()</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -944,10 +948,10 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="25">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="co">plot(X,opt_labels) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">plot(X,opt_labels) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="53">
+<div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>' opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)\nplot(X,opt_labels) '</code></pre>
 </div>
 </div>
@@ -958,56 +962,56 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="26">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># THIS WILL ITERATE OVER ONE HYPER-PARAMETER (GRID SEARCH) </span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># AND RETURN THE CLUSTER RESULT THAT OPTIMIZES THE SILHOUETTE SCORE</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maximize_silhouette(X,algo<span class="op">=</span><span class="st">"birch"</span>,nmax<span class="op">=</span><span class="dv">20</span>,i_plot<span class="op">=</span><span class="va">False</span>):</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PARAM</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    i_print<span class="op">=</span><span class="va">False</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FORCE CONTIGUOUS</span></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    X<span class="op">=</span>np.ascontiguousarray(X) </span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LOOP OVER HYPER-PARAM</span></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>[]<span class="op">;</span> sil_scores<span class="op">=</span>[]</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>    sil_max<span class="op">=-</span><span class="dv">10</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> param <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,nmax<span class="op">+</span><span class="dv">1</span>):</span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(algo<span class="op">==</span><span class="st">"ag"</span>):</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> sklearn.cluster.AgglomerativeClustering(n_clusters<span class="op">=</span>param, affinity<span class="op">=</span><span class="st">"manhattan"</span>, linkage<span class="op">=</span><span class="st">'complete'</span>).fit(X)</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>            labels<span class="op">=</span>model.labels_</span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))</span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>            params.append(param)</span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span> </span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i_print): <span class="bu">print</span>(param,sil_scores[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(sil_scores[<span class="op">-</span><span class="dv">1</span>]<span class="op">&gt;</span>sil_max):</span>
-<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>             opt_param<span class="op">=</span>param</span>
-<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>             sil_max<span class="op">=</span>sil_scores[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>             opt_labels<span class="op">=</span>labels</span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"OPTIMAL PARAMETER ="</span>,opt_param)</span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i_plot):</span>
-<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a>        ax.plot(params, sil_scores, <span class="st">"-o"</span>)  </span>
-<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>        ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'N_Clusters'</span>, ylabel<span class="op">=</span><span class="st">'Silhouette Score'</span>)</span>
-<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
-<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> opt_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># THIS WILL ITERATE OVER ONE HYPER-PARAMETER (GRID SEARCH) </span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># AND RETURN THE CLUSTER RESULT THAT OPTIMIZES THE SILHOUETTE SCORE</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> maximize_silhouette(X,algo<span class="op">=</span><span class="st">"birch"</span>,nmax<span class="op">=</span><span class="dv">20</span>,i_plot<span class="op">=</span><span class="va">False</span>):</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># PARAM</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    i_print<span class="op">=</span><span class="va">False</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#FORCE CONTIGUOUS</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>    X<span class="op">=</span>np.ascontiguousarray(X) </span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># LOOP OVER HYPER-PARAM</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>    params<span class="op">=</span>[]<span class="op">;</span> sil_scores<span class="op">=</span>[]</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>    sil_max<span class="op">=-</span><span class="dv">10</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> param <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>,nmax<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(algo<span class="op">==</span><span class="st">"ag"</span>):</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a>            model <span class="op">=</span> sklearn.cluster.AgglomerativeClustering(n_clusters<span class="op">=</span>param, affinity<span class="op">=</span><span class="st">"manhattan"</span>, linkage<span class="op">=</span><span class="st">'complete'</span>).fit(X)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>            labels<span class="op">=</span>model.labels_</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))</span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>            params.append(param)</span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span> </span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(i_print): <span class="bu">print</span>(param,sil_scores[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span>(sil_scores[<span class="op">-</span><span class="dv">1</span>]<span class="op">&gt;</span>sil_max):</span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>             opt_param<span class="op">=</span>param</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>             sil_max<span class="op">=</span>sil_scores[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>             opt_labels<span class="op">=</span>labels</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"OPTIMAL PARAMETER ="</span>,opt_param)</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(i_plot):</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a>        fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a>        ax.plot(params, sil_scores, <span class="st">"-o"</span>)  </span>
+<span id="cb42-38"><a href="#cb42-38" aria-hidden="true" tabindex="-1"></a>        ax.<span class="bu">set</span>(xlabel<span class="op">=</span><span class="st">'N_Clusters'</span>, ylabel<span class="op">=</span><span class="st">'Silhouette Score'</span>)</span>
+<span id="cb42-39"><a href="#cb42-39" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb42-40"><a href="#cb42-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-41"><a href="#cb42-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> opt_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell" data-execution_count="27">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">plot(X,opt_labels) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">plot(X,opt_labels) """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>' opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)\nplot(X,opt_labels) '</code></pre>
 </div>
 </div>
@@ -1018,23 +1022,23 @@ Adjusted Mutual Information: 0.000</code></pre>
 <div class="cell" data-execution_count="28">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" final_model = AgglomerativeClustering(n_clusters=2, linkage='single').fit(X)</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">final_labels = final_model.labels_</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co">fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">title='Unemployment Rate and Federal Funds Rate by Recession')</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">ax1.grid()</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="co">scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=final_labels, alpha=0.5) </span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="co">title='Agglomerative Clustering Plot')</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="co">legend2 = ax2.legend(*scatter2.legend_elements(),</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="co">                loc="lower right", title="Clusters")</span></span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.add_artist(legend2)</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.grid()</span></span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="co">plt.show() """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" final_model = AgglomerativeClustering(n_clusters=2, linkage='single').fit(X)</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="co">final_labels = final_model.labels_</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="co">sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co">ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co">title='Unemployment Rate and Federal Funds Rate by Recession')</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="co">ax1.grid()</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co">scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=final_labels, alpha=0.5) </span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">title='Agglomerative Clustering Plot')</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">legend2 = ax2.legend(*scatter2.legend_elements(),</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co">                loc="lower right", title="Clusters")</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.add_artist(legend2)</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co">ax2.grid()</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">plt.show() """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="56">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <pre><code>' final_model = AgglomerativeClustering(n_clusters=2, linkage=\'single\').fit(X)\nfinal_labels = final_model.labels_\nfig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))\nsns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)\nax1.set(xlabel=\'unemployment_value\', ylabel=\'fed_funds_value\',\ntitle=\'Unemployment Rate and Federal Funds Rate by Recession\')\nax1.grid()\nscatter2 = ax2.scatter(X[\'unemployment_value\'], X[\'fed_funds_value\'],c=final_labels, alpha=0.5) \nax2.set(xlabel=\'unemployment_value\', ylabel=\'fed_funds_value\',\ntitle=\'Agglomerative Clustering Plot\')\nlegend2 = ax2.legend(*scatter2.legend_elements(),\n                loc="lower right", title="Clusters")\nax2.add_artist(legend2)\nax2.grid()\nplt.show() '</code></pre>
 </div>
 </div>
