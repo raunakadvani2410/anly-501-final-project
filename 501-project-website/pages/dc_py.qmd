@@ -3,6 +3,8 @@ jupyter: python3
 format:
   html:
     code-fold: true
+    toc: true
+    toc-location: right
 ---
 
 # Clustering from Record Data
@@ -12,12 +14,73 @@ The below page describes my data clustering process using record data. Data Clus
 
 ## Theory
 ### K-Means Clustering
+K-Means clustering is a type of partition-based or centroid-based clustering. Each cluster of our data points contain a centroid or a cluster center. In addition, it is also known as a non-parametric clustering algorither, which means that it doesn't make strong assumptions about the form of the mapping function that maps input variables (X) onto output variables (Y). This algorithm minimizes the sum of squared distances between data points and their respective clusters centroid. 
 
-### DBSCAN
+To better understand the steps of K-Means clustering, we can break down the algorithm into steps:
+
+* 1. Choose k random data points and assign them as cluster centers
+* 2. For every data point, see which centroid is nearest to it using a measurement method
+* 3. Assign the data point to the closest centroid
+* 4. Repeat the previous steps for all data points until the centroid stops changing
+* 5. The algorithm has now 'converged' when there are no more changes
+
+Our model selection methods include the elbow method to choose the optimal value for 'k', or the number of clusters. This selection technique relies on two variables, intertia and distortion. Inertia is defined as the sum of squared distances of samples to their closest cluster center. Distortion, on the other hand, is calculated as the average of the squared distances from the cluster centers of their respective clusters, using Euclidean distance. After visualising the distortion and inertia values for various k values, we then select the value of k at the 'elbow' of the curve after which both inertia and distortion decrease in a linear value. An ideal model is one which has both low values of inertia and k, but both of these variables have an inverse relationship, causing a tradeoff.
+
+
+Advantages of K-means:
+
+1. Easy to understand and implement
+2. Implementable to large datasets
+3. Computationally efficient
+
+Disadvantages of K-means:
+
+1. Manually choosing k value and depending on initial values
+2. Sensitive to poor initialization of clusters
+3. Centroids get dragged due to outliers in dataset
+
+
+### DBSCAN (Density Based Spatial Clustering of Applications with Noise)
+DBSCAN is a density-based algorithm which works on the assumption that clusters are desnse regions in space separated by regions of lower density. Densely grouped data points are grouped into a single cluster. Given a set of points in some space, it groups together points that are closely packed together (points with many nearby neighbors). Outliers are marked as points that lie alone in low-density regions, whose nearest neighbors are too far away.
+
+DBSCAN can be broken down into the following steps:
+
+
+1. The algorithm arbitrarily picks a point in the dataset until all points have been visited
+2. If there are at least minimum number of points (a threshold) clustered together for a region to be considered dense, within a radius of  (a distance measure used to locate the points in the neighborhood of any point) to the point, then we consider all these points to be part of the same cluster. These minimum number of points, known as minPts, is one parameter for DBSCAN and  is another parameter.
+3. The clusters are then expanded by recursively repeating the neighborhood calculation for each neighboring point.
+
+The model selection method uses the silhouette score to select the optimal DBSCAN hyper-parameters. The silhouette value is a measure of how similar an object is to its own cluster (cohesion) compared to other clusters (separation). The silhouette ranges from −1 to +1, where a high value indicates that the object is well matched to its own cluster and poorly matched to neighboring clusters.
+
+Advantages of DBSCAN:
+
+1. It can handle noise very well
+2. It can handle clusters of different shapes and sizes
+
+Disadvantages of DBSCAN:
+
+1. DBSCAN tends to fail if the dataset contains multiple densities or varying densities
+2. It is extremely sensitive to the hyperparameters, and a slight change in hyperparameters will drastically affect DBSCAN
+3. The concept of density doesn't apply well to highly-dimensional data
+
+
 
 ### Hierarchical (Agglomerative vs Divisive) Clustering
 
-Add stuff here
+Hierarchical clustering technique is different from Partitional clustering, which divides the data into non-overlapping clusters such that each data point belongs to exactly one cluster. Hierarchical clustering can be thought of a set of nested clusters organized as a hierarchical tree, visualized through dendrograms. The agglomerative model is a type of Hierarchical Clustering, and is known as bottom-up clustering. It includes starting with the points as individual clusters, and at each step, moving up the hierarchy by merging the closest pair of clusters until only one cluster is left.
+
+Hierarchical clustering’s process can be visualized with the help of a dendrograms, which are a type of tree diagram showing hierarchical relationships between different sets of data. The dendrogram can be used to decide when to stop merging the clusters or, in other words, finding the optimal number of clusters. We cut the dendrogram tree with a horizontal line at a height where the line can traverse the maximum distance up and down without intersecting the merging point.
+
+Advantages of Hierarchical Clustering:
+
+1. No need to decide how many clusters are required
+2. Easy to use and implement
+
+Disadvantages of Hierarchical Clustering:
+
+1. Can't take a step back in this algorithm
+2. High time complexity
+
 
 
 ## Methods
@@ -25,24 +88,12 @@ Add stuff here
 ### Data Selection
 
 ```{python}
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import scipy.cluster.hierarchy as sch
-import sklearn.cluster as cluster
-sns.set_theme(style="whitegrid", palette='Set2')
-import warnings
-warnings.filterwarnings("ignore")
 import os
 ```
 
 ```{python}
 os.getcwd()
 ```
-## Methods
-
-### Data Selection
 
 ```{python}
 # import the necessary packages
@@ -56,9 +107,8 @@ sns.set_theme(style="whitegrid", palette='Set2')
 import warnings
 warnings.filterwarnings("ignore")
 
-# read in cleaned REKT Database and drop labels and other variables, leaving only feature data (X)
 
-df = pd.read_csv("../../data/clean-data/Fredapi_clean.csv", index_col=[0])
+df = pd.read_csv("../../data/clean-data/Fredapi_clean.csv", index_col=[0]) # read in data
 df_cluster = df.drop(['recession', 'date'], axis=1)
 df_cluster.head() # visualize first 5 rows
 ```
@@ -72,7 +122,7 @@ print(df_cluster.info()) # get column information
 ```
 
 ### Feature selection and Pre-processing
-Add Stuff here
+As shown in the code above, our first step is to read in the cleaned dataset. Next, we must choose our target variable, which is the binary variable of recession. Then, we clean up our dataframe into a 'cluster' dataframe, which only contain our variables of federal funds rate (interest rate charged by the federal reserve) and the unemployment rate for the US 
 
 ### Separate the dataset into features and labels
 ```{python}
@@ -131,7 +181,7 @@ sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", da
 sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="kmeans_labels", data=df, ax=ax[1]).set(title='K-Means Clustering Plot')
 ```
 
-Add Stuff Here
+According to the distortion and inertia values across the 2 graphs, we see that the initial K-means model yields k=3 clusters as the optimal number of clusters to use. The above scatterplots provide a binary representation of the two features, unemployment_value and fed_funds_value, of our feature data, to visualize the labels generated by the K-means model with k=3. Next, we'll look at how the silhouette scores of the clusters affect our conclusions for this model.
 
 ### Hyper-parameter Tuning
 
@@ -182,7 +232,7 @@ def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
 k_means_opt_labels=maximize_silhouette(X,algo="kmeans",nmax=15, i_plot=True)
 ```
 
-Add Stuff Here
+When n_clusters = 2, the silhouette score is maximized on our entire feature data (X). This result is different from that of our elbow method, which yielded an optimal parameter of k=3 using the graphs which plot inertia and distortion along with different k values. The elbow method is used to find the 'elbow' point, where adding additional data samples does not change cluster membership much. The silhouette score allows us to determine whether there are large gaps between each sample and all other samples within the same cluster or across different clusters. The significant difference between the 2 methods is that while the elbow method only calculates euclidean distance, the silhouette method also takes into account variables such as variance, skewness, etc. 
 
 ```{python}
 from sklearn.metrics import silhouette_samples, silhouette_score
@@ -299,11 +349,15 @@ for n_clusters in range_n_clusters:
 plt.show()
 ```
 
-Add Stuff Here
+Silhouette plots seem to have an edge over the elbow method as using silhouette plots, one can evaluate clusters based on multiple criteria, including fluctuations in the size of the plot, non-uniform thickness, and the average Silhouette score (red dotted line). Thus, one can determine the optimal value for k using the above plots.
+
+All n_clusters, from 2 to 5, have silhouette scores above that of the average silhouete score, which is the red dotted line. This means that we would need to look at the thickness fluctuations in the plots. When n_clusters = 2, the thickness of the silhouette plots suggests that the clusters are non-uniform.
+
+For n_clusters = 3, the silhouette score is maximized, and the thickness of the silhouette plots is somewhat uniform. Hence, they clusters would be of similar sizes.
 
 ### Final results for K-mean Clustering
 
-Add Stuff Here
+When we cluster our entire feature data (X) we choose the optimal value of k to be 3, and this is based on the elbow method, the silhouette scores, and the silhouette plots. The code below is our final result for K-means clustering, visualizing 3 different clusters.
 
 ```{python}
 # Plotting clusters for best k = 3 (as per silhouette method)
@@ -317,7 +371,7 @@ sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", da
 sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="kmeans_final_labels", data=df, ax=ax[1]).set(title='Final K-Means Clustering Plot')
 ```
 
-## Main DBSCAN
+## Perform DBSCAN Clustering
 
 ```{python}
 from sklearn.cluster import DBSCAN
@@ -390,6 +444,10 @@ print(
 print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels))
 ```
 
+The above information corresponds to the performance of the DBSCAN model we chose initially, with default hyper-parameter values. The silhouette score is -0.109, which signifies that the data points are not well clustered to their own cluster, in comparison to other clusters. However, the model generates 3 clusters, which is the same result yielded by K-means clustering which was performed above.
+
+Now, we will try to visualize the silhouette scores along with the number of clusters.
+
 ```{python}
 sns.lineplot(data=sil_df, x="minimum_samples", y="silhouette_score")
 ```
@@ -398,7 +456,7 @@ sns.lineplot(data=sil_df, x="minimum_samples", y="silhouette_score")
 sns.lineplot(data=sil_df, x="number_of_clusters", y="silhouette_score")
 ```
 
-## Hyper-parameter tuning
+### Hyper-parameter tuning
 
 
 ```{python}
@@ -441,28 +499,23 @@ plt.margins(0.2)
 plt.subplots_adjust(bottom=0.15)
 plt.show()
 ```
-## Perform DBSCAN
+
+A larger epsilon value produces broader clusters (encompassing more data points), and a smaller epsilon will build smaller clusters. Our silhouette plot does not show much variation in the scores based on different eps values and min_samples values. Therefore, we will choose the hyper-parameters eps = 1, and min_samples = 5, as we prefer smaller values such that we have only a small fraction of data points within the epsilon distance from each other.
+
+
+### Final Results for DBSCAN
 
 ```{python}
-# perform DBSCAN clustering. use the eps and min_samples parameters to find the optimal number of clusters. plot the number of clusters vs the silhouette score. Suggest the optimal number of clusters based on the plot.
-from sklearn.cluster import DBSCAN
-
-X = df_cluster
-model = DBSCAN(eps=0.5, min_samples=5) 
+model = DBSCAN(eps=1, min_samples=5) # best hyper-parameter values
 model.fit(X)
 y_pred = model.fit_predict(X)
 labels_DB = model.labels_
-#print(labels_DB)
-```
 
-
-```{python}
-df['DBSCAN_labels'] = labels_DB
+df['DBSCAN_final_labels'] = labels_DB
 
 fig, ax = plt.subplots(1,2, figsize=(10,5))
-sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
-sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="DBSCAN_labels", data=df[df['DBSCAN_labels'] != -1] , ax=ax[1]).set(title='DBSCAN Clustering Plot') # removing label = -1 because it corresponds to noise
-
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment and Fed Funds Rates by Recession (Y)')
+sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="DBSCAN_final_labels", data=df[df['DBSCAN_final_labels'] != -1 ], ax=ax[1]).set(title='Final DBSCAN Clustering Plot') # removing label = -1 because it corresponds to noise
 ```
 
 ```{python}
@@ -483,174 +536,22 @@ print(
     "Adjusted Mutual Information: %0.3f"
     % metrics.adjusted_mutual_info_score(labels_true, labels_DB)
 )
-#print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB))
+print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB))
 ```
-
-Add Stuff Here
-
-### Hyper-parameter tuning
-
-```{python}
-# Defining the list of hyperparameters to try
-eps_list=np.arange(start=0.01, stop=4, step=0.5)
-min_sample_list=np.arange(start=5, stop=10, step=1)
- 
-# Creating empty data frame to store the silhouette scores for each trials
-silhouette_scores_data=pd.DataFrame()
- 
-for eps_trial in eps_list:
-    for min_sample_trial in min_sample_list:
-        
-        # Generating DBSAN clusters
-        db = DBSCAN(eps=eps_trial, min_samples=min_sample_trial)
-        
-        if(len(np.unique(db.fit_predict(X)))>=2):
-            sil_score=silhouette_score(X, db.fit_predict(X))
-        else:
-            continue
-        trial_parameters="eps:" + str(eps_trial.round(1)) +", min_sample:" + str(min_sample_trial)
-        
-        silhouette_scores_data=silhouette_scores_data.append(pd.DataFrame(data=[[sil_score,trial_parameters]], columns=["score", "parameters"]))
- 
-# Finding out the best hyperparameters with highest Score
-#silhouette_scores_data.sort_values(by='score', ascending=False).head(10)
-```
-
-```{python}
-#fig, ax = plt.subplots()
-#sns.lineplot(x="parameters", y="score", data=silhouette_scores_data[silhouette_scores_data["score"] > 0.45].reset_index())  
-#ax.set(xlabel='Hyper-parameter (Epsilon & Min_Samples)', ylabel='Silhouette Score')
-#plt.xticks(rotation='vertical')
-# Pad margins so that markers don't get clipped by the axes
-#plt.margins(0.2)
-# Tweak spacing to prevent clipping of tick-labels
-#plt.subplots_adjust(bottom=0.15)
-#plt.show()
-```
-
-Add Stuff Here
-
-### Final Results for DBSCAN
-
-```{python}
-model = DBSCAN(eps=3.5, min_samples=8) # best hyper-parameter values
-model.fit(X)
-y_pred = model.fit_predict(X)
-labels_DB = model.labels_
-
-df['DBSCAN_final_labels'] = labels_DB
-
-fig, ax = plt.subplots(1,2, figsize=(10,5))
-sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax[0]).set(title='Unemployment Rate and Federal Funds Rate by Recession')
-sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="DBSCAN_final_labels", data=df[df['DBSCAN_final_labels'] != -1], ax=ax[1]).set(title='Final DBSCAN Clustering Plot') # removing label = -1 because it corresponds to noise
-```
-
-```{python}
-# Number of clusters in labels, ignoring noise if present.
-""" import sklearn.metrics as metrics
-from sklearn.metrics import homogeneity_score, completeness_score, v_measure_score, adjusted_rand_score
-n_clusters_ = len(set(labels_DB)) - (1 if -1 in labels_DB else 0)
-n_noise_ = list(labels_DB).count(-1)
-labels_true = y
-
-print("Estimated number of clusters: %d" % n_clusters_)
-print("Estimated number of noise points: %d" % n_noise_)
-print("Homogeneity: %0.3f" % metrics.homogeneity_score(labels_true, labels_DB))
-print("Completeness: %0.3f" % metrics.completeness_score(labels_true, labels_DB))
-print("V-measure: %0.3f" % metrics.v_measure_score(labels_true, labels_DB))
-print("Adjusted Rand Index: %0.3f" % metrics.adjusted_rand_score(labels_true, labels_DB))
-print(
-    "Adjusted Mutual Information: %0.3f"
-    % metrics.adjusted_mutual_info_score(labels_true, labels_DB)
-)
-print("Silhouette Coefficient: %0.3f" % metrics.silhouette_score(X, labels_DB)) """
-```
-
-
-## Perform DBSCAN - 2
-
-```{python}
-from sklearn.cluster import DBSCAN
-from sklearn.metrics import silhouette_score
-
-scores = []
-nums = range(1, 10)
-num_clusters = []
-samples = range(1, 100)
-num_samples = []
-for i in nums:
-    for j in samples:
-        model = DBSCAN(eps=i, min_samples=j).fit(X)
-        labels_DB = model.labels_ 
-        try:
-            score = silhouette_score(X, labels_DB)
-            num_clusters.append(i)
-            scores.append(score)
-            num_samples.append(j)
-
-        except ValueError:
-            continue
-        
-
-sil_df = pd.DataFrame({"number_of_clusters":num_clusters, "minimum_samples":num_samples, "silhouette_score":scores})
-# sil_df.plot.scatter(x="minimum_samples", y="silhouette_score")
-sns.scatterplot(data=sil_df, x="minimum_samples", y="silhouette_score", hue="number_of_clusters")
-```
-
-```{python}
-import numpy as np
-from sklearn.cluster import DBSCAN
-from sklearn import metrics
-from sklearn.preprocessing import StandardScaler
-```
-
-```{python}
-sns.lineplot(data=sil_df, x="minimum_samples", y="silhouette_score")
-```
-
-```{python}
-sns.lineplot(data=sil_df, x="number_of_clusters", y="silhouette_score")
-```
-
-```{python}
-fig = plt.figure()
-ax = plt.axes(projection='3d')
-ax.scatter3D(sil_df["number_of_clusters"], sil_df["minimum_samples"], sil_df["silhouette_score"], cmap='Reds')
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
-```
-
-```{python}
-sil_df.sort_values(by="silhouette_score", axis=0, ascending=False)
-sil_df[sil_df["number_of_clusters"]>1]
-```
-
-```{python}
-model = DBSCAN(eps=2, min_samples=3).fit(X)
-labels_DB = model.labels_ 
-
-sns.scatterplot(x='unemployment_value', y='fed_funds_value', hue = labels_DB, data = df)
-```
-
-```{python}
-centers = [[1, 1], [-1, -1], [1, -1]]
-X = df_cluster
-labels_DB = model.labels_
-labels_true = y
-
-X = StandardScaler().fit_transform(X)
-```
-
-
-
 
 ## Agglomerative Clustering (Hierarchical clustering)
 
 ```{python}
 # Perform Agglomerative Clustering
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler 
 from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import AgglomerativeClustering
+import sklearn.metrics
+import sklearn.cluster
+
+X = df_cluster
+y = df['recession']
 
 model = AgglomerativeClustering(n_clusters=3, affinity='euclidean',linkage='ward').fit(X)
 labels = model.labels_
@@ -659,15 +560,12 @@ labels = model.labels_
 ### Plot Clusters
 
 ```{python}
-# create linkage for agglomerative clustering, and the dendrogram for the linkage. 
-
 Z = linkage(X, method='ward') # linkage computed using euclidean distance  
 dend = dendrogram(Z)
-plt.axhline(y=30000, color='r', linestyle='--', label='115')
-
+plt.axhline(y=30000, color='r', linestyle='--', label='30000')
 ```
 
-Add Stuff Here
+From the above dendogram, we set a threshold at value 30,000, and this cuts through the dendogram three times, giving us three clusters.
 
 ### Hyper-parameter Tuning
 
@@ -716,9 +614,9 @@ def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
 ```{python}
 def plot(X,color_vector):
     fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))
-    sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)
+    sns.scatterplot(x="unemployment_value", y="fed_funds_value", hue="recession", data=df, ax=ax1).set(title='Unemployment Rate and Federal Funds Rate by Recession')
     ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',
-    title='Unemployment Rate and Federal Funds Rate by Recession')
+    title='Unemployment Rate and Fed Funds Rate by Recession (Y)')
     ax1.grid()
     scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=color_vector, alpha=0.5) 
     ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',
@@ -730,94 +628,31 @@ def plot(X,color_vector):
     plt.show()
 ```
 
-### Single-linkage Agglomerative Clustering
-
 ```{python}
-""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)
-plot(X,opt_labels) """
+opt_labels=maximize_silhouette(X,algo="ag",nmax=7, i_plot=True)
+plot(X,opt_labels)
 ```
 
-Add Stuff Here
 
-### Complete-linkage Agglomerative Clustering
-
-```{python}
-# THIS WILL ITERATE OVER ONE HYPER-PARAMETER (GRID SEARCH) 
-# AND RETURN THE CLUSTER RESULT THAT OPTIMIZES THE SILHOUETTE SCORE
-def maximize_silhouette(X,algo="birch",nmax=20,i_plot=False):
-
-    # PARAM
-    i_print=False
-
-    #FORCE CONTIGUOUS
-    X=np.ascontiguousarray(X) 
-
-    # LOOP OVER HYPER-PARAM
-    params=[]; sil_scores=[]
-    sil_max=-10
-    for param in range(2,nmax+1):
-
-        if(algo=="ag"):
-            model = sklearn.cluster.AgglomerativeClustering(n_clusters=param, affinity="manhattan", linkage='complete').fit(X)
-            labels=model.labels_
-
-        try:
-            sil_scores.append(sklearn.metrics.silhouette_score(X,labels))
-            params.append(param)
-        except:
-            continue 
-
-        if(i_print): print(param,sil_scores[-1])
-        
-        if(sil_scores[-1]>sil_max):
-             opt_param=param
-             sil_max=sil_scores[-1]
-             opt_labels=labels
-
-    print("OPTIMAL PARAMETER =",opt_param)
-
-    if(i_plot):
-        fig, ax = plt.subplots()
-        ax.plot(params, sil_scores, "-o")  
-        ax.set(xlabel='N_Clusters', ylabel='Silhouette Score')
-        plt.show()
-
-    return opt_labels
-```
-
-```{python}
-""" opt_labels=maximize_silhouette(X,algo="ag",nmax=15, i_plot=True)
-plot(X,opt_labels) """
-```
-
-Add Stuff Here
-
-### Final Results for Agglomerative Clustering
-
-```{python}
-""" final_model = AgglomerativeClustering(n_clusters=2, linkage='single').fit(X)
-final_labels = final_model.labels_
-fig, [ax1, ax2] = plt.subplots(1,2, figsize=(10,5))
-sns.scatterplot(df["unemployment_value"], df["fed_funds_value"], hue=df["recession"], ax=ax1)
-ax1.set(xlabel='unemployment_value', ylabel='fed_funds_value',
-title='Unemployment Rate and Federal Funds Rate by Recession')
-ax1.grid()
-scatter2 = ax2.scatter(X['unemployment_value'], X['fed_funds_value'],c=final_labels, alpha=0.5) 
-ax2.set(xlabel='unemployment_value', ylabel='fed_funds_value',
-title='Agglomerative Clustering Plot')
-legend2 = ax2.legend(*scatter2.legend_elements(),
-                loc="lower right", title="Clusters")
-ax2.add_artist(legend2)
-ax2.grid()
-plt.show() """
-```
+Single-linkage uses the minimum of the distances between all observations of the two sets. For the above model, we also chose the affinity hyper-parameter, a metric used to compute the linkages, as cosine and found the the best number of clusters is five, as shown above in the first plot.
 
 ## Results
 
-Add Stuff Here
+We performed clustering using three different methods, namely K-means, DBSCAN, and Agglomerative Clustering. The final result of the K-means model was based on the outputs of both the silhouette method and the elbow method, in adddition to an analysis of the silhouette plots for various values of k. The elbow method conveyes that k = 3 was the best parameter, but the silhouette method then yielded a value for k = 2 to be optimal. However, when we dove deeper into this, the silhouette score plots showed us that the ideal k was k = 3, as the silhouette plots were relatively even, in addition to not having a significantly different silhouette score compared to when k = 2. 
+
+The DBSCAN model performed the worst of the 3 clustering models. The initial parameter values yielded a silhouette score of -0.109, which signified that the data points are not well clustered to their own cluster, in comparison to other clusters. While the model yielded the same number of clusters as the K-means clustering model, which was 3. Furthermore, after hyperparameter tuning and testing for various values for eps and min_samples, we were not able to find meaningful differences in silhouette scores, thus proving that the model was not strong to cluster our data points.
+
+Lastly, Agglomerative/Hierarchical clustering did a better job of clustering the feature data (X) than DBSCAN, but was still not as effective as K-means. By hyper-parameter turning in the Hierarchical clustering, we found our optimal paramter to be 5, yielding a silhouette score of ~0.15.
 
 ## Conclusion
 
-Add Stuff Here
+To wrap up the clutering methods, we found that the K-means model clustered the feature data (X) the best of the 3 methods. The DBSCAN clustering performed the worst, and was not able to cluster data well, and the Hierarchical clustering model performed the second best. The main takeaway from this set of models was that although these clustering models are simple and easy to execute, they can be highly powerful to generate accurate insights from data, particularly if the right model is accurately chosen. The number of data points is crucial to these models, as a high number of data points will make the model better cluster the overall data. Additionally, more numeric features would also helpef the model, and would have to led to not only more clusters being formed, but clusters of various sizes and densities which would yield even more insightful results and takeaways.
+
 
 ## References
+
+Bock, Tim. “What Is a Dendrogram?” Displayr, September 13, 2022. https://www.displayr.com/what-is-dendrogram/.
+
+Hashmi, Farukh. “How to Create Clusters Using DBSCAN in Python.” Thinking Neuron, November 27, 2021. https://thinkingneuron.com/how-to-create-clusters-using-dbscan-in-python/.
+
+“Demo of DBSCAN Clustering Algorithm.” scikit. Accessed November 12, 2022. https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html.
