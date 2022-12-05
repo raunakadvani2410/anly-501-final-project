@@ -1,0 +1,210 @@
+---
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-location: right
+---
+
+# Associative Rule Mining (ARM)
+
+## Introduction
+
+The page below will describe my associative rule mining analysis, which was conducted using data retrieved from the Twitter API.
+
+ARM, or Associative Rule Mining, is a critical tool in Data Science which aids in evaluating several business decisions. Data mining is the process of deriving trends, patterns, and useful information from a massive amount of data. The data mining process of discovering the rules that govern associations and causal objects between sets of items is known as Associative Rule Mining. It is useful in discovering relationships between databases that seem to be independent, thereby unveiling relationships in data that we didn't know previously existed.
+
+Associative Rule Mining is a technique which is used to identify frequent patterns, correlations, and associations in datasets found in a variety of databases, including relational databases, transcational databases, and other types of repositories. Associative Rule Mining, contrary to most data models, is appropriate for non-numeric, categorical data, and requires more than simple counting. Thus, given a set of transactions, the goal of ARM is to find the rules that predict the occurrence of a specific item, based on the occurrence of other items in the same dataset. 
+
+## Theory
+
+### Apriori Algorithm for ARM
+
+Several statistical algorithms have been developed to implement associative rule mining, and Apriori is one such algorithm which is used for ARM. In the following section, we will learn about the theory behind the Apriori algorithm, and later see its implementation in python using data extracted from a News API.
+
+There are three main components of the Apriori Algorithm:
+
+1. Support
+
+2. Confidence
+
+3. Lift
+
+#### Support
+
+Support refers to the default popularity of an item and can be calculated by finding the number of transactions containing a particular item, divided by the total number of transactions. Suppose, we wanted to evaluate the support for item X, we would calculate it as:
+
+Support(X) = (Transactions containing X)/(Total Transactions)
+
+#### Confidence
+
+Confidence refers to the likelihood that an item Y exists if an item X exists as well. It can be computed by finding the number of transactions where X and Y exist together, divided by the total number of transactions whihc contains X. Mathematically, it would be calculated as:
+
+Confidence(Y,X) = (Transactions containing both X and Y)/(Transactions containing X)
+
+#### Lift
+
+Lift(X,Y) refers to the increase in the ratio of prevalence of Y when A exists. Lift(X,Y) can be calculated by dividing Confidence(X,Y) divided by Support(Y). Mathematically, it can be represented as:
+
+Lift(X,Y) = (Confidence(X,Y))/(Support(Y))
+
+The concept of lift basically tells us the ratio of the likelihood of X and Y together in relation to the likelihood of just Y. A lift of 1 means that there is no association between X and Y. A lift which is greater than 1 tells as that X and Y are likely to exist together. Finally, a lift which is less than 1 tells us that X and Y are not likely to exist together.
+
+### Steps Involved in Apriori Algorithm
+
+For large sets of data, which are used in most cases in the field of Data Science, there can be hundreds of items and thus, several thousands of relationships between items using each possible combination of items. This process can be extrmeely slow due to the several thousands of combinations that exist, and thus, some steps need to be performed to speed up this process of conducting the Apriori Algorithm:
+
+1. Compute the support for each individual item
+
+2. Decide the support threshold
+
+3. Select the frequent items
+
+4. Find the support of the frequent items
+
+5. Repeat for larger datasets
+
+6. Generate association rules and compute confidence
+
+7. Compute lift
+
+## Code
+
+```{python}
+# Imports
+import nltk
+import string
+from nltk.stem import WordNetLemmatizer
+from nltk.stem import PorterStemmer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.sentiment import SentimentIntensityAnalyzer
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from apyori import apriori
+import networkx as nx 
+import warnings
+nltk.download('stopwords')
+nltk.download('vader_lexicon')
+
+warnings.filterwarnings("ignore")
+
+```
+
+```{python}
+import os
+os.chdir('/Users/raunakadvani/anly-501-project-raunakadvani2410/501-project-website/pages')
+```
+
+```{python}
+news_df = pd.read_csv('../../data/clean-data/news_clean.csv')
+df = news_df.drop(['Unnamed: 0', 'sentiment_rating', 'label'], axis = 1)
+df = df.rename(columns={'Content_Lemmatized_Sentiment_Analysis': 'final_news'})
+```
+
+```{python}
+df.head(5) # visualise first 5 rows
+```
+
+```{python}
+# USER PARAM
+input_path          =   df
+compute_sentiment   =   True        
+sentiment           =   []          # average sentiment of each chunk of text 
+ave_window_size     =   250         # size of scanning window for moving average
+                    
+
+# OUTPUT FILE
+output='transactions.txt'
+if os.path.exists(output): os.remove(output)
+
+# INITIALIZE
+lemmatizer  =   WordNetLemmatizer()
+ps          =   PorterStemmer()
+sia         =   SentimentIntensityAnalyzer()
+
+# ADD MORE
+stopwords   =   stopwords.words('english')
+add=['mr','mrs','wa','dr','said','back','could','one','looked','like','know','around','dont']
+for sp in add: stopwords.append(sp)
+
+def read_and_clean(path,START=0,STOP=-1):
+    
+    global sentiment
+
+    sentences =  []
+    for sentence in path['df']:
+        sentences.append(sentence) 
+
+    print("NUMBER OF SENTENCES FOUND:",len(sentences));
+
+    # CLEAN AND LEMMATIZE
+    keep='0123456789abcdefghijklmnopqrstuvwxy'
+
+    new_sentences=[];vocabulary=[]
+    
+    for sentence in sentences:
+        new_sentence=''
+
+        # REBUILD LEMMATIZED SENTENCE
+        for word in sentence.split():
+            
+            # ONLY KEEP CHAR IN "keep"
+            tmp2=''
+            for char in word: 
+                if(char in keep): 
+                    tmp2=tmp2+char
+                else:
+                    tmp2=tmp2+' '
+            word=tmp2
+
+            #-----------------------
+            # LEMMATIZE THE WORDS
+            #-----------------------
+
+            new_word = lemmatizer.lemmatize(word)
+
+            # REMOVE WHITE SPACES
+            new_word=new_word.replace(' ', '')
+
+            # BUILD NEW SENTENCE BACK UP
+            if new_word not in stopwords:
+                if new_sentence=='':
+                    new_sentence=new_word
+                else:
+                    new_sentence=new_sentence+','+new_word
+                if new_word not in vocabulary: vocabulary.append(new_word)
+
+        # SAVE (LIST OF LISTS)      
+        new_sentences.append(new_sentence.split(","))
+        
+        # SIA
+        if(compute_sentiment):
+            #-----------------------
+            # USE NLTK TO DO SENTIMENT ANALYSIS 
+            #-----------------------
+
+            text1=new_sentence.replace(',', ' ')
+            ss = sia.polarity_scores(text1)
+            sentiment.append([ss['neg'], ss['neu'], ss['pos'], ss['compound']])
+            
+        # SAVE SENTENCE TO OUTPUT FILE
+        if(len(new_sentence.split(','))>2):
+            f = open(output, "a")
+            f.write(new_sentence+"\n")
+            f.close()
+
+    sentiment=np.array(sentiment)
+    print("TOTAL AVERAGE SENTIMENT: ",np.mean(sentiment,axis=0))
+    print("VOCAB LENGTH: ",len(vocabulary))
+    return new_sentences
+```
+
+```{python}
+transactions = read_and_clean(input_path, 400, -400)
+texT = pd.DataFrame(transactions)
+texT.head()
+```
