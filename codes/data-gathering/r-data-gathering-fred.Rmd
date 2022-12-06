@@ -1,17 +1,20 @@
 ---
-title: "r-data-gathering-api"
+title: "Data Gathering in R"
 author: "Raunak Advani"
 date: "2022-10-01"
 output: html_document
 ---
 
+# Data Gathering using FRED API
+
 ```{r setup}
 library(fredr)
-api.key = "90c777432f754129f7ca266e2ea35aab"
+api.key = "90c777432f754129f7ca266e2ea35aab" # import API library and set API key
 fredr_set_key(api.key)
 
 ```
 
+Now that we have set up our API, we can choose the relevant information that we would like to extract.
 
 ```{r cars}
 

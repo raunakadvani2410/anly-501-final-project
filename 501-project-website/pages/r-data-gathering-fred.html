@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Raunak Advani" />
 
+<meta name="date" content="2022-10-01" />
 
-<title>Data Gathering</title>
+<title>Data Gathering in R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -361,83 +363,320 @@ pre code {
 
 
 
+<h1 class="title toc-ignore">Data Gathering in R</h1>
+<h4 class="author">Raunak Advani</h4>
+<h4 class="date">2022-10-01</h4>
 
 </div>
 
 
-<div id="Data Gathering" class="section level1">
-<h1>Data Gathering</h1>
-<hr class="rounded">
-<p>
+<div id="data-gathering-using-fred-api" class="section level1">
+<h1>Data Gathering using FRED API</h1>
+<pre class="r"><code>library(fredr)
+api.key = &quot;90c777432f754129f7ca266e2ea35aab&quot; # import API library and set API key
+fredr_set_key(api.key)</code></pre>
+<p>Now that we have set up our API, we can choose the relevant
+information that we would like to extract.</p>
+<pre class="r"><code>unemp_df &lt;- as.data.frame(fredr(  # get data on unemployment rate
+  series_id = &quot;UNRATE&quot;,
+  observation_start = as.Date(&quot;1990-01-01&quot;),
+  observation_end = as.Date(&quot;2022-10-01&quot;),
+  frequency = &quot;q&quot;
+))
+write.csv(unemp_df, &quot;../../data/raw-data/Fredapi_raw_unemployment.csv&quot;)</code></pre>
+<pre class="r"><code>unemp_df</code></pre>
+<pre><code>##           date series_id value realtime_start realtime_end
+## 1   1990-01-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 2   1990-04-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 3   1990-07-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 4   1990-10-01    UNRATE   6.1     2022-12-06   2022-12-06
+## 5   1991-01-01    UNRATE   6.6     2022-12-06   2022-12-06
+## 6   1991-04-01    UNRATE   6.8     2022-12-06   2022-12-06
+## 7   1991-07-01    UNRATE   6.9     2022-12-06   2022-12-06
+## 8   1991-10-01    UNRATE   7.1     2022-12-06   2022-12-06
+## 9   1992-01-01    UNRATE   7.4     2022-12-06   2022-12-06
+## 10  1992-04-01    UNRATE   7.6     2022-12-06   2022-12-06
+## 11  1992-07-01    UNRATE   7.6     2022-12-06   2022-12-06
+## 12  1992-10-01    UNRATE   7.4     2022-12-06   2022-12-06
+## 13  1993-01-01    UNRATE   7.1     2022-12-06   2022-12-06
+## 14  1993-04-01    UNRATE   7.1     2022-12-06   2022-12-06
+## 15  1993-07-01    UNRATE   6.8     2022-12-06   2022-12-06
+## 16  1993-10-01    UNRATE   6.6     2022-12-06   2022-12-06
+## 17  1994-01-01    UNRATE   6.6     2022-12-06   2022-12-06
+## 18  1994-04-01    UNRATE   6.2     2022-12-06   2022-12-06
+## 19  1994-07-01    UNRATE   6.0     2022-12-06   2022-12-06
+## 20  1994-10-01    UNRATE   5.6     2022-12-06   2022-12-06
+## 21  1995-01-01    UNRATE   5.5     2022-12-06   2022-12-06
+## 22  1995-04-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 23  1995-07-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 24  1995-10-01    UNRATE   5.6     2022-12-06   2022-12-06
+## 25  1996-01-01    UNRATE   5.5     2022-12-06   2022-12-06
+## 26  1996-04-01    UNRATE   5.5     2022-12-06   2022-12-06
+## 27  1996-07-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 28  1996-10-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 29  1997-01-01    UNRATE   5.2     2022-12-06   2022-12-06
+## 30  1997-04-01    UNRATE   5.0     2022-12-06   2022-12-06
+## 31  1997-07-01    UNRATE   4.9     2022-12-06   2022-12-06
+## 32  1997-10-01    UNRATE   4.7     2022-12-06   2022-12-06
+## 33  1998-01-01    UNRATE   4.6     2022-12-06   2022-12-06
+## 34  1998-04-01    UNRATE   4.4     2022-12-06   2022-12-06
+## 35  1998-07-01    UNRATE   4.5     2022-12-06   2022-12-06
+## 36  1998-10-01    UNRATE   4.4     2022-12-06   2022-12-06
+## 37  1999-01-01    UNRATE   4.3     2022-12-06   2022-12-06
+## 38  1999-04-01    UNRATE   4.3     2022-12-06   2022-12-06
+## 39  1999-07-01    UNRATE   4.2     2022-12-06   2022-12-06
+## 40  1999-10-01    UNRATE   4.1     2022-12-06   2022-12-06
+## 41  2000-01-01    UNRATE   4.0     2022-12-06   2022-12-06
+## 42  2000-04-01    UNRATE   3.9     2022-12-06   2022-12-06
+## 43  2000-07-01    UNRATE   4.0     2022-12-06   2022-12-06
+## 44  2000-10-01    UNRATE   3.9     2022-12-06   2022-12-06
+## 45  2001-01-01    UNRATE   4.2     2022-12-06   2022-12-06
+## 46  2001-04-01    UNRATE   4.4     2022-12-06   2022-12-06
+## 47  2001-07-01    UNRATE   4.8     2022-12-06   2022-12-06
+## 48  2001-10-01    UNRATE   5.5     2022-12-06   2022-12-06
+## 49  2002-01-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 50  2002-04-01    UNRATE   5.8     2022-12-06   2022-12-06
+## 51  2002-07-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 52  2002-10-01    UNRATE   5.9     2022-12-06   2022-12-06
+## 53  2003-01-01    UNRATE   5.9     2022-12-06   2022-12-06
+## 54  2003-04-01    UNRATE   6.1     2022-12-06   2022-12-06
+## 55  2003-07-01    UNRATE   6.1     2022-12-06   2022-12-06
+## 56  2003-10-01    UNRATE   5.8     2022-12-06   2022-12-06
+## 57  2004-01-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 58  2004-04-01    UNRATE   5.6     2022-12-06   2022-12-06
+## 59  2004-07-01    UNRATE   5.4     2022-12-06   2022-12-06
+## 60  2004-10-01    UNRATE   5.4     2022-12-06   2022-12-06
+## 61  2005-01-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 62  2005-04-01    UNRATE   5.1     2022-12-06   2022-12-06
+## 63  2005-07-01    UNRATE   5.0     2022-12-06   2022-12-06
+## 64  2005-10-01    UNRATE   5.0     2022-12-06   2022-12-06
+## 65  2006-01-01    UNRATE   4.7     2022-12-06   2022-12-06
+## 66  2006-04-01    UNRATE   4.6     2022-12-06   2022-12-06
+## 67  2006-07-01    UNRATE   4.6     2022-12-06   2022-12-06
+## 68  2006-10-01    UNRATE   4.4     2022-12-06   2022-12-06
+## 69  2007-01-01    UNRATE   4.5     2022-12-06   2022-12-06
+## 70  2007-04-01    UNRATE   4.5     2022-12-06   2022-12-06
+## 71  2007-07-01    UNRATE   4.7     2022-12-06   2022-12-06
+## 72  2007-10-01    UNRATE   4.8     2022-12-06   2022-12-06
+## 73  2008-01-01    UNRATE   5.0     2022-12-06   2022-12-06
+## 74  2008-04-01    UNRATE   5.3     2022-12-06   2022-12-06
+## 75  2008-07-01    UNRATE   6.0     2022-12-06   2022-12-06
+## 76  2008-10-01    UNRATE   6.9     2022-12-06   2022-12-06
+## 77  2009-01-01    UNRATE   8.3     2022-12-06   2022-12-06
+## 78  2009-04-01    UNRATE   9.3     2022-12-06   2022-12-06
+## 79  2009-07-01    UNRATE   9.6     2022-12-06   2022-12-06
+## 80  2009-10-01    UNRATE   9.9     2022-12-06   2022-12-06
+## 81  2010-01-01    UNRATE   9.8     2022-12-06   2022-12-06
+## 82  2010-04-01    UNRATE   9.6     2022-12-06   2022-12-06
+## 83  2010-07-01    UNRATE   9.5     2022-12-06   2022-12-06
+## 84  2010-10-01    UNRATE   9.5     2022-12-06   2022-12-06
+## 85  2011-01-01    UNRATE   9.0     2022-12-06   2022-12-06
+## 86  2011-04-01    UNRATE   9.1     2022-12-06   2022-12-06
+## 87  2011-07-01    UNRATE   9.0     2022-12-06   2022-12-06
+## 88  2011-10-01    UNRATE   8.6     2022-12-06   2022-12-06
+## 89  2012-01-01    UNRATE   8.3     2022-12-06   2022-12-06
+## 90  2012-04-01    UNRATE   8.2     2022-12-06   2022-12-06
+## 91  2012-07-01    UNRATE   8.0     2022-12-06   2022-12-06
+## 92  2012-10-01    UNRATE   7.8     2022-12-06   2022-12-06
+## 93  2013-01-01    UNRATE   7.7     2022-12-06   2022-12-06
+## 94  2013-04-01    UNRATE   7.5     2022-12-06   2022-12-06
+## 95  2013-07-01    UNRATE   7.2     2022-12-06   2022-12-06
+## 96  2013-10-01    UNRATE   6.9     2022-12-06   2022-12-06
+## 97  2014-01-01    UNRATE   6.7     2022-12-06   2022-12-06
+## 98  2014-04-01    UNRATE   6.2     2022-12-06   2022-12-06
+## 99  2014-07-01    UNRATE   6.1     2022-12-06   2022-12-06
+## 100 2014-10-01    UNRATE   5.7     2022-12-06   2022-12-06
+## 101 2015-01-01    UNRATE   5.5     2022-12-06   2022-12-06
+## 102 2015-04-01    UNRATE   5.4     2022-12-06   2022-12-06
+## 103 2015-07-01    UNRATE   5.1     2022-12-06   2022-12-06
+## 104 2015-10-01    UNRATE   5.0     2022-12-06   2022-12-06
+## 105 2016-01-01    UNRATE   4.9     2022-12-06   2022-12-06
+## 106 2016-04-01    UNRATE   4.9     2022-12-06   2022-12-06
+## 107 2016-07-01    UNRATE   4.9     2022-12-06   2022-12-06
+## 108 2016-10-01    UNRATE   4.8     2022-12-06   2022-12-06
+## 109 2017-01-01    UNRATE   4.6     2022-12-06   2022-12-06
+## 110 2017-04-01    UNRATE   4.4     2022-12-06   2022-12-06
+## 111 2017-07-01    UNRATE   4.3     2022-12-06   2022-12-06
+## 112 2017-10-01    UNRATE   4.2     2022-12-06   2022-12-06
+## 113 2018-01-01    UNRATE   4.0     2022-12-06   2022-12-06
+## 114 2018-04-01    UNRATE   3.9     2022-12-06   2022-12-06
+## 115 2018-07-01    UNRATE   3.8     2022-12-06   2022-12-06
+## 116 2018-10-01    UNRATE   3.8     2022-12-06   2022-12-06
+## 117 2019-01-01    UNRATE   3.9     2022-12-06   2022-12-06
+## 118 2019-04-01    UNRATE   3.6     2022-12-06   2022-12-06
+## 119 2019-07-01    UNRATE   3.6     2022-12-06   2022-12-06
+## 120 2019-10-01    UNRATE   3.6     2022-12-06   2022-12-06
+## 121 2020-01-01    UNRATE   3.8     2022-12-06   2022-12-06
+## 122 2020-04-01    UNRATE  13.0     2022-12-06   2022-12-06
+## 123 2020-07-01    UNRATE   8.8     2022-12-06   2022-12-06
+## 124 2020-10-01    UNRATE   6.8     2022-12-06   2022-12-06
+## 125 2021-01-01    UNRATE   6.2     2022-12-06   2022-12-06
+## 126 2021-04-01    UNRATE   5.9     2022-12-06   2022-12-06
+## 127 2021-07-01    UNRATE   5.1     2022-12-06   2022-12-06
+## 128 2021-10-01    UNRATE   4.2     2022-12-06   2022-12-06
+## 129 2022-01-01    UNRATE   3.8     2022-12-06   2022-12-06
+## 130 2022-04-01    UNRATE   3.6     2022-12-06   2022-12-06
+## 131 2022-07-01    UNRATE   3.6     2022-12-06   2022-12-06
+## 132 2022-10-01    UNRATE    NA     2022-12-06   2022-12-06</code></pre>
+<pre class="r"><code>fed_funds_df &lt;- as.data.frame(fredr(
+  series_id = &quot;FEDFUNDS&quot;, # get data on interest rates
+  observation_start = as.Date(&quot;1990-01-01&quot;),
+  observation_end = as.Date(&quot;2022-10-01&quot;),
+  frequency = &quot;q&quot;
+))
 
-  <br>
-  <img src = "../images/api.png">
+write.csv(fed_funds_df, &quot;../../data/raw-data/Fredapi_raw_fedfunds.csv&quot;)</code></pre>
+<pre class="r"><code>fed_funds_df</code></pre>
+<pre><code>##           date series_id value realtime_start realtime_end
+## 1   1990-01-01  FEDFUNDS  8.25     2022-12-06   2022-12-06
+## 2   1990-04-01  FEDFUNDS  8.24     2022-12-06   2022-12-06
+## 3   1990-07-01  FEDFUNDS  8.16     2022-12-06   2022-12-06
+## 4   1990-10-01  FEDFUNDS  7.74     2022-12-06   2022-12-06
+## 5   1991-01-01  FEDFUNDS  6.43     2022-12-06   2022-12-06
+## 6   1991-04-01  FEDFUNDS  5.86     2022-12-06   2022-12-06
+## 7   1991-07-01  FEDFUNDS  5.64     2022-12-06   2022-12-06
+## 8   1991-10-01  FEDFUNDS  4.82     2022-12-06   2022-12-06
+## 9   1992-01-01  FEDFUNDS  4.02     2022-12-06   2022-12-06
+## 10  1992-04-01  FEDFUNDS  3.77     2022-12-06   2022-12-06
+## 11  1992-07-01  FEDFUNDS  3.26     2022-12-06   2022-12-06
+## 12  1992-10-01  FEDFUNDS  3.04     2022-12-06   2022-12-06
+## 13  1993-01-01  FEDFUNDS  3.04     2022-12-06   2022-12-06
+## 14  1993-04-01  FEDFUNDS  3.00     2022-12-06   2022-12-06
+## 15  1993-07-01  FEDFUNDS  3.06     2022-12-06   2022-12-06
+## 16  1993-10-01  FEDFUNDS  2.99     2022-12-06   2022-12-06
+## 17  1994-01-01  FEDFUNDS  3.21     2022-12-06   2022-12-06
+## 18  1994-04-01  FEDFUNDS  3.94     2022-12-06   2022-12-06
+## 19  1994-07-01  FEDFUNDS  4.49     2022-12-06   2022-12-06
+## 20  1994-10-01  FEDFUNDS  5.17     2022-12-06   2022-12-06
+## 21  1995-01-01  FEDFUNDS  5.81     2022-12-06   2022-12-06
+## 22  1995-04-01  FEDFUNDS  6.02     2022-12-06   2022-12-06
+## 23  1995-07-01  FEDFUNDS  5.80     2022-12-06   2022-12-06
+## 24  1995-10-01  FEDFUNDS  5.72     2022-12-06   2022-12-06
+## 25  1996-01-01  FEDFUNDS  5.36     2022-12-06   2022-12-06
+## 26  1996-04-01  FEDFUNDS  5.24     2022-12-06   2022-12-06
+## 27  1996-07-01  FEDFUNDS  5.31     2022-12-06   2022-12-06
+## 28  1996-10-01  FEDFUNDS  5.28     2022-12-06   2022-12-06
+## 29  1997-01-01  FEDFUNDS  5.28     2022-12-06   2022-12-06
+## 30  1997-04-01  FEDFUNDS  5.52     2022-12-06   2022-12-06
+## 31  1997-07-01  FEDFUNDS  5.53     2022-12-06   2022-12-06
+## 32  1997-10-01  FEDFUNDS  5.51     2022-12-06   2022-12-06
+## 33  1998-01-01  FEDFUNDS  5.52     2022-12-06   2022-12-06
+## 34  1998-04-01  FEDFUNDS  5.50     2022-12-06   2022-12-06
+## 35  1998-07-01  FEDFUNDS  5.53     2022-12-06   2022-12-06
+## 36  1998-10-01  FEDFUNDS  4.86     2022-12-06   2022-12-06
+## 37  1999-01-01  FEDFUNDS  4.73     2022-12-06   2022-12-06
+## 38  1999-04-01  FEDFUNDS  4.75     2022-12-06   2022-12-06
+## 39  1999-07-01  FEDFUNDS  5.09     2022-12-06   2022-12-06
+## 40  1999-10-01  FEDFUNDS  5.31     2022-12-06   2022-12-06
+## 41  2000-01-01  FEDFUNDS  5.68     2022-12-06   2022-12-06
+## 42  2000-04-01  FEDFUNDS  6.27     2022-12-06   2022-12-06
+## 43  2000-07-01  FEDFUNDS  6.52     2022-12-06   2022-12-06
+## 44  2000-10-01  FEDFUNDS  6.47     2022-12-06   2022-12-06
+## 45  2001-01-01  FEDFUNDS  5.59     2022-12-06   2022-12-06
+## 46  2001-04-01  FEDFUNDS  4.33     2022-12-06   2022-12-06
+## 47  2001-07-01  FEDFUNDS  3.50     2022-12-06   2022-12-06
+## 48  2001-10-01  FEDFUNDS  2.13     2022-12-06   2022-12-06
+## 49  2002-01-01  FEDFUNDS  1.73     2022-12-06   2022-12-06
+## 50  2002-04-01  FEDFUNDS  1.75     2022-12-06   2022-12-06
+## 51  2002-07-01  FEDFUNDS  1.74     2022-12-06   2022-12-06
+## 52  2002-10-01  FEDFUNDS  1.44     2022-12-06   2022-12-06
+## 53  2003-01-01  FEDFUNDS  1.25     2022-12-06   2022-12-06
+## 54  2003-04-01  FEDFUNDS  1.25     2022-12-06   2022-12-06
+## 55  2003-07-01  FEDFUNDS  1.02     2022-12-06   2022-12-06
+## 56  2003-10-01  FEDFUNDS  1.00     2022-12-06   2022-12-06
+## 57  2004-01-01  FEDFUNDS  1.00     2022-12-06   2022-12-06
+## 58  2004-04-01  FEDFUNDS  1.01     2022-12-06   2022-12-06
+## 59  2004-07-01  FEDFUNDS  1.43     2022-12-06   2022-12-06
+## 60  2004-10-01  FEDFUNDS  1.95     2022-12-06   2022-12-06
+## 61  2005-01-01  FEDFUNDS  2.47     2022-12-06   2022-12-06
+## 62  2005-04-01  FEDFUNDS  2.94     2022-12-06   2022-12-06
+## 63  2005-07-01  FEDFUNDS  3.46     2022-12-06   2022-12-06
+## 64  2005-10-01  FEDFUNDS  3.98     2022-12-06   2022-12-06
+## 65  2006-01-01  FEDFUNDS  4.46     2022-12-06   2022-12-06
+## 66  2006-04-01  FEDFUNDS  4.91     2022-12-06   2022-12-06
+## 67  2006-07-01  FEDFUNDS  5.25     2022-12-06   2022-12-06
+## 68  2006-10-01  FEDFUNDS  5.25     2022-12-06   2022-12-06
+## 69  2007-01-01  FEDFUNDS  5.26     2022-12-06   2022-12-06
+## 70  2007-04-01  FEDFUNDS  5.25     2022-12-06   2022-12-06
+## 71  2007-07-01  FEDFUNDS  5.07     2022-12-06   2022-12-06
+## 72  2007-10-01  FEDFUNDS  4.50     2022-12-06   2022-12-06
+## 73  2008-01-01  FEDFUNDS  3.18     2022-12-06   2022-12-06
+## 74  2008-04-01  FEDFUNDS  2.09     2022-12-06   2022-12-06
+## 75  2008-07-01  FEDFUNDS  1.94     2022-12-06   2022-12-06
+## 76  2008-10-01  FEDFUNDS  0.51     2022-12-06   2022-12-06
+## 77  2009-01-01  FEDFUNDS  0.18     2022-12-06   2022-12-06
+## 78  2009-04-01  FEDFUNDS  0.18     2022-12-06   2022-12-06
+## 79  2009-07-01  FEDFUNDS  0.16     2022-12-06   2022-12-06
+## 80  2009-10-01  FEDFUNDS  0.12     2022-12-06   2022-12-06
+## 81  2010-01-01  FEDFUNDS  0.13     2022-12-06   2022-12-06
+## 82  2010-04-01  FEDFUNDS  0.19     2022-12-06   2022-12-06
+## 83  2010-07-01  FEDFUNDS  0.19     2022-12-06   2022-12-06
+## 84  2010-10-01  FEDFUNDS  0.19     2022-12-06   2022-12-06
+## 85  2011-01-01  FEDFUNDS  0.16     2022-12-06   2022-12-06
+## 86  2011-04-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 87  2011-07-01  FEDFUNDS  0.08     2022-12-06   2022-12-06
+## 88  2011-10-01  FEDFUNDS  0.07     2022-12-06   2022-12-06
+## 89  2012-01-01  FEDFUNDS  0.10     2022-12-06   2022-12-06
+## 90  2012-04-01  FEDFUNDS  0.15     2022-12-06   2022-12-06
+## 91  2012-07-01  FEDFUNDS  0.14     2022-12-06   2022-12-06
+## 92  2012-10-01  FEDFUNDS  0.16     2022-12-06   2022-12-06
+## 93  2013-01-01  FEDFUNDS  0.14     2022-12-06   2022-12-06
+## 94  2013-04-01  FEDFUNDS  0.12     2022-12-06   2022-12-06
+## 95  2013-07-01  FEDFUNDS  0.08     2022-12-06   2022-12-06
+## 96  2013-10-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 97  2014-01-01  FEDFUNDS  0.07     2022-12-06   2022-12-06
+## 98  2014-04-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 99  2014-07-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 100 2014-10-01  FEDFUNDS  0.10     2022-12-06   2022-12-06
+## 101 2015-01-01  FEDFUNDS  0.11     2022-12-06   2022-12-06
+## 102 2015-04-01  FEDFUNDS  0.12     2022-12-06   2022-12-06
+## 103 2015-07-01  FEDFUNDS  0.14     2022-12-06   2022-12-06
+## 104 2015-10-01  FEDFUNDS  0.16     2022-12-06   2022-12-06
+## 105 2016-01-01  FEDFUNDS  0.36     2022-12-06   2022-12-06
+## 106 2016-04-01  FEDFUNDS  0.37     2022-12-06   2022-12-06
+## 107 2016-07-01  FEDFUNDS  0.40     2022-12-06   2022-12-06
+## 108 2016-10-01  FEDFUNDS  0.45     2022-12-06   2022-12-06
+## 109 2017-01-01  FEDFUNDS  0.70     2022-12-06   2022-12-06
+## 110 2017-04-01  FEDFUNDS  0.95     2022-12-06   2022-12-06
+## 111 2017-07-01  FEDFUNDS  1.15     2022-12-06   2022-12-06
+## 112 2017-10-01  FEDFUNDS  1.20     2022-12-06   2022-12-06
+## 113 2018-01-01  FEDFUNDS  1.45     2022-12-06   2022-12-06
+## 114 2018-04-01  FEDFUNDS  1.74     2022-12-06   2022-12-06
+## 115 2018-07-01  FEDFUNDS  1.92     2022-12-06   2022-12-06
+## 116 2018-10-01  FEDFUNDS  2.22     2022-12-06   2022-12-06
+## 117 2019-01-01  FEDFUNDS  2.40     2022-12-06   2022-12-06
+## 118 2019-04-01  FEDFUNDS  2.40     2022-12-06   2022-12-06
+## 119 2019-07-01  FEDFUNDS  2.19     2022-12-06   2022-12-06
+## 120 2019-10-01  FEDFUNDS  1.64     2022-12-06   2022-12-06
+## 121 2020-01-01  FEDFUNDS  1.26     2022-12-06   2022-12-06
+## 122 2020-04-01  FEDFUNDS  0.06     2022-12-06   2022-12-06
+## 123 2020-07-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 124 2020-10-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 125 2021-01-01  FEDFUNDS  0.08     2022-12-06   2022-12-06
+## 126 2021-04-01  FEDFUNDS  0.07     2022-12-06   2022-12-06
+## 127 2021-07-01  FEDFUNDS  0.09     2022-12-06   2022-12-06
+## 128 2021-10-01  FEDFUNDS  0.08     2022-12-06   2022-12-06
+## 129 2022-01-01  FEDFUNDS  0.12     2022-12-06   2022-12-06
+## 130 2022-04-01  FEDFUNDS  0.77     2022-12-06   2022-12-06
+## 131 2022-07-01  FEDFUNDS  2.19     2022-12-06   2022-12-06
+## 132 2022-10-01  FEDFUNDS    NA     2022-12-06   2022-12-06</code></pre>
+<pre class="r"><code>gdp_df &lt;- as.data.frame(fredr(
+  series_id = &quot;GDP&quot;, # get data on gross gdp
+  observation_start = as.Date(&quot;1990-01-01&quot;),
+  observation_end = as.Date(&quot;2022-10-01&quot;)
+))
 
-<br>
-  
-<h2>Sources of Data</h2>
-<hr class="rounded">
-<ul>
-  <li><a href="https://newsapi.org/docs/client-libraries/python">News API</a></li>
-    <li><a href="https://fred.stlouisfed.org/docs/api/fred/">FRED (Federal Reserve Economic Data) API</a></li>
-      </ul>
+new_gdp &lt;- data.frame(date = c(&quot;2022-07-01&quot;), # 2022 Q2 GDP hasn&#39;t been announced, so predict using expected growth rate
+                      series_id = c(&quot;GDP&quot;),
+                      value = c(&quot;26965.372&quot;),
+                      realtime_start = c(&quot;2022-10-14&quot;),
+                      realtime_end = c(&quot;2022-10-14&quot;))
 
-
-
-<br>
-
-<h2>API</h2>
-<hr class="rounded">
-
-APIs, or <b> Application Program Interfaces</b>, are a set of definitions and protocols for building and integrating application software. Companies use APIs for internal tasks and commercial needs, and individual developers create multifunctional APIs for enthusiasts to retrieve several types of data.
-<br>
-<br>
-APIs let your item or administration speak with different items and administrations without realizing how they're executed. This can rearrange application advancement, setting aside time and cash. While you're planning new instruments and items — or overseeing existing ones — APIs give you adaptability; work on plan, organization, and use; and give valuable open doors to advancement.
-<br>
-<br>
-APIs are once in a while considered agreements, with documentation that addresses an understanding between parties: In the event that party 1 sends a remote solicitation organized a specific way, this is the way party 2's product will answer.Since APIs improve on how engineers coordinate new application parts into a current design, they help business and IT groups team up. Business needs frequently change rapidly in light of truly moving computerized markets, where new contenders can change an entire industry with a new application. To remain cutthroat, supporting the quick turn of events and organization of creative services is significant. Cloud-local application improvement is a recognizable method for speeding up, and it depends on interfacing a microservices application design through APIs.
-<br>
-<br>
-APIs are an improved on method for interfacing your own framework through cloud-local application improvement, yet they likewise permit you to impart your information to clients and other outer clients. Public APIs address special business esteem since they can rearrange and extend how you interface with your accomplices, as well as possibly adapt your information.
-
-<br>
-
-<br>
-  <img src = "../images/fred.png">
-
-
-<h2>Data Gathering Code</h2>
-<hr class="rounded">
-
-For this project, I gathered my data using two tools, both being APIs (Application Program Interfaces): News API and FRED API
-<br>
-The main use of News API is to search through every article published by over 80,000 news sources and blogs in the last 4 years. The News API allows a user to input specific news sources, tags, and even data ranges. Thus, I used the News API to retrieve news articles containing several economic lingo such as 'Recession,' 'Economy,' and 'GDP' in hopes of extracting valuable information regarding public sentiment about the economic environment in the US, and expectations regarding recessions. I used python to extract articles from the News API, and my code for the same can be found <a href = "python-data-gathering-api.html"> here </a>
-<br>
-<br>
-Next, the FRED (Federal Reserve Economic Data) API is the official API for the Federal Reserve, the central bank of the United States which tracks and states several important economic indicators such as GDP, unemployment, interest rates, and several others. I used the Federal Reserve's API to extract several record data to use for my analysis. Similar to the News API, the FRED API also allows to you specify date ranges for the data that you wish to extract. I used R to extract data from my FRED API, and the code can be found <a href = "r-data-gathering-fred.html"> here </a>
-</p>
-
+gdp_df &lt;- rbind(gdp_df, new_gdp) # merge with new dataframe
+write.csv(gdp_df, &quot;../../data/raw-data/Fredapi_raw_gdp.csv&quot;)</code></pre>
 </div>
 
-</h5>
-<br>
-<br>
-<p>
-  <h2>References</h2>
-  <hr class="rounded"> </p>
-  
-  1. "API Keys – What Is an API Key? | APILayer Blog". 2022-03-01. Retrieved 2022-11-15.
-<br>
-<br>
 
-  2. Bierhoff, Kevin (23 April 2009). "API Protocol Compliance in Object-Oriented Software" (PDF). CMU Institute for Software Research. Retrieved 29 October 2022.
-<br>
-<br>
-3. Parnin, Chris; Treude, Cristoph (May 2011). "Measuring API Documentation on the Web". Web2SE: 25–30. doi:10.1145/1984701.1984706. ISBN 9781450305952. S2CID 17751901.
-<br>
-<br>
-4. Reddy, Marathi (2011). API Design for C++. Elsevier Science. p. 1. ISBN 9780123850041.
-<br>
 
 
 </div>
