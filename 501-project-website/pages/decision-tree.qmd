@@ -1,0 +1,189 @@
+---
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-location: right
+---
+
+# Decision Tree in Python with Record Data
+
+A decision tree is a flowchart-like tree structure where an internal node represents feature(or attribute), the branch represents a decision rule, and each leaf node represents the outcome. The topmost node in a decision tree is known as the root node. It learns to partition on the basis of the attribute value. It partitions the tree in recursively manner call recursive partitioning. This flowchart-like structure helps you in decision making. It's visualization like a flowchart diagram which easily mimics the human level thinking. That is why decision trees are easy to understand and interpret.
+
+## Methods
+
+Before we begin modeling our Decision Tree Classifier, we shall test the record data on a random classifier, which is a baseline model, and output its accuracy, precision, and recall values. We shall use sklearn’s train-test split function to divide the data into an 80-20 train-test split respectively. Next, we shall employ the Decision Tree Classifier and compare its initial and hyperparameter turned performance with each other and with the random classifier.
+
+### Load Libraries and Cleaned Data
+
+```{python}
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
+from sklearn.model_selection import train_test_split # Import train_test_split function
+from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+import seaborn as sns 
+import matplotlib.pyplot as plt
+from sklearn import tree
+from IPython.display import Image
+import numpy as np
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix
+from numpy import transpose
+import os
+```
+
+```{python}
+os.chdir('/Users/raunakadvani/anly-501-project-raunakadvani2410/codes/decision_tree_py')
+econ_df = pd.read_csv("../../data/clean-data/Fredapi_clean.csv")
+econ_df
+```
+
+
+```{python}
+econ_df = econ_df.drop(['Unnamed: 0'], axis = 1)
+```
+
+### Explore the Pre-Processed Data using Correlation Heatmaps and Pairplots
+
+In our data, our dependent variable is recession. Recession contains two labels: 0 or 1. In the variable recession, a 0 represents a time period in which a recession is not present, while a 1 represents a time period during which a recession is present, thereby making it a binary variable. In terms of our independent variables, we have a few, including, the GDP value, the unemployment percentage at the particular time, and the federal funds value, or the interest rate charged by the Federal Reserves for overnight lending to other banks.
+
+```{python}
+corr = econ_df.corr()
+print(corr.shape)
+
+sns.set_theme(style="white")
+f, ax = plt.subplots(figsize=(20, 20))  # Set up the matplotlib figure
+cmap = sns.diverging_palette(230, 20, as_cmap=True) 	# Generate a custom diverging colormap
+# Draw the heatmap with the mask and correct aspect ratio
+sns.heatmap(corr,  cmap=cmap, vmin=-1, vmax=1, center=0,
+        square=True, linewidths=.5, cbar_kws={"shrink": .5})
+plt.show();
+```
+
+### Split the dataset into training and testing
+
+```{python}
+feature_cols = ['gdp_value','unemployment_value','fed_funds_value']
+X = econ_df[feature_cols]
+Y = econ_df.recession
+```
+
+```{python}
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42)
+```
+
+```{python}
+x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size = 0.2, random_state = 42)
+```
+
+```{python}
+from sklearn import tree
+model = tree.DecisionTreeClassifier()
+model = model.fit(x_train, y_train)
+```
+
+```{python}
+yp_train = model.predict(x_train)
+yp_test = model.predict(x_test)
+```
+
+### Evaluate Initial Decision Tree Model
+```{python}
+def confusion_plot(y_data, y_pred):
+    cm = confusion_matrix(y_data, y_pred)
+    print('ACCURACY: {:.2f}'.format(accuracy_score(y_data, y_pred)))
+    print('NEGATIVE RECALL (Y=0): {:.2f}'.format(recall_score(y_data, y_pred, pos_label=0)))
+    print('NEGATIVE PRECISION (Y=0): {:.2f}'.format(precision_score(y_data, y_pred, pos_label=0)))
+    print('POSITIVE RECALL (Y=1): {:.2f}'.format(recall_score(y_data, y_pred, pos_label=0)))
+    print('POSITIVE PRECISION (Y=1): {:.2f}'.format(precision_score(y_data, y_pred, pos_label=1)))
+    print(cm)
+    sns.heatmap(cm, annot=True, fmt='d')
+    plt.show()
+```
+
+```{python}
+print("------TRAINING------")
+confusion_plot(y_train,yp_train)
+print("------TEST------")
+confusion_plot(y_test,yp_test)
+```
+
+The initial Decision Tree outputted a 100% on all metrics on the training data and an 89% accuracy on the test data. This is a case of major overfitting on the training data, as the the Decision Tree outputs a highly complex tree of several child nodes to learn the training data as best as possible. However, this led to it not generalizing well on unseen data, which is why we see a significantly lower accuracy on the test set. Therefore, we shall employ hyperparameter tuning for the Decision Tree to generalize better on unseen data and further improve upon our model
+
+### Visualize the Decision Tree
+
+```{python}
+def plot_tree(model,X,Y):
+    plt.figure(figsize = (20,20))
+    tree.plot_tree(model, filled = True, feature_names=X.columns, class_names=Y.name)
+    plt.show()
+
+plot_tree(model, x_train, y_train)
+```
+
+### Hyper-parameter Tuning
+
+The “max_depth” hyper-parameter lets us control the number of layers in our tree. The leaf nodes of the Decision Tree do not split the data any further. Therefore, the “min_samples_leaf” hyper-parameter lets us control the classification for examples that end up in that node. We shall iterate over “max_depth” and “min_samples_leaf” as well as change the criterions, including gini and entropy, of judging the best splits to try to find the set of hyper-parameters with the lowest training AND test error.
+
+```{python}
+test_results=[]
+train_results=[]
+
+for num_layer in range(1,20):
+    model = tree.DecisionTreeClassifier(max_depth=num_layer)
+    model = model.fit(x_train, y_train)
+
+    yp_train=model.predict(x_train)
+    yp_test=model.predict(x_test)
+
+    test_results.append([num_layer,accuracy_score(y_test, yp_test),recall_score(y_test, yp_test,pos_label=0),recall_score(y_test, yp_test,pos_label=1)])
+    train_results.append([num_layer,accuracy_score(y_train, yp_train),recall_score(y_train, yp_train,pos_label=0),recall_score(y_train, yp_train,pos_label=1)])
+```
+
+```{python}
+plt.plot([x[0] for x in test_results],[x[1] for x in test_results],label='test', color='red', marker='o')
+plt.plot([x[0] for x in train_results],[x[1] for x in train_results],label='train', color='blue', marker='o')
+plt.xlabel('# of layers in decision tree')
+plt.ylabel('ACCURACY (Y=0): Training (blue) and Test (red)')
+plt.show()
+
+plt.plot([x[0] for x in test_results],[x[2] for x in test_results],label='test', color='red', marker='o')
+plt.plot([x[0] for x in train_results],[x[2] for x in train_results],label='train', color='blue', marker='o')
+plt.xlabel('# of layers in decision tree (max_depth)')
+plt.ylabel('RECALL (Y=0): Training (blue) and Test (red)')
+plt.show()
+
+plt.plot([x[0] for x in test_results],[x[3] for x in test_results],label='test', color='red', marker='o')
+plt.plot([x[0] for x in train_results],[x[3] for x in train_results],label='train', color='blue', marker='o')
+plt.xlabel('# of layers in decision tree (max_depth)')
+plt.ylabel('RECALL (Y=1): Training (blue) and Test (red)')
+plt.show()
+```
+
+### Train Optimal Model
+
+```{python}
+from sklearn import tree
+model = tree.DecisionTreeClassifier(max_depth=7)
+model = model.fit(x_train, y_train)
+
+yp_train=model.predict(x_train)
+yp_test=model.predict(x_test)
+```
+
+```{python}
+print("------TRAINING------")
+confusion_plot(y_train,yp_train)
+print("------TEST------")
+confusion_plot(y_test,yp_test)
+
+plot_tree(model,X,Y)
+```
+
+## Conclusion
+
+Thus, we see that the hyper-parameter tuned decision tree outputs significantly better results. Our initial decision tree yielded an accuracy of only 89%, but after hyper-parameter tuning our model, our accuracy value increased to 93%, which is an impressive difference. The optimal values of the parameter are max_depth = 6 and min_samples_leaf = 11. The longer the tree is, the more it tends to overfit the data, and thus, we see that after hyper-parameter tuning, the extra nodes are removed so that we could get ourselves a higher accuracy for the test data.
