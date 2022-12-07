@@ -1,0 +1,113 @@
+---
+title: "Naive Bayes in R"
+author: "Raunak Advani"
+date: "2022-12-07"
+output: html_document
+---
+
+```{r}
+library(rpart)
+library(RColorBrewer)
+library(tidyverse)
+library(wordcloud)
+library(slam)
+library(stringr)
+library(textmineR)
+library(caret)
+library(pheatmap)
+library(e1071)
+```
+
+
+```{r}
+setwd("/Users/raunakadvani/anly-501-project-raunakadvani2410/codes/data-exploring")
+df <- read.csv("../../data/clean-data/Fredapi_clean.csv")
+library(lubridate)
+
+str(df)
+#month = format(ymd(df$date , "%Y-%m-%d"))
+
+#df$date <- as.Date(paste(df$date,"-01",sep=""))  # Convert to date
+df$month <- month(df$date)
+df$month <- as.factor(df$month) 
+df$recession <- as.factor(df$recession)
+df
+```
+
+```{r}
+df <- subset(df, select = -c(date, X))
+df
+```
+
+
+```{r}
+#Splitting into test and train
+DataSize=nrow(df) ## how many rows?
+TrainingSet_Size<-floor(DataSize*(3/4)) ## Size for training set
+TestSet_Size <- DataSize - TrainingSet_Size ## Size for testing set
+
+## Random sample WITHOUT replacement (why?)
+## set a seed if you want it to be the same each time you
+## run the code. The number (like 2190) does not matter
+set.seed(2190)
+
+## This is the sample of row numbers
+MyTrainSample <- sample(nrow(df),
+                         TrainingSet_Size,replace=FALSE)
+
+## Use the sample of row numbers to grab those rows only from
+## the dataframe....
+MyTrainingSET <- df[MyTrainSample,]
+table(MyTrainingSET$recession)
+```
+
+```{r}
+table(MyTrainingSET$unemployment_value)
+```
+```{r}
+MyTestSET <- df[-MyTrainSample,]
+table(MyTestSET$fed_funds_value)
+```
+```{r}
+table(MyTestSET$recession)
+```
+
+```{r}
+TestKnownLabels <- MyTestSET$month
+MyTestSET <- MyTestSET[ , -which(names(MyTestSET) %in% c("recession"))]
+head(MyTestSET)
+```
+```{r}
+TrainKnownLabels <- MyTrainingSET$recession
+MyTrainingSET2 <- MyTrainingSET[ , -which(names(MyTrainingSET) %in% c("recession"))]
+head(MyTrainingSET2)
+```
+
+
+```{r}
+NB<-naiveBayes(MyTrainingSET, 
+                        TrainKnownLabels, 
+                        laplace = 1)
+
+summary(NB)
+```
+
+```{r}
+typeof(df['gdp_value'][0])
+```
+
+
+```{r}
+NB_Pred <- predict(NB, MyTestSET)
+NB_Pred[1:10]
+```
+
+```{r}
+data1 = table(NB_Pred,TestKnownLabels)
+pheatmap(data1,display_numbers = T,color = colorRampPalette(c('white','red'))(100),cluster_rows = F, cluster_cols = F)
+```
+
+```{r}
+confusionMatrix(NB_Pred,as.factor(TestKnownLabels))
+```
+
