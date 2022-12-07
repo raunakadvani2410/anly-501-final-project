@@ -1,5 +1,5 @@
 ---
-title: "fredapi_cleaning"
+title: "FRED API Cleaning"
 author: "Raunak Advani"
 date: "2022-10-29"
 output: html_document
