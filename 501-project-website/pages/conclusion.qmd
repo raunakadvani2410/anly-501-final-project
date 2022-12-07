@@ -1,0 +1,35 @@
+---
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-location: right
+---
+
+# Conclusion
+
+## Exploratory Data Analysis
+
+My initial exploratory data analysis was not very insightful. By making several plots using R, I found either no relationships or relationships that did not make much sense to me. For example, one of my plots yielded a negative correlation between interest rates and unemployment rates, signifying that as interest rates went up, the unemployment rate went down. This is contrary to what one normally expects, as when interest rates are low, companies can risk borrowing and investing more money. This ends up with them bringing in a lot more revenue, and also allows for leeway in hiring more people. The start of my project was thus not very positive, as I questioned whether my data would actually yield any sort of insightful results.
+
+The text data I extracted from the News API was mainly used to extract and analyze sentiments of the public and media respectively, and what they thought of if and when the next recession would hit the United States, and why that would be the case.
+
+## SVM
+In the section where I performed Support Vector Machine learning, I saw that after performing hyperparameter tuning, the accuracy of the Sigmoid SVM model increased by 1% and the increase in performance was almost as good as the hyperparameter tuned RBF model. The weighted overall accuracy of the Sigmoid hyperparameter tuned model was higher than that of the initial Sigmoid SVM model. Thus, the overall results of this analysis helped me conclude that the RBF and Sigmoid SVM’s were the most powerful when it comes to predicting labeled text data that has been transformed into a bag-of-words using count vectorizer. 
+
+## Data Clustering
+
+My data clustering analysis was an interesting one. Though some of the methods, particularly DBSCAN, were unsuccessful in yielding any valuable insights others were. The DBSCAN clustering performed the worst, and was not able to cluster data well, and the Hierarchical clustering model performed the second best. The main takeaway from this set of models was that although these clustering models are simple and easy to execute, they can be highly powerful to generate accurate insights from data, particularly if the right model is accurately chosen. The number of data points is crucial to these models, as a high number of data points will make the model better cluster the overall data. Additionally, more numeric features would also helped the model, and would have to led to not only more clusters being formed, but clusters of various sizes and densities which would yield even more insightful results and takeaways. I was able to see how high unemployment values often were experienced in periods of recessions.
+
+## ARM and Networking
+
+After performing Associative Rule Mining analysis, we can see that there are several relations from the rules that can be seen from the network graph. At this critical juncture, the dependency on data for driving business decisions has increased to a great extent. Data Mining is one such method that helps in decision making. It is the process of deriving trends, patterns, and useful information from a massive amount of data. The data mining process of discovering the rules that govern associations and causal objects between sets of items can be extremely helpful in making business decisions. It helps in discovering relationships between databases that seem to be independent thus developing connections between datasets. I was able to see how several relevant words were connected to each other, showing a certain sentiment about the economic health of the country.
+
+## Final Thoughts
+
+Overall, working on this portfolio has been an absolute joy for me. While it started off slow with me initially finding it hard to adapt to new coding methods and techniques, I eventually got a hang of things, and was able to go beyond what was expected of me to make valuable analyses. It has developed very differently than I had expected when I first selected my topic. 
+Even as I began my work and was still focused on the relationships described above, I found that many of my asssumptions were wrong. The different tools I used helped me uncover relationships that I previously did not ever imagine existed, so I found myself being a lot more informed as a student of Economics and Data Science. Thank you for looking at my portfolio, and I hope you enjoyed perusing through it as much as I did working on it!
+
+
+

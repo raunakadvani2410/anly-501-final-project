@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.247">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>conclusion</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="conclusion_files/libs/clipboard/clipboard.min.js"></script>
+<script src="conclusion_files/libs/quarto-html/quarto.js"></script>
+<script src="conclusion_files/libs/quarto-html/popper.min.js"></script>
+<script src="conclusion_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="conclusion_files/libs/quarto-html/anchor.min.js"></script>
+<link href="conclusion_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="conclusion_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="conclusion_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="conclusion_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="conclusion_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link active" data-scroll-target="#conclusion">Conclusion</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#svm" id="toc-svm" class="nav-link" data-scroll-target="#svm">SVM</a></li>
+  <li><a href="#data-clustering" id="toc-data-clustering" class="nav-link" data-scroll-target="#data-clustering">Data Clustering</a></li>
+  <li><a href="#arm-and-networking" id="toc-arm-and-networking" class="nav-link" data-scroll-target="#arm-and-networking">ARM and Networking</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts" class="nav-link" data-scroll-target="#final-thoughts">Final Thoughts</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<p>My initial exploratory data analysis was not very insightful. By making several plots using R, I found either no relationships or relationships that did not make much sense to me. For example, one of my plots yielded a negative correlation between interest rates and unemployment rates, signifying that as interest rates went up, the unemployment rate went down. This is contrary to what one normally expects, as when interest rates are low, companies can risk borrowing and investing more money. This ends up with them bringing in a lot more revenue, and also allows for leeway in hiring more people. The start of my project was thus not very positive, as I questioned whether my data would actually yield any sort of insightful results.</p>
+<p>The text data I extracted from the News API was mainly used to extract and analyze sentiments of the public and media respectively, and what they thought of if and when the next recession would hit the United States, and why that would be the case.</p>
+</section>
+<section id="svm" class="level2">
+<h2 class="anchored" data-anchor-id="svm">SVM</h2>
+<p>In the section where I performed Support Vector Machine learning, I saw that after performing hyperparameter tuning, the accuracy of the Sigmoid SVM model increased by 1% and the increase in performance was almost as good as the hyperparameter tuned RBF model. The weighted overall accuracy of the Sigmoid hyperparameter tuned model was higher than that of the initial Sigmoid SVM model. Thus, the overall results of this analysis helped me conclude that the RBF and Sigmoid SVM’s were the most powerful when it comes to predicting labeled text data that has been transformed into a bag-of-words using count vectorizer.</p>
+</section>
+<section id="data-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="data-clustering">Data Clustering</h2>
+<p>My data clustering analysis was an interesting one. Though some of the methods, particularly DBSCAN, were unsuccessful in yielding any valuable insights others were. The DBSCAN clustering performed the worst, and was not able to cluster data well, and the Hierarchical clustering model performed the second best. The main takeaway from this set of models was that although these clustering models are simple and easy to execute, they can be highly powerful to generate accurate insights from data, particularly if the right model is accurately chosen. The number of data points is crucial to these models, as a high number of data points will make the model better cluster the overall data. Additionally, more numeric features would also helped the model, and would have to led to not only more clusters being formed, but clusters of various sizes and densities which would yield even more insightful results and takeaways. I was able to see how high unemployment values often were experienced in periods of recessions.</p>
+</section>
+<section id="arm-and-networking" class="level2">
+<h2 class="anchored" data-anchor-id="arm-and-networking">ARM and Networking</h2>
+<p>After performing Associative Rule Mining analysis, we can see that there are several relations from the rules that can be seen from the network graph. At this critical juncture, the dependency on data for driving business decisions has increased to a great extent. Data Mining is one such method that helps in decision making. It is the process of deriving trends, patterns, and useful information from a massive amount of data. The data mining process of discovering the rules that govern associations and causal objects between sets of items can be extremely helpful in making business decisions. It helps in discovering relationships between databases that seem to be independent thus developing connections between datasets. I was able to see how several relevant words were connected to each other, showing a certain sentiment about the economic health of the country.</p>
+</section>
+<section id="final-thoughts" class="level2">
+<h2 class="anchored" data-anchor-id="final-thoughts">Final Thoughts</h2>
+<p>Overall, working on this portfolio has been an absolute joy for me. While it started off slow with me initially finding it hard to adapt to new coding methods and techniques, I eventually got a hang of things, and was able to go beyond what was expected of me to make valuable analyses. It has developed very differently than I had expected when I first selected my topic. Even as I began my work and was still focused on the relationships described above, I found that many of my asssumptions were wrong. The different tools I used helped me uncover relationships that I previously did not ever imagine existed, so I found myself being a lot more informed as a student of Economics and Data Science. Thank you for looking at my portfolio, and I hope you enjoyed perusing through it as much as I did working on it!</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
