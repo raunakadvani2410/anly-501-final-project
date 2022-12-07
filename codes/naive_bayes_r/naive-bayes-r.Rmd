@@ -58,22 +58,22 @@ MyTrainSample <- sample(nrow(df),
 ## Use the sample of row numbers to grab those rows only from
 ## the dataframe....
 MyTrainingSET <- df[MyTrainSample,]
-table(MyTrainingSET$recession)
+table(MyTrainingSET$month)
 ```
 
 ```{r}
-table(MyTrainingSET$unemployment_value)
+table(MyTrainingSET$recession)
 ```
 ```{r}
 MyTestSET <- df[-MyTrainSample,]
-table(MyTestSET$fed_funds_value)
+table(MyTestSET$month)
 ```
 ```{r}
 table(MyTestSET$recession)
 ```
 
 ```{r}
-TestKnownLabels <- MyTestSET$month
+TestKnownLabels <- MyTestSET$recession
 MyTestSET <- MyTestSET[ , -which(names(MyTestSET) %in% c("recession"))]
 head(MyTestSET)
 ```
@@ -81,6 +81,10 @@ head(MyTestSET)
 TrainKnownLabels <- MyTrainingSET$recession
 MyTrainingSET2 <- MyTrainingSET[ , -which(names(MyTrainingSET) %in% c("recession"))]
 head(MyTrainingSET2)
+```
+```{r}
+str(MyTrainingSET2)
+
 ```
 
 
@@ -90,10 +94,6 @@ NB<-naiveBayes(MyTrainingSET,
                         laplace = 1)
 
 summary(NB)
-```
-
-```{r}
-typeof(df['gdp_value'][0])
 ```
 
 
@@ -109,5 +109,39 @@ pheatmap(data1,display_numbers = T,color = colorRampPalette(c('white','red'))(10
 
 ```{r}
 confusionMatrix(NB_Pred,as.factor(TestKnownLabels))
+```
+
+```{r}
+NB<-naiveBayes(MyTrainingSET, 
+                        TrainKnownLabels, 
+                        laplace = 1)
+
+summary(NB)
+```
+
+```{r}
+NB_Pred <- predict(NB, MyTestSET)
+NB_Pred[1:10]
+```
+
+```{r}
+data1 = table(NB_Pred,TestKnownLabels)
+pheatmap(data1,display_numbers = T,color = colorRampPalette(c('white','red'))(100),cluster_rows = F, cluster_cols = F)
+```
+
+```{r}
+confusionMatrix(NB_Pred,as.factor(TestKnownLabels))
+
+```
+```{r}
+library(naivebayes)
+```
+
+```{r}
+model <- naive_bayes(MyTrainingSET$recession ~ ., data = MyTrainingSET,laplace = 1)
+model
+```
+```{r}
+plot(model)
 ```
 
