@@ -1,0 +1,485 @@
+---
+jupyter: python3
+format:
+  html:
+    code-fold: true
+    toc: true
+    toc-location: right
+---
+
+# Binary Classification of Text Data (News API) using SVM
+
+## Introduction 
+This page focuses on text data SVM and will look into SVM Classification, attribute selection measures, and how to build and optimize SVM Classifier using python. Support vector machine is another simple algorithm that every machine learning expert should have in their arsenal. Support vector machine is highly preferred by many as it produces significant accuracy with less computation power. Support Vector Machine, abbreviated as SVM can be used for both regression and classification tasks.
+
+Thus, this tab will explore the performance of SVM Kernels on my cleaned text data, which was gathered using the News API. My sentiment analysis on the text data yielded an average sentiment of 0.04, which is neither positive or negative. This means that our data is not imbalanced and can be used for analysis.
+
+## Theory
+
+A support vector machine (SVM) is a supervised machine learning model that solves two-group classification problems using classification algorithms. They can categorize new text after providing an SVM model with sets of labeled training data for each category. They have two major advantages over newer algorithms, such as neural networks, in terms of speed and performance with a limited number of samples (in the thousands). This makes the algorithm ideal for text classification problems, where access to a dataset of only a few thousands of tagged samples is common.
+
+There are specific types of SVMs you can use for particular machine learning problems, like support vector regression (SVR) which is an extension of support vector classification (SVC). SVMs are different from other classification algorithms because of the way they choose the decision boundary that maximizes the distance from the nearest data points of all the classes. The decision boundary created by SVMs is called the maximum margin classifier or the maximum margin hyper plane. A simple linear SVM classifier works by making a straight line between two classes. That means all of the data points on one side of the line will represent a category and the data points on the other side of the line will be put into a different category. This means there can be an infinite number of lines to choose from. What makes the linear SVM algorithm better than some of the other algorithms, like k-nearest neighbors, is that it chooses the best line to classify your data points. It chooses the line that separates the data and is the furthest away from the closet data points as possible.
+
+Types of SVM Kernels:
+
+- Linear: These are commonly recommended for text classification because most of these types of classification problems are linearly separable.
+
+- Polynomial: The polynomial kernel isn’t used in practice very often because it isn’t as computationally efficient as other kernels and its predictions aren’t as accurate.
+
+- Gaussian Radial Basis Function (RBF): One of the most powerful and commonly used kernels in SVMs. Usually the choice for non-linear data.
+
+## Methods
+
+The first step of our SVM modelling is to test our data on a random classifier, which is a baseline model. The random classifier will output precision, accuracy, and recall values.
+
+### Load the Cleaned Data
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, classification_report
+import warnings
+import os
+warnings.filterwarnings('always')
+```
+
+```{python}
+news_clean = pd.read_csv("../../data/clean-data/news_clean.csv")
+```
+
+```{python}
+news_clean
+```
+
+```{python}
+news_clean.drop(['Unnamed: 0'], axis = 1, inplace = True) # drop unneeded column
+```
+
+```{python}
+news_clean
+```
+
+```{python}
+print("The mean sentiment is ", news_clean['sentiment_rating'].mean())
+print("The data shape is ", news_clean.shape)
+```
+
+### Split into Training and Testing
+
+Our dependent variable is the sentiment score, and the independent variable is the words from the cleaned news dataframe. 
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+np.random.seed(3737)
+
+X = news_clean["Content_Lemmatized_Sentiment_Analysis"]
+
+y = news_clean["label"]
+
+x_train, x_test, y_train, y_test = train_test_split(X, y, 
+    random_state = 1,test_size=0.2
+)
+
+count_vector = CountVectorizer()
+
+training_data = count_vector.fit_transform(x_train)
+testing_data = count_vector.transform(x_test)
+```
+
+```{python}
+print("Shape of x_train is: ", x_train.shape)
+print("Shape of x_test is: ",x_test.shape)
+print("Shape of y_train is: ",y_train.shape)
+print("Shape of y_test is: ",y_test.shape)
+print("The levels of the dependent variable (Sentiment) are:")
+print(y.value_counts())
+```
+
+### Baseline Classifier
+
+```{python}
+import numpy as np
+import random
+from collections import Counter
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_recall_fscore_support
+```
+
+```{python}
+def random_classifier(y_data):
+    ypred=[]
+    max_label=np.max(y_data); #print(max_label)
+    for i in range(0,len(y_data)):
+        ypred.append(int(np.floor((max_label+1)*np.random.uniform(0,1))))
+
+    print("\n\n-----RANDOM CLASSIFIER-----")
+    print("count of prediction:",Counter(ypred).values()) 
+    print("probability of prediction:",np.fromiter(Counter(ypred).values(), dtype=float)/len(y_data)) 
+    print("accuracy",accuracy_score(y_data, ypred))
+    print("precision, recall, fscore, support",precision_recall_fscore_support(y_data, ypred))
+```
+
+```{python}
+from sklearn import preprocessing
+  
+# label_encoder object knows how to understand word labels.
+label_encoder = preprocessing.LabelEncoder()
+  
+# Encode labels in column 'species'.
+y_encoded = label_encoder.fit_transform(y)
+  
+print("\nBINARY CLASS: NON-UNIFORM LOAD (Positive: 175 count, Negative: 205 count")
+
+print("Unique labels and respective counts after one-hot encoding: ")
+
+print("0 = Negative and 1 = Positive")
+
+unique, counts = np.unique(y_encoded, return_counts=True)
+
+print(np.asarray((unique, counts)).T)
+
+random_classifier(y_encoded)
+```
+
+Here, we see that the baseline classifier yields an accuracy of 51% and an f-1 score of 0.475 for positive values and 0.542 for negative values. Now, we explore the SVM linear kernel.
+
+### SVM with Linear Kernel
+
+```{python}
+from sklearn.svm import SVC
+clf = SVC(C=0.45, kernel='linear')
+clf.fit(training_data, y_train)
+
+yp_train = clf.predict(training_data)
+yp_test = clf.predict(testing_data)
+```
+
+```{python}
+cm_train = confusion_matrix(y_train, yp_train, labels=clf.classes_) # calculate confusion matrix
+cm_test = confusion_matrix(y_test, yp_test, labels=clf.classes_)
+
+target_names = ['Positive', 'Negative']
+clf_report_train_linear = classification_report(y_train, yp_train, target_names=target_names, output_dict=True)
+clf_report_test_linear = classification_report(y_test, yp_test, target_names=target_names, output_dict=True)
+```
+
+```{python}
+clf_report_train_linear = pd.DataFrame(clf_report_train_linear).transpose()
+clf_report_test_linear = pd.DataFrame(clf_report_test_linear).transpose()
+```
+
+```{python}
+print("Classification Report of Linear SVM Train Data:")
+clf_report_train_linear
+```
+
+```{python}
+print("Classification Report of Linear SVM Test Data:")
+clf_report_test_linear
+```
+
+```{python}
+# Display Confusion Matrix for the test data
+fig, ax = plt.subplots(figsize=(6,6), dpi=120)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+plt.title("Confusion Matrix: Linear SVM Test Data")
+```
+
+#### Perform Hyper-parameter Tuning
+
+```{python}
+from sklearn.svm import SVC
+
+from sklearn.model_selection import GridSearchCV  
+  
+# defining parameter range
+param_grid = {'C': [0.1, 0.3, 0.7, 1, 5, 10], 
+              'kernel': ['linear']} 
+  
+grid = GridSearchCV(SVC(), param_grid, refit = True, verbose = -1)
+
+grid.fit(training_data, y_train)
+
+# print best parameter after tuning
+print("The best parameters after tuning are: ", grid.best_params_)
+  
+# print how our model looks after hyper-parameter tuning
+print("The best model after tuning looks like: ",grid.best_estimator_)
+
+grid_predictions = grid.predict(testing_data)
+
+# print classification report
+print(classification_report(y_test, grid_predictions))
+```
+
+```{python}
+# Display Confusion Matrix for the above hyperparameter model.
+cm_test = confusion_matrix(y_test, grid_predictions, labels=grid.classes_)
+fig, ax = plt.subplots(figsize=(6,6), dpi=120)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+title_font = {'size':'10'}
+plt.title("GridSearchCV Confusion Matrix: Linear SVM Test Data", **title_font)
+```
+
+After performing hyperparameter tuning, we see that the performance of the SVM Linear Kernel remains unchanged. This shows that we had initially chosen the best model before performing hyperparameter turning. Let's check if the Polynomial Kernel yields a better result
+
+### SVM with Polynomial Kernel
+
+```{python}
+# Fit the classfier on the training data and predict on the test data. Set the classifier to be polynomial.
+
+clf = SVC(C=0.45, kernel = 'poly', degree=2)
+clf.fit(training_data, y_train)
+
+yp_train = clf.predict(training_data)
+yp_test = clf.predict(testing_data)
+```
+
+```{python}
+# Calculate the confusion matrix and classification report for the train and test data. 
+
+cm_train = confusion_matrix(y_train, yp_train, labels=clf.classes_)
+cm_test = confusion_matrix(y_test, yp_test, labels=clf.classes_)
+
+clf_report_train_poly = classification_report(y_train, yp_train, target_names=target_names, output_dict=True)
+clf_report_test_poly = classification_report(y_test, yp_test, target_names=target_names, output_dict=True)
+
+```
+
+```{python}
+# Save the results in a data frame.
+
+clf_report_train_poly = pd.DataFrame(clf_report_train_poly).transpose()
+clf_report_test_poly = pd.DataFrame(clf_report_test_poly).transpose()
+```
+
+```{python}
+print("Classification Report of Polynomial SVM Train Data:")
+clf_report_train_poly
+```
+
+```{python}
+print("Classification Report of Polynomial SVM Test Data:")
+clf_report_test_poly
+```
+
+```{python}
+# Display Confusion Matrix for the test data. Remember to use the ConfusionMatrixDisplay function.
+fig, ax = plt.subplots(figsize=(6,6), dpi=100)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+plt.title("Confusion Matrix: Polynomial SVM Test Data")
+```
+
+#### Hyper-parameter Tuning using GridSearchCV
+
+```{python}
+# defining parameter range
+param_grid = {'C': [0.1, 0.5, 1, 5], 
+              'gamma': [1, 0.1, 0.01, 0.001],
+              'kernel': ['poly']} 
+  
+grid = GridSearchCV(SVC(), param_grid, refit = True, verbose = -1)
+  
+grid.fit(training_data, y_train)
+
+# print best parameter after tuning
+print("The best parameters after tuning are: ", grid.best_params_)
+  
+# print how our model looks after hyper-parameter tuning
+print("The best model after tuning looks like: ",grid.best_estimator_)
+
+grid_predictions = grid.predict(testing_data)
+
+# print classification report
+print(classification_report(y_test, grid_predictions))
+```
+
+```{python}
+# Display Confusion Matrix for the above hyperparameter model.
+cm_test = confusion_matrix(y_test, grid_predictions, labels=grid.classes_)
+fig, ax = plt.subplots(figsize=(6,6), dpi=120)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+title_font = {'size':'10'}
+plt.title("GridSearchCV Confusion Matrix: Polynomial SVM Test Data", **title_font)
+```
+
+Therefore, after performing hyperparameter tuning, the performance of the Polynomial SVM model remains same. This means that we had initially selected the best model before performing hyperparameter tuning for Polynomial SVM. Even after setting different gamma values and regularization parameters, the initial model is as good as the hyperparameterized model. Moreover, the weighted overall accuracy is significantly greater (81% vs 51%) than that of the Linear SVM models!
+
+### SVM with RBF Kernels
+
+```{python}
+# Fit the classfier on the training data and predict on the test data. Set the classifier to be linear and C between 0.35-0.75. 
+
+clf = SVC(C=0.45, kernel = 'rbf')
+clf.fit(training_data, y_train)
+
+yp_train = clf.predict(training_data)
+yp_test = clf.predict(testing_data)
+```
+
+```{python}
+# Calculate the confusion matrix and classification report for the train and test data. 
+
+cm_train = confusion_matrix(y_train, yp_train, labels=clf.classes_)
+cm_test = confusion_matrix(y_test, yp_test, labels=clf.classes_)
+
+clf_report_train_RBF = classification_report(y_train, yp_train, target_names=target_names, output_dict=True)
+clf_report_test_RBF = classification_report(y_test, yp_test, target_names=target_names, output_dict=True)
+
+```
+
+```{python}
+# Save the results in a data frame.
+
+clf_report_train_RBF = pd.DataFrame(clf_report_train_RBF).transpose()
+clf_report_test_RBF = pd.DataFrame(clf_report_test_RBF).transpose()
+```
+
+```{python}
+print("Classification Report of RBF SVM Train Data:")
+clf_report_train_RBF
+```
+
+```{python}
+print("Classification Report of RBF SVM Test Data:")
+clf_report_test_RBF
+```
+
+```{python}
+# Display Confusion Matrix for the test data. Remember to use the ConfusionMatrixDisplay function.
+fig, ax = plt.subplots(figsize=(6,6), dpi=100)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+plt.title("Confusion Matrix: RBF SVM Test Data")
+```
+
+#### Hyper-parameter Tuning using GridSearchCV
+
+```{python}
+# defining parameter range
+param_grid = {'C': [0.1, 1, 10, 100, 1000], 
+              'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
+              'kernel': ['rbf']}
+  
+grid = GridSearchCV(SVC(), param_grid, refit = True, verbose = -1)
+  
+grid.fit(training_data, y_train)
+
+# print best parameter after tuning
+print("The best parameters after tuning are: ", grid.best_params_)
+  
+# print how our model looks after hyper-parameter tuning
+print("The best model after tuning looks like: ",grid.best_estimator_)
+
+grid_predictions = grid.predict(testing_data)
+
+# print classification report
+print(classification_report(y_test, grid_predictions))
+```
+
+```{python}
+# Display Confusion Matrix for the above hyperparameter model.
+cm_test = confusion_matrix(y_test, grid_predictions, labels=grid.classes_)
+fig, ax = plt.subplots(figsize=(6,6), dpi=120)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+title_font = {'size':'10'}
+plt.title("GridSearchCV Confusion Matrix: RBF SVM Test Data", **title_font)
+```
+
+Therefore, after performing hyperparameter tuning, the performance of the RBF SVM model increased from 77% to 82%. This means that our initially selected model had scope for improvement in terms of weighted accuracy and f-1 score. Thus, the RBF SVM is the best-performing kernel and we have reinforced it through the above analysis. Now, let’s see if we can at least match or beat RBF SVM’s performance using a Sigmoid SVM kernel.
+
+### SVM with Sigmoid Kernels
+
+```{python}
+# Import svc from sklearn.svm and classsification_report, confusion_matrix from sklearn.metrics.
+# Fit the classfier on the training data and predict on the test data. Set the classifier to be linear and C between 0.35-0.75. 
+
+clf = SVC(C=0.45, kernel = 'sigmoid')
+clf.fit(training_data, y_train)
+
+yp_train = clf.predict(training_data)
+yp_test = clf.predict(testing_data)
+```
+
+```{python}
+# Calculate the confusion matrix and classification report for the train and test data. 
+
+cm_train = confusion_matrix(y_train, yp_train, labels=clf.classes_)
+cm_test = confusion_matrix(y_test, yp_test, labels=clf.classes_)
+clf_report_train_sigmoid = classification_report(y_train, yp_train, target_names=target_names, output_dict=True)
+clf_report_test_sigmoid = classification_report(y_test, yp_test, target_names=target_names, output_dict=True)
+```
+
+```{python}
+# Save the results in a data frame.
+clf_report_train_sigmoid = pd.DataFrame(clf_report_train_sigmoid).transpose()
+clf_report_test_sigmoid = pd.DataFrame(clf_report_test_sigmoid).transpose()
+```
+
+```{python}
+print("Classification Report of Sigmoid SVM Train Data:")
+clf_report_train_sigmoid 
+```
+
+```{python}
+print("Classification Report of Sigmoid SVM Test Data:")
+clf_report_test_sigmoid 
+```
+
+```{python}
+# Display Confusion Matrix for the test data. Remember to use the ConfusionMatrixDisplay function.
+fig, ax = plt.subplots(figsize=(6,6), dpi=100)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+```
+
+#### Hyper-parameter tuning using GridSearchCV
+
+```{python}
+# defining parameter range
+param_grid = {'C': [0.1, 1, 10, 100, 1000], 
+              'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
+              'kernel': ['sigmoid']}
+  
+grid = GridSearchCV(SVC(), param_grid, refit = True, verbose = -1)
+  
+grid.fit(training_data, y_train)
+
+# print best parameter after tuning
+print("The best parameters after tuning are: ", grid.best_params_)
+  
+# print how our model looks after hyper-parameter tuning
+print("The best model after tuning looks like: ",grid.best_estimator_)
+
+grid_predictions = grid.predict(testing_data)
+
+# print classification report
+print(classification_report(y_test, grid_predictions))
+```
+
+```{python}
+# Display Confusion Matrix for the above hyperparameter model.
+cm_test = confusion_matrix(y_test, grid_predictions, labels=grid.classes_)
+fig, ax = plt.subplots(figsize=(6,6), dpi=120)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm_test, display_labels=clf.classes_)
+disp.plot(ax=ax, cmap=plt.cm.Blues, values_format='d', xticks_rotation='vertical')
+title_font = {'size':'10'}
+plt.title("GridSearchCV Confusion Matrix: Sigmoid SVM Test Data", **title_font)
+```
+
+Therefore, after performing hyperparameter tuning, the accuracy of the Sigmoid SVM model increased by 1% and the increase in performance is almost as good as the hyperparameter tuned RBF model!  The weighted overall accuracy of the Sigmoid hyperparameter tuned model is higher than that of the initial Sigmoid SVM model. Thus, the overall results of this analysis help us conclude that the RBF and Sigmoid SVM’s are the most powerful when it comes to predicting labeled text data that has been transformed into a bag-of-words using count vectorizer.
+
+
+
+
+
+
+

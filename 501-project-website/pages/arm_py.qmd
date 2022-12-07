@@ -11,7 +11,7 @@ format:
 
 ## Introduction
 
-The page below will describe my associative rule mining analysis, which was conducted using data retrieved from the Twitter API.
+The page below will describe my associative rule mining analysis, which was conducted using data retrieved from the News API.
 
 ARM, or Associative Rule Mining, is a critical tool in Data Science which aids in evaluating several business decisions. Data mining is the process of deriving trends, patterns, and useful information from a massive amount of data. The data mining process of discovering the rules that govern associations and causal objects between sets of items is known as Associative Rule Mining. It is useful in discovering relationships between databases that seem to be independent, thereby unveiling relationships in data that we didn't know previously existed.
 
@@ -69,7 +69,9 @@ For large sets of data, which are used in most cases in the field of Data Scienc
 
 7. Compute lift
 
-## Code
+## Methods
+
+
 
 ```{python}
 # Imports
@@ -91,7 +93,6 @@ nltk.download('stopwords')
 nltk.download('vader_lexicon')
 
 warnings.filterwarnings("ignore")
-
 ```
 
 ```{python}
@@ -106,10 +107,11 @@ df = df.rename(columns={'Content_Lemmatized_Sentiment_Analysis': 'final_news'})
 ```
 
 ```{python}
-df.head(5) # visualise first 5 rows
+df
 ```
 
 ```{python}
+# Referred from Professor Nakul's example code
 # USER PARAM
 input_path          =   df
 compute_sentiment   =   True        
@@ -136,7 +138,7 @@ def read_and_clean(path,START=0,STOP=-1):
     global sentiment
 
     sentences =  []
-    for sentence in path['df']:
+    for sentence in path['final_news']:
         sentences.append(sentence) 
 
     print("NUMBER OF SENTENCES FOUND:",len(sentences));
@@ -208,3 +210,191 @@ transactions = read_and_clean(input_path, 400, -400)
 texT = pd.DataFrame(transactions)
 texT.head()
 ```
+
+### Visualize the Sentiment
+
+```{python}
+def moving_ave(y,w=100):
+    #-----------------------
+    # COMPUTE THE MOVING AVERAGE OF A SIGNAL Y
+    #-----------------------
+    mask=np.ones((1,w))/w; mask=mask[0,:]
+    return np.convolve(y,mask,'same')
+
+
+# VISUALIZE THE SENTIMENT ANALYSIS AS A TIME-SERIES
+# this is activated by compute_sentiment = True in the first cell
+if (compute_sentiment):
+    # take sentiment moving ave and renormalize
+    neg=moving_ave(sentiment[:,0], ave_window_size)
+    neg=(neg-np.mean(neg))/np.std(neg)
+
+    neu=moving_ave(sentiment[:,1], ave_window_size)
+    neu=(neu-np.mean(neu))/np.std(neu)
+
+    pos=moving_ave(sentiment[:,2], ave_window_size)
+    pos=(pos-np.mean(pos))/np.std(pos)
+
+    cmpd=moving_ave(sentiment[:,3], ave_window_size)
+    cmpd=(cmpd-np.mean(cmpd))/np.std(cmpd)
+
+    # Plot sentiment
+    indx = np.linspace(0,len(sentiment), len(sentiment))
+    plt.plot(indx, neg, label="negative")
+    plt.plot(indx, neu, label="neutral")
+    plt.plot(indx, pos, label="positive")
+    plt.plot(indx, cmpd, label="combined")
+
+    plt.legend(loc="upper left")
+    plt.xlabel("text chunks: tweet progression")
+    plt.ylabel("sentiment")
+    plt.show()
+```
+
+### Re-format the Output
+
+```{python}
+# RE-FORMAT THE APRIORI OUTPUT INTO A PANDAS DATA-FRAME WITH COLUMNS "rhs","lhs","supp","conf","supp x conf","lift"
+def reformat_results(results):
+
+    # CLEAN-UP RESULTS 
+    keep=[]
+    for i in range(0,len(results)):
+        for j in range(0,len(list(results[i]))):
+            if(j>1):
+                for k in range(0,len(list(results[i][j]))):
+                    if(len(results[i][j][k][0])!=0):
+                        rhs=list(results[i][j][k][0])
+                        lhs=list(results[i][j][k][1])
+                        conf=float(results[i][j][k][2])
+                        lift=float(results[i][j][k][3])
+                        keep.append([rhs,lhs,supp,conf,supp*conf,lift])
+            if(j==1):
+                supp=results[i][j]
+
+    return pd.DataFrame(keep, columns =["rhs","lhs","supp","conf","supp x conf","lift"])
+
+
+```
+
+### Utility Function: Convert to NetworkX Object
+
+```{python}
+def convert_to_network(df):
+    print(df)
+
+    # BUILD GRAPH
+    G = nx.DiGraph()  # DIRECTED
+    for row in df.iterrows():
+        # for column in df.columns:
+        lhs="_".join(row[1][0])
+        rhs="_".join(row[1][1])
+        conf=row[1][3]; #print(conf)
+        if(lhs not in G.nodes): 
+            G.add_node(lhs)
+        if(rhs not in G.nodes): 
+            G.add_node(rhs)
+
+        edge=(lhs,rhs)
+        if edge not in G.edges:
+            G.add_edge(lhs, rhs, weight=conf)
+
+    # print(G.nodes)
+    # print(G.edges)
+    return G
+```
+
+### Utility Function: Plot NetworkX Object
+
+```{python}
+def plot_network(G):
+    # SPECIFIY X-Y POSITIONS FOR PLOTTING
+    pos=nx.random_layout(G)
+
+    # GENERATE PLOT
+    fig, ax = plt.subplots()
+    fig.set_size_inches(15, 15)
+
+    # assign colors based on attributes
+    weights_e   = [G[u][v]['weight'] for u,v in G.edges()]
+
+    # SAMPLE CMAP FOR COLORS 
+    cmap=plt.cm.get_cmap('Blues')
+    colors_e    = [cmap(G[u][v]['weight']*10) for u,v in G.edges()]
+
+    # PLOT
+    nx.draw(
+    G,
+    edgecolors="black",
+    edge_color=colors_e,
+    node_size=2000,
+    linewidths=2,
+    font_size=8,
+    font_color="white",
+    font_weight="bold",
+    width=weights_e,
+    with_labels=True,
+    pos=pos,
+    ax=ax
+    )
+    ax.set(title='ARM on Text Data(Tweets)')
+    plt.show()
+```
+
+### Train ARM model by applying Apriori
+
+The next step of the process is to apply the Apriori algorithm on the dataset. To do this, we can utilize the apriori class that we imported from the apyori library.
+
+The apriori class requires us to use some parameter values for it to work. The first parameter which needs to be used is that list of list from which we want to extract rules. Next, the second parameter is the min_support parameter. This parameter is used to select the items from the data which have support values that are greater than the value specified by the parameter. Next, the min_confidence parameter filters those rules that have confidence which is greater than the confidence threshold which is specified by the parameter. Next, the min_lift parameter specifies the minimum lift value for the listed rules. Lastly, the min_length parameter specifies the minimum number of items that we would like in our rules.
+
+```{python}
+# TRAIN THE ARM MODEL USING THE "apriori" PACKAGE
+print("Transactions:",texT)
+# Run Apriori algorithm
+results = list(apriori(transactions, min_support=0.3, min_confidence=0.2, min_length=2, max_length=5, min_lift = 1))
+```
+
+## Results
+
+First, let's take a look at the total number of rules mined by the apriori class
+
+```{python}
+print(len(results))
+```
+
+Each item from the list above corresponds to one rule
+
+Now, let's print a random item to see the first rule
+
+```{python}
+print(results[11])
+```
+
+The first item in the list is 'interest'. The first item shows the related word in the rule
+
+The support value for this first rule is 0.33. This number is computed by dividing the number of transactions containing 'interest' divided by the total number of transactions. 
+
+The confidence level for this rule is 0.33, which tells us that out of all the transactions that contain 'interest', approximately 33% of them also contain 'rate'.
+
+Lastly, the lift of 2.42 tells us that 'rate' is 2.42 times more likely to occur in a transaction containing the word 'interest' compared to the default likelihood of the occurence of 'rate'.
+
+
+```{python}
+# Use the utility function to reformat the output
+result_df = reformat_results(results)
+```
+
+## Visualize the Results
+
+```{python}
+# PLOT THE RESULTS AS A NETWORK-X OBJECT
+pd_results = reformat_results(results)
+G = convert_to_network(result_df)
+print(G)
+plot_network(G)
+```
+
+## Conclusion
+
+In conclusion, we can see that there are several relations from the rules that can be seen from the network graph. At this critical juncture, the dependency on data for driving business decisions has increased to a great extent. Data Mining is one such method that helps in decision making. It is the process of deriving trends, patterns, and useful information from a massive amount of data. The data mining process of discovering the rules that govern associations and causal objects between sets of items can be extremely helpful in making business decisions. It helps in discovering relationships between databases that seem to be independent thus developing connections between datasets.
+
