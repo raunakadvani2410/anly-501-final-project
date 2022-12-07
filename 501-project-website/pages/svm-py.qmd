@@ -475,6 +475,8 @@ title_font = {'size':'10'}
 plt.title("GridSearchCV Confusion Matrix: Sigmoid SVM Test Data", **title_font)
 ```
 
+## Conclusion
+
 Therefore, after performing hyperparameter tuning, the accuracy of the Sigmoid SVM model increased by 1% and the increase in performance is almost as good as the hyperparameter tuned RBF model!  The weighted overall accuracy of the Sigmoid hyperparameter tuned model is higher than that of the initial Sigmoid SVM model. Thus, the overall results of this analysis help us conclude that the RBF and Sigmoid SVM’s are the most powerful when it comes to predicting labeled text data that has been transformed into a bag-of-words using count vectorizer.
 
 
