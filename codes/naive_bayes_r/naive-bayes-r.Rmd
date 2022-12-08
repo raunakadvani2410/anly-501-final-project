@@ -5,8 +5,10 @@ date: "2022-12-07"
 output: html_document
 ---
 
+# Naive Bayes in R with Record Data
+
 ```{r}
-library(rpart)
+library(rpart) # import relevant packages
 library(RColorBrewer)
 library(tidyverse)
 library(wordcloud)
@@ -29,34 +31,31 @@ str(df)
 
 #df$date <- as.Date(paste(df$date,"-01",sep=""))  # Convert to date
 df$month <- month(df$date)
-df$month <- as.factor(df$month) 
+df$month <- as.factor(df$month) # convert to factor
 df$recession <- as.factor(df$recession)
 df
 ```
 
 ```{r}
-df <- subset(df, select = -c(date, X))
+df <- subset(df, select = -c(date, X)) # drop redundant columns
 df
 ```
 
+## Create training and testing sets
 
 ```{r}
 #Splitting into test and train
-DataSize=nrow(df) ## how many rows?
+DataSize=nrow(df) 
 TrainingSet_Size<-floor(DataSize*(3/4)) ## Size for training set
 TestSet_Size <- DataSize - TrainingSet_Size ## Size for testing set
 
-## Random sample WITHOUT replacement (why?)
-## set a seed if you want it to be the same each time you
-## run the code. The number (like 2190) does not matter
 set.seed(2190)
 
 ## This is the sample of row numbers
 MyTrainSample <- sample(nrow(df),
                          TrainingSet_Size,replace=FALSE)
 
-## Use the sample of row numbers to grab those rows only from
-## the dataframe....
+
 MyTrainingSET <- df[MyTrainSample,]
 table(MyTrainingSET$month)
 ```
@@ -144,4 +143,20 @@ model
 ```{r}
 plot(model)
 ```
+```{r}
+NB_Pred2 <- predict(model, MyTestSET)
+NB_Pred2[1:10]
+```
 
+```{r}
+data2 = table(NB_Pred2,TestKnownLabels) ## make a confusion matrix
+
+pheatmap(data2,display_numbers = T,color = colorRampPalette(c('white','red'))(100),cluster_rows = F, cluster_cols = F)
+```
+Classification Report
+
+```{r}
+confusionMatrix(NB_Pred2,as.factor(TestKnownLabels))
+```
+
+Overall, the results for my Naive Bayes classifier was quite impressive. The classifier had an accuracy core of 85.29%, which exceeded my expectations by a mile, and in addition, it also had a confidence interval of 68.89% - 95.05%, which was also quite solid. The model was able to predict a recessionary period quite well with the input training data. Another aspect that I would've liked to explore was weekends vs weekdays as predictions for interest rates. However, this was impossible for me to do as most economic data is released on a quarterly basis, limiting the amount of data that I have access to.
